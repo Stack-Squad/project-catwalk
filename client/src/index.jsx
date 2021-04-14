@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App.jsx';
 
-
-const App = () => <>IT WORKED</>
 
 ReactDOM.render(<App />, document.getElementById('app'));
