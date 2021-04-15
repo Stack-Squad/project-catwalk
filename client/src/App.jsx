@@ -1,4 +1,5 @@
 import React from 'react';
+import Banner from './components/Banner.jsx';
 import Overview from './components/Overview.jsx';
 import Ratings from './components/Ratings.jsx';
 import QuestionsAnswers from './components/QuestionsAnswers.jsx';
@@ -12,6 +13,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Banner />
         <Overview/>
         <Ratings/>
         <QuestionsAnswers/>
