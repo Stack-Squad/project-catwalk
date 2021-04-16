@@ -1,6 +1,6 @@
 const axios = require('axios');
-const config = require('../config.js');
 
+const token = process.env.TOKEN;
 const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
 module.exports.getProducts = () => {
@@ -9,7 +9,7 @@ module.exports.getProducts = () => {
     method: 'get',
     baseURL: baseURL,
     headers: {
-      'Authorization': config.TOKEN
+      'Authorization': token
     }
   };
 
@@ -28,7 +28,7 @@ module.exports.getProductById = (id) => {
     method: 'get',
     baseURL: baseURL,
     headers: {
-      'Authorization': config.TOKEN
+      'Authorization': token
     }
   }
 

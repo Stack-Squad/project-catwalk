@@ -1,5 +1,5 @@
 import React from 'react';
-import utils from '../../helpers/utils.js';
+import axios from 'axios';
 import sampleData from '../../helpers/sampleData.js';
 
 import Banner from './components/Banner.jsx';
@@ -18,8 +18,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    utils.getProducts()
-    .then(productList => {
+    axios.get('/products')
+    .then(response => {
+      let productList = response.data;
       this.setState({
         products: productList,
         productId: productList[0].id
