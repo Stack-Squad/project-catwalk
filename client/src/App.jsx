@@ -4,7 +4,7 @@ import sampleData from '../../helpers/sampleData.js';
 
 import Banner from './components/Banner.jsx';
 import Overview from './components/Overview.jsx';
-import Ratings from './components/Ratings.jsx';
+import RatingsAndReviews from './components/RatingsAndReviews.jsx';
 import QuestionsAnswers from './components/QuestionsAnswers.jsx';
 import RelatedItems from './components/RelatedItems.jsx';
 
@@ -17,19 +17,21 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
-    axios.get('/products')
-    .then(response => {
-      let productList = response.data;
-      this.setState({
-        products: productList,
-        productId: productList[0].id
-      });
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  }
+  // Commented this one out so I don't
+  // make network calls for now.
+  // Just using sampleData for now.
+  // componentDidMount() {
+  //   utils.getProducts()
+  //   .then(productList => {
+  //     this.setState({
+  //       products: productList,
+  //       productId: productList[0].id
+  //     });
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
+  // }
 
   render() {
     let id = this.state.productId;
@@ -37,7 +39,7 @@ class App extends React.Component {
       <div>
         <Banner />
         <Overview productId={id} />
-        <Ratings productId={id} />
+        <RatingsAndReviews />
         <QuestionsAnswers productId={id} />
         <RelatedItems productId={id} />
       </div>
