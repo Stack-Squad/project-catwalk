@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "build": "webpack --mode production",
-    "start": "npx nodemon server/index.js",
+    "start": "node -r dotenv/config server/index.js",
+    "server-dev": "nodemon -r dotenv/config server/index.js",
     "react-dev": "webpack --mode development --watch",
     "dev": "live-server ./client/dist"
   },
