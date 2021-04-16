@@ -4,7 +4,7 @@ const Ratings = (props) => {
   console.log(props);
   return (
     <div>
-      <h1>Ratings</h1>
+      <h1>Ratings Component</h1>
       <div></div>
     </div>
   )
