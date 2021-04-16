@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Banner = () => (
-  <header>Project Catwalk</header>
+  <h1>Project Catwalk</h1>
 );
 
 export default Banner;
