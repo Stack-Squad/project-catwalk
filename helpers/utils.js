@@ -1,7 +1,5 @@
 const axios = require('axios');
-// const config = require('../config.js');
 
-// require('dotenv').config();
 const token = process.env.TOKEN;
 const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
