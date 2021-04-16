@@ -1,5 +1,7 @@
 import React from 'react';
 
-const Banner = () => <div>Logo</div>;
+const Banner = () => (
+  <header>Project Catwalk</header>
+);
 
 export default Banner;
