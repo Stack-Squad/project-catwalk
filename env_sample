@@ -1,0 +1,8 @@
+PORT=YOUR_PORT_NUMBER
+
+
+#######################
+- Create a file .env at the project root level
+- Copy line 1 and replace 'YOUR_PORT_NUMBER' with the
+  actual PORT number for the app.
+- In future variables such api tokens will be added here.
