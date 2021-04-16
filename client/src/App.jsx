@@ -19,7 +19,8 @@ class App extends React.Component {
 
   componentDidMount() {
     axios.get('/products')
-    .then(productList => {
+    .then(response => {
+      let productList = response.data;
       this.setState({
         products: productList,
         productId: productList[0].id
