@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test-cov": "jest --coverage",
     "build": "webpack --mode production",
     "start": "node -r dotenv/config server/index.js",
     "server-dev": "nodemon -r dotenv/config server/index.js",
