@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1618628913437" clover="3.2.0">
+  <project timestamp="1618628913437" name="All files">
+    <metrics statements="46" coveredstatements="40" conditionals="6" coveredconditionals="5" methods="17" coveredmethods="10" elements="69" coveredelements="55" complexity="0" loc="46" ncloc="46" packages="4" files="11" classes="11"/>
+    <package name="client.src">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="App.jsx" path="/Users/Michi/stack-squad/project-catwalk/client/src/App.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="37" count="3" type="stmt"/>
+        <line num="38" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="client.src.components">
+      <metrics statements="11" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
+      <file name="Banner.jsx" path="/Users/Michi/stack-squad/project-catwalk/client/src/components/Banner.jsx">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="Overview.jsx" path="/Users/Michi/stack-squad/project-catwalk/client/src/components/Overview.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+      <file name="QuestionsAnswers.jsx" path="/Users/Michi/stack-squad/project-catwalk/client/src/components/QuestionsAnswers.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+      <file name="Ratings.jsx" path="/Users/Michi/stack-squad/project-catwalk/client/src/components/Ratings.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="RatingsAndReviews.jsx" path="/Users/Michi/stack-squad/project-catwalk/client/src/components/RatingsAndReviews.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+      </file>
+      <file name="RelatedItems.jsx" path="/Users/Michi/stack-squad/project-catwalk/client/src/components/RelatedItems.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+      <file name="Reviews.jsx" path="/Users/Michi/stack-squad/project-catwalk/client/src/components/Reviews.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="client.src.css-modules">
+      <metrics statements="10" coveredstatements="7" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="1"/>
+      <file name="ratings-reviews.module.css" path="/Users/Michi/stack-squad/project-catwalk/client/src/css-modules/ratings-reviews.module.css">
+        <metrics statements="10" coveredstatements="7" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="cond" truecount="3" falsecount="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="helpers">
+      <metrics statements="21" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4"/>
+      <file name="sampleData.js" path="/Users/Michi/stack-squad/project-catwalk/helpers/sampleData.js">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="448" count="1" type="stmt"/>
+        <line num="456" count="1" type="stmt"/>
+        <line num="517" count="1" type="stmt"/>
+        <line num="548" count="1" type="stmt"/>
+        <line num="712" count="1" type="stmt"/>
+      </file>
+      <file name="utils.js" path="/Users/Michi/stack-squad/project-catwalk/helpers/utils.js">
+        <metrics statements="13" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
