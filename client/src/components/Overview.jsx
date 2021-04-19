@@ -1,4 +1,5 @@
 import React from 'react';
+import OverviewImgGal from './OverviewImgGal.jsx'
 
 class Overview extends React.Component {
   constructor() {
@@ -8,7 +9,11 @@ class Overview extends React.Component {
     }
   }
   render() {
-    return <div>Hello World</div>;
+    return (
+      <div>
+        <OverviewImgGal />
+      </div>
+    )
   }
 }
 export default Overview
