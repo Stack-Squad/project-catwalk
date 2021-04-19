@@ -1,4 +1,8 @@
 import React from 'react';
 
-const Overview = () => <></>
+class Overview extends React.Component {
+  render() {
+    return <div>Hello World</div>;
+  }
+}
 export default Overview
