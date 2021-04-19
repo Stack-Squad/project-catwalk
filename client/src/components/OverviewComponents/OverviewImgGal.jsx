@@ -6,7 +6,6 @@ const OverviewImgGal = (props) => (
       {props.currentSelectedStyleImages.map((image, index) => {
         return <img src={image['thumbnail_url']}></img>
       })}
-    <img src={props.currentSelectedStyleImages[0]['thumbnail_url']} className={styles.gallery}></img> {/* need to make dynamic render of all images*/}
     <img src={props.currentImg} className={styles.image}></img>
     <div className={styles.switchImage}>Image Switch</div>
     <div className={styles.view}>View Switch</div>
