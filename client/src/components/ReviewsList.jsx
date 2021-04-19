@@ -1,11 +1,15 @@
 import React from 'react';
 import Review from './Review.jsx';
 
-const ReviewsList = () => {
+const ReviewsList = (props) => {
+  const {reviews} = props;
   return (
     <div>
-      <Review />
-      <Review />
+      {reviews.map(review => {
+        return (
+        <Review key={review.review_id} review={review}/>
+        );
+      })}
     </div>
   );
 };
