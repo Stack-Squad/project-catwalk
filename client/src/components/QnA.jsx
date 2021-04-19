@@ -23,7 +23,7 @@ class QnA extends React.Component {
   }
 }
 
-export default QuestionsAnswers;
+export default QnA;
 
 
 // {
