@@ -5,7 +5,7 @@ import App from '../client/src/App.jsx';
 import Banner from '../client/src/components/Banner.jsx';
 import RatingsAndReviews from '../client/src/components/RatingsAndReviews.jsx';
 import Overview from '../client/src/components/Overview.jsx';
-import QuestionsAnswers from '../client/src/components/QuestionsAnswers.jsx';
+import QuestionsAnswers from '../client/src/components/QnA.jsx';
 import RelatedItems from '../client/src/components/RelatedItems.jsx';
 
 test ("renders App component", () => {

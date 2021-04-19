@@ -1,5 +1,5 @@
 import React from 'react';
-import OverviewImgGal from './OverviewImgGal.jsx'
+import OverviewImgGal from './OverviewComponents/OverviewImgGal.jsx'
 
 import sampleData from '../../../helpers/sampleData.js';
 
