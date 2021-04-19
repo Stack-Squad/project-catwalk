@@ -1,10 +1,11 @@
 import React from 'react';
-
+import Review from './Review.jsx';
 
 const ReviewsList = () => {
   return (
     <div>
-      Reviews List
+      <Review />
+      <Review />
     </div>
   );
 };
