@@ -1,5 +1,5 @@
 PORT=YOUR_PORT_NUMBER
-
+TOKEN=YOUR_API_TOKEN
 
 #######################
 - Create a file .env at the project root level

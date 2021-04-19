@@ -5,7 +5,7 @@ import sampleData from '../../helpers/sampleData.js';
 import Banner from './components/Banner.jsx';
 import Overview from './components/Overview.jsx';
 import RatingsAndReviews from './components/RatingsAndReviews.jsx';
-import QuestionsAnswers from './components/QuestionsAnswers.jsx';
+import QnA from './components/QnA.jsx';
 import RelatedItems from './components/RelatedItems.jsx';
 
 class App extends React.Component {
@@ -39,9 +39,9 @@ class App extends React.Component {
       <div>
         <Banner />
         <Overview productId={id} />
-        <RatingsAndReviews />
-        <QuestionsAnswers productId={id} />
         <RelatedItems productId={id} />
+        <QnA productId={id} />
+        <RatingsAndReviews />
       </div>
     );
   }
