@@ -8,7 +8,7 @@ import ReviewsButton from '../client/src/components/ReviewsButton.jsx';
 
 test ("renders Reviews component", () => {
   const wrapper = shallow(<Reviews />);
-  expect(wrapper.contains(<SortOptions />)).toEqual(true);
+  expect(wrapper.find(SortOptions)).toHaveLength(1);
   expect(wrapper.contains(<ReviewsList />)).toEqual(true);
   expect(wrapper.contains(<ReviewsButton />)).toEqual(true);
 });
