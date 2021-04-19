@@ -17,8 +17,7 @@ class QnA extends React.Component {
     return (<div>
       <div>{'QUESTIONS & ANSWERS'}</div>
       <input type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />
-      <ul>{questionList}</ul>
-      <button>See More Answers</button><button>Add a Question +</button>
+      <Questions questions={sampleData.questionList.results} />
     </div>);
   }
 }
