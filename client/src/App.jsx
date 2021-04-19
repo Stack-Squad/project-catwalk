@@ -39,9 +39,9 @@ class App extends React.Component {
       <div>
         <Banner />
         <Overview productId={id} />
-        <RatingsAndReviews />
-        <QnA productId={id} />
         <RelatedItems productId={id} />
+        <QnA productId={id} />
+        <RatingsAndReviews />
       </div>
     );
   }
