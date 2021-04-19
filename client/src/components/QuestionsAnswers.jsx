@@ -1,21 +1,24 @@
 import React from 'react';
 import sampleData from '../../../helpers/sampleData.js';
 
-class QuestionsAnswers extends React.Component {
+import Questions from './QnAComponents/Questions.jsx';
+
+class QnA extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     const questionList = sampleData.questionList.results.map((question) =>
-      <li key={question.question_id}>
+      <div key={question.question_id}>
         {question.question_body}
-      </li>
+      </div>
     );
     return (<div>
       <div>{'QUESTIONS & ANSWERS'}</div>
       <input type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />
       <ul>{questionList}</ul>
+      <button>See More Answers</button><button>Add a Question +</button>
     </div>);
   }
 }
