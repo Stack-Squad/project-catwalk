@@ -7,14 +7,16 @@ class Questions extends React.Component {
   }
 
   render() {
-    let sortedQuestions = this.props.questions.sort((a, b) => {
+    let questions = this.props.questions;
+    questions.sort((a, b) => {
       return b.question_helpfulness - a.question_helpfulness;
     });
-    const questionList = sortedQuestions.map((question) =>
+    const questionList = questions.map((question) =>
       <div key={question.question_id}>
         <Question question={question} />
       </div>
     );
+
     return (<div>
       {questionList[0]}
       {questionList[1]}

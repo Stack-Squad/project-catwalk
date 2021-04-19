@@ -14,6 +14,7 @@ class QnA extends React.Component {
         {question.question_body}
       </div>
     );
+
     return (<div>
       <div>{'QUESTIONS & ANSWERS'}</div>
       <input type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />
