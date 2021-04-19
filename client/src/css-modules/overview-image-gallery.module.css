@@ -1,0 +1,10 @@
+.imageGallery {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 2fr 0.5fr;
+  grid-template-rows: 0.5fr 1.5fr 0.5fr 1.5fr;
+  gap: 0px 0px;
+}
+.gallery { grid-area: 1 / 1 / 5 / 2; }
+.image { grid-area: 1 / 3 / 5 / 4; }
+.switchImage { grid-area: 3 / 2 / 4 / 5; }
+.view { grid-area: 1 / 4 / 2 / 5; }

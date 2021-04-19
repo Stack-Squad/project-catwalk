@@ -3,3 +3,7 @@ header {
   font-weight: bolder;
   background: no-repeat green;
 }
+
+#sort-by {
+  margin-left: 10px;
+}
