@@ -5,7 +5,7 @@ const OverviewImgGal = (props) => {
   let renderMoreButton = (length) => {
     if (length > 4) {
       return (
-        <button onClick={(e) => props.galleryScrollClick(e)}>Click for<br></br>more!</button>
+        <button style={{'marginTop': '2%'}} onClick={(e) => props.galleryScrollClick(e)}>Click for<br></br>more!</button>
       );
     }
   };
@@ -29,10 +29,10 @@ const OverviewImgGal = (props) => {
       </div>
       <img src={props.currentImg} className={styles.image}></img>
       <div className={styles.switchImage}>
-        <button onClick={(e) => props.nextAndPrevious(e, 'previous')}>Previous?</button>
-        <button style={{'marginLeft': '80%'}} onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
+        <button onClick={(e) => props.nextAndPrevious(e, 'previous')}>Prev?</button>
+        <button onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
       </div>
-      <div className={styles.view}>CSS Placement: View Change (Coming Back to this Later)</div>
+      <div className={styles.view}>CSS Placement: View Change</div>
     </div>
   );
 };
