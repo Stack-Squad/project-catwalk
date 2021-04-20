@@ -30,14 +30,14 @@ class Question extends React.Component {
     );
 
     return (<div className='question_wrapper'>
-      <div className='question_line'>
-        <span className='qa_label'>Q:</span><span>{question.question_body}</span>
-        <span>Helpful? Yes{`(${question.question_helpfulness})`} | Add Answer</span>
+      <span className='qa_label' id='q_label'>Q:</span><span className='question_body'>{question.question_body}</span>
+      <span className='question_tags'>Helpful? Yes{`(${question.question_helpfulness})`} | Add Answer</span>
+      <span className='qa_label' id='a_label'>A:</span>
+      <div className='answer_list'>
+        {AnswerList[0]}
+        {AnswerList[1]}
+        {button}
       </div>
-      <span className='qa_label'>A:</span>
-      {AnswerList[0]}
-      {AnswerList[1]}
-      {button}
     </div>);
   }
 }

@@ -78,6 +78,32 @@ Questions and Answers
   padding-top: 5px;
   padding-bottom: 5px;
   display: grid;
+  grid-template-columns: 20px auto 25%;
+  grid-template-rows: 20px auto;
+}
+.qa_label {
+  grid-column-start: 1;
+}
+#q_label {
+  grid-row-start: 1;
+}
+#a_label {
+  grid-row-start: 2;
+}
+.question_body {
+  grid-column-start: 2;
+  /* grid-column-end: 2; */
+  grid-row-start: 1;
+  /* grid-row-end: 1; */
+}
+.question_tags {
+  grid-column-start: 3;
+  /* grid-column-end: 3; */
+  grid-row-start: 1;
+}
+.answer_list {
+  grid-column-start: 2;
+  grid-row-start: 2;
 }
 
 /*************************************
