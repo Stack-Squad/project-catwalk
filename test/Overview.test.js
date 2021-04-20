@@ -8,5 +8,9 @@ import sampleData from '../helpers/sampleData.js';
 
 test ("renders Overview Image Gallery component", () => {
   const wrapper = shallow(<Overview />);
-  expect(wrapper.contains(<OverviewImgGal currentImg={sampleData.productStylesById.results[0].photos[0].url} currentSelectedStyleImages={sampleData.productStylesById.results[0].photos}/>)).toEqual(true);
+  expect(wrapper.find(OverviewImgGal)).toHaveLength(1);
 });
+
+// check functions
+
+// check state props
