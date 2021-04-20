@@ -9,5 +9,5 @@ test ("renders ReviewsList component", () => {
   const reviews = sampleData.reviewList.results;
   const wrapper = shallow(<ReviewsList reviews={reviews}/>);
   expect(wrapper.contains(<Review key={reviews[0].review_id} review={reviews[0]}/>)).toEqual(true);
-  expect(wrapper.find(Review)).toHaveLength(4);
+  expect(wrapper.find(Review)).toHaveLength(5);
 });

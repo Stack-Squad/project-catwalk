@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.reviewButton {
+  margin: 0.5rem;
+  margin-right: 1rem;
+  width: 150px;
+  height: 80px;
+  font-weight: bold;
+}

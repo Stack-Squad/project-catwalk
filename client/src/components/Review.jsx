@@ -1,5 +1,6 @@
 import React, {useState, effect} from 'react';
 import StarRatings from './StarRatings.jsx';
+import ReviewImages from './ReviewImages.jsx';
 import styles from '../css-modules/review.module.css';
 import {getCharacters} from '../../../helpers/ratingsHelper.js';
 import formatDate from '../../../helpers/dateFormatter.js';
@@ -13,7 +14,7 @@ const Review = (props) => {
   function onToggle() {
     setShow(!show);
     (show) ? setBody(message) : setBody(review.body);
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -30,7 +31,7 @@ const Review = (props) => {
         {getCharacters(review.summary, 60)}
       </div>
       <div>
-        <p>
+        <p className={styles.body}>
           {body}
           {(review.body.length > 250 && !show) &&
           <button onClick={onToggle}>
@@ -44,9 +45,22 @@ const Review = (props) => {
             </button>
           }
         </p>
-        {review.recommend && <p>I recommend this product</p>}
+        {review.photos.length > 0 && (
+          <ReviewImages images={review.photos}/>
+        )}
+        {review.recommend && (
+          <div className={styles.recommend}>
+            <i className="fas fa-check"></i>
+            <p>I recommend this product</p>
+          </div>)
+        }
+        {review.response && (
+          <div className={styles.response}>
+            <p className={styles.responseHeader}>Response:</p>
+            <p className={styles.responseBody}>{review.response}</p>
+          </div>)
+        }
       </div>
-      {review.response !== null &&  <div>Response</div>}
       <div>
         <p>
           Helpful?{"  "}
