@@ -105,6 +105,14 @@ Questions and Answers
 .qa_button {
   margin: 5px;
 }
+.qa_photo_wrapper {
+  display: flex;
+}
+.qa_photo {
+  height: 75px;
+  width: auto;
+  vertical-align: middle;
+}
 
 /*************************************
 Search Bar
