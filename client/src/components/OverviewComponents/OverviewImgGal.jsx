@@ -32,7 +32,7 @@ const OverviewImgGal = (props) => {
         <button onClick={(e) => props.nextAndPrevious(e, 'previous')}>Previous?</button>
         <button style={{'marginLeft': '80%'}} onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
       </div>
-      <div className={styles.view}>View Switch</div>
+      <div className={styles.view}>CSS Placement: View Change (Coming Back to this Later)</div>
     </div>
   );
 };

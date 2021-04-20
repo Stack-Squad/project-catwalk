@@ -1,5 +1,7 @@
 import React from 'react';
-import OverviewImgGal from './OverviewComponents/OverviewImgGal.jsx'
+import OverviewImgGal from './OverviewComponents/OverviewImgGal.jsx';
+
+import layoutStyles from '../css-modules/overview-layout.module.css';
 
 import sampleData from '../../../helpers/sampleData.js';
 
@@ -73,8 +75,14 @@ class Overview extends React.Component {
 
   render() {
     return (
-      <div>
-        <OverviewImgGal currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} />
+      <div className={layoutStyles.overviewLayout}>
+        <OverviewImgGal className={layoutStyles.imageGalleryComp} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} />
+        <div className={layoutStyles.infoStyleCart}>
+          <div className={layoutStyles.productInfoComp}>CSS Placement: Product Info</div>
+          <div className={layoutStyles.styleSelectorComp}>CSS Placement: Style Select</div>
+          <div className={layoutStyles.cartComp}>CSS Placement: Cart</div>
+        </div>
+        <div className={layoutStyles.productDescriptionComp}>CSS Placement: Product Description</div>
       </div>
     )
   }
