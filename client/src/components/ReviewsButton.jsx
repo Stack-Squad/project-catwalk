@@ -1,10 +1,30 @@
 import React from 'react';
+import styles from '../css-modules/reviewsButton.module.css';
 
 
-const ReviewsButton = () => {
+const ReviewsButton = (props) => {
+  const {reviewCount, moreReviews} = props;
+  const soFar = reviewCount[0];
+  const total = reviewCount[1];
+
   return (
-    <div>
-      Reviews Button
+    <div className={styles.container}>
+      {(total > 2 && soFar < total) && (
+        <div>
+        <input
+          className={styles.reviewButton}
+          onClick={moreReviews}
+          type="button"
+          value="MORE REVIEWS"></input>
+        </div>
+      )}
+      <div>
+        <input
+          className={styles.reviewButton}
+          type="button"
+          value="ADD A REVIEW   +"></input>
+      </div>
+
     </div>
   );
 };
