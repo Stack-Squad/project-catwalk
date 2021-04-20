@@ -28,3 +28,12 @@ export const getStarRatings = (ratings) => {
 
   return stars;
 }
+
+export const getCharacters = (words, length) => {
+  var summary = words.trim();
+  if (summary.length > length) {
+    return summary.slice(0, length - 3) + '...';
+  }
+
+  return summary;
+}
