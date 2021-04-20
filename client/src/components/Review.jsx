@@ -1,5 +1,6 @@
 import React, {useState, effect} from 'react';
 import StarRatings from './StarRatings.jsx';
+import ReviewImages from './ReviewImages.jsx';
 import styles from '../css-modules/review.module.css';
 import {getCharacters} from '../../../helpers/ratingsHelper.js';
 import formatDate from '../../../helpers/dateFormatter.js';
@@ -44,6 +45,9 @@ const Review = (props) => {
             </button>
           }
         </p>
+        {review.photos.length > 0 && (
+          <ReviewImages images={review.photos}/>
+        )}
         {review.recommend && (
           <div className={styles.recommend}>
             <i className="fas fa-check"></i>
