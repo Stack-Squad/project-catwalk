@@ -18,9 +18,19 @@ class Answer extends React.Component {
     let date = new Date(answer.date);
     date = formatDate(date);
 
-    return (<div>
-      <div>{answer.body}</div>
-      <span>by {answerer}, {date} | Helpful? Yes{`(${answer.helpfulness})`} | Report</span>
+    let photos = null;
+    if (answer.photos.length) {
+      photos = answer.photos.map(photo =>
+        <img className='qa_photo' src={photo}/>
+      );
+    }
+
+    return (<div className='answer_wrapper'>
+      <div className='answer_body'>{answer.body}</div>
+      <div className='qa_photo_wrapper'>
+        {photos}
+      </div>
+      <span className='answer_tags'>by {answerer}, {date} | Helpful? Yes{`(${answer.helpfulness})`} | Report</span>
     </div>);
   }
 }
