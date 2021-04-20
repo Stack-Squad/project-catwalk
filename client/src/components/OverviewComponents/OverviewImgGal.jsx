@@ -3,10 +3,11 @@ import styles from '../../css-modules/overview-image-gallery.module.css';
 
 const OverviewImgGal = (props) => (
   <div className={styles.imageGallery}>
+    <div className={styles.gallery}>
       {props.currentSelectedStyleImages.map((image, index) => {
-        return <img src={image['thumbnail_url']}></img>
+        return <div key={index}><img className={styles.thumbnail} src={image['thumbnail_url']} key={index}></img></div>
       })}
-    <img src={props.currentSelectedStyleImages[0]['thumbnail_url']} className={styles.gallery}></img> {/* need to make dynamic render of all images*/}
+    </div>
     <img src={props.currentImg} className={styles.image}></img>
     <div className={styles.switchImage}>Image Switch</div>
     <div className={styles.view}>View Switch</div>
