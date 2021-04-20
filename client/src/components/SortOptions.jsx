@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-
+import styles from '../css-modules/sortOptions.module.css';
 
 const SortOptions = (props) => {
   const {setSortBy} = props;
@@ -9,7 +9,7 @@ const SortOptions = (props) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <p>
         248 reviews, sorted by
         <select name="sort-by" id="sort-by" onChange={handleChange}>
