@@ -35,7 +35,6 @@ class Overview extends React.Component {
   }
 
   nextAndPrevious(e, option) {
-    console.log('clickity clicked: ', option);
     if (this.state.currentPointInGallery < this.state.currentGalleryLength - 1 && option === 'next') {
       this.state.currentPointInGallery += 1;
       if (this.state.currentPointInGallery > this.state.currentPointInGalleryEndNonInclusive - 1) {

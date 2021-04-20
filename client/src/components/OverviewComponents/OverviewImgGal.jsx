@@ -30,7 +30,7 @@ const OverviewImgGal = (props) => {
       <img src={props.currentImg} className={styles.image}></img>
       <div className={styles.switchImage}>
         <button onClick={(e) => props.nextAndPrevious(e, 'previous')}>Previous?</button>
-        <button onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
+        <button style={{'marginLeft': '80%'}}onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
       </div>
       <div className={styles.view}>View Switch</div>
     </div>
