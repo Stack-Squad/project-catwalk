@@ -65,7 +65,64 @@ Questions and Answers
 
 #qacontainer {
   margin: auto;
+  padding: 40px;
   width: 70%;
+}
+#qaheading {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.question_wrapper {
+  padding-top: 5px;
+  display: grid;
+  grid-template-columns: 5% auto 25%;
+  grid-template-rows: 25px auto;
+}
+.qa_label {
+  grid-column-start: 1;
+  font-weight: bold;
+  font-size: large;
+}
+#q_label {
+  grid-row-start: 1;
+}
+#a_label {
+  grid-row-start: 2;
+}
+.question_body {
+  grid-area: 1 2 2 3;
+  font-weight: bold;
+  font-size: large;
+}
+.question_tags {
+  grid-area: 1 3 2 4;
+}
+.answer_list {
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+.qa_button {
+  margin: 5px;
+}
+.qa_photo_wrapper {
+  display: flex;
+}
+.qa_photo {
+  height: 75px;
+  width: auto;
+  vertical-align: middle;
+}
+.answer_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.answer_body {
+  font-size: large;
+  margin-bottom: 10px;
+}
+.answer_tags {
+  margin-bottom: 10px;
 }
 
 /*************************************
@@ -76,7 +133,7 @@ Search Bar
   position: relative;
   display: flex;
   min-width: 500px;
-  padding: 5px 0px 5px 0px;
+  padding: 5px 0px 10px 0px;
 }
 .search-icon {
   position: relative;

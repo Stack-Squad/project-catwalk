@@ -18,10 +18,10 @@ class Questions extends React.Component {
       </div>
     );
 
-    return (<div>
+    return (<div className='questionscontainer'>
       {questionList[0]}
       {questionList[1]}
-      <button>More Answered Questions</button><button>Add a Question +</button>
+      <button className='qa_button'>More Answered Questions</button><button className='qa_button'>Add a Question +</button>
     </div>);
   }
 }
