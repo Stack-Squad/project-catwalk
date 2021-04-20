@@ -1,5 +1,6 @@
 import React from 'react';
 import Question from './Question.jsx';
+import sampleData from '../../../../helpers/sampleData.js';
 
 class Questions extends React.Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class Questions extends React.Component {
   }
 
   render() {
-    let questions = this.props.questions;
+    let questions = this.props.questions || sampleData.questionList.results;
     questions.sort((a, b) => {
       return b.question_helpfulness - a.question_helpfulness;
     });
