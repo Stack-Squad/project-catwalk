@@ -1,6 +1,5 @@
 import React from 'react';
 import {getStarRatings} from '../../../helpers/ratingsHelper.js';
-import Star from './Star.jsx';
 
 
 const StarRatings = (props) => {
@@ -11,7 +10,7 @@ const StarRatings = (props) => {
     <div>
       {stars.map((star, _) => {
         return (
-          <Star key={_} star={star}/>
+          <span key={_}>{star}</span>
         );
       })}
     </div>
