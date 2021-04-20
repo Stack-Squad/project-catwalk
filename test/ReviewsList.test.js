@@ -2,8 +2,12 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 import ReviewsList from '../client/src/components/ReviewsList.jsx';
+import Review from '../client/src/components/Review.jsx';
+import sampleData from '../helpers/sampleData.js';
 
 test ("renders ReviewsList component", () => {
-  const wrapper = shallow(<ReviewsList />);
-  expect(wrapper.contains(<div>Reviews List</div>)).toEqual(true);
+  const reviews = sampleData.reviewList.results;
+  const wrapper = shallow(<ReviewsList reviews={reviews}/>);
+  expect(wrapper.contains(<Review key={reviews[0].review_id} review={reviews[0]}/>)).toEqual(true);
+  expect(wrapper.find(Review)).toHaveLength(4);
 });
