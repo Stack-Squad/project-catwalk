@@ -14,7 +14,7 @@ const Review = (props) => {
   function onToggle() {
     setShow(!show);
     (show) ? setBody(message) : setBody(review.body);
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -31,7 +31,7 @@ const Review = (props) => {
         {getCharacters(review.summary, 60)}
       </div>
       <div>
-        <p>
+        <p className={styles.body}>
           {body}
           {(review.body.length > 250 && !show) &&
           <button onClick={onToggle}>
@@ -52,9 +52,15 @@ const Review = (props) => {
           <div className={styles.recommend}>
             <i className="fas fa-check"></i>
             <p>I recommend this product</p>
-          </div>)}
+          </div>)
+        }
+        {review.response && (
+          <div className={styles.response}>
+            <p className={styles.responseHeader}>Response:</p>
+            <p className={styles.responseBody}>{review.response}</p>
+          </div>)
+        }
       </div>
-      {review.response &&  <div>Response</div>}
       <div>
         <p>
           Helpful?{"  "}
