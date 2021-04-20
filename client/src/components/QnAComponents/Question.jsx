@@ -32,7 +32,7 @@ class Question extends React.Component {
     return (<div>
       <div>
         <span>Q: {question.question_body}</span>
-        <span>Helpful? Yes {`(${question.question_helpfulness})`} | Add Answer</span>
+        <span>Helpful? Yes{`(${question.question_helpfulness})`} | Add Answer</span>
       </div>
       A:
       {AnswerList[0]}

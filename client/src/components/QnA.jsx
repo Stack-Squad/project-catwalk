@@ -24,31 +24,3 @@ class QnA extends React.Component {
 }
 
 export default QnA;
-
-
-// {
-//   "question_id": 104619,
-//   "question_body": "Where does this product ship from?",
-//   "question_date": "2017-11-04T00:00:00.000Z",
-//   "asker_name": "toofast",
-//   "question_helpfulness": 18,
-//   "reported": false,
-//   "answers": {
-//       "992154": {
-//           "id": 992154,
-//           "body": "Mine was delivered from Oklahoma",
-//           "date": "2017-11-04T00:00:00.000Z",
-//           "answerer_name": "toofast",
-//           "helpfulness": 14,
-//           "photos": []
-//       },
-//       "992165": {
-//           "id": 992165,
-//           "body": "It ships from the facility in Tulsa",
-//           "date": "2017-11-04T00:00:00.000Z",
-//           "answerer_name": "toofast",
-//           "helpfulness": 20,
-//           "photos": []
-//       }
-//   }
-// }
