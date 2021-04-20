@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-rows: 1fr 1fr 2fr 2fr 1fr;
+  grid-template-rows: repeat(5, auto);
   row-gap: 5px;
   border: 1px solid red;
 }
@@ -13,4 +13,9 @@
 
 .summary {
   font-weight: bold;
+}
+
+.reviewHeading {
+  display: flex;
+  justify-content: space-between;
 }
