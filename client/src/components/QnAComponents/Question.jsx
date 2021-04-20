@@ -29,7 +29,7 @@ class Question extends React.Component {
     </div>
     );
 
-    return (<div>
+    return (<div className='question_wrapper'>
       <div>
         <span>Q: {question.question_body}</span>
         <span>Helpful? Yes{`(${question.question_helpfulness})`} | Add Answer</span>
