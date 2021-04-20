@@ -44,9 +44,13 @@ const Review = (props) => {
             </button>
           }
         </p>
-        {review.recommend && <p>I recommend this product</p>}
+        {review.recommend && (
+          <div className={styles.recommend}>
+            <i className="fas fa-check"></i>
+            <p>I recommend this product</p>
+          </div>)}
       </div>
-      {review.response !== null &&  <div>Response</div>}
+      {review.response &&  <div>Response</div>}
       <div>
         <p>
           Helpful?{"  "}
