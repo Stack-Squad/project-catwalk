@@ -1,0 +1,16 @@
+.container {
+  display: grid;
+  grid-template-rows: 1fr 1fr 2fr 2fr 1fr;
+  row-gap: 5px;
+  border: 1px solid red;
+}
+
+.reviewList {
+  display: grid;
+  grid-template-rows: 1fr;
+  row-gap: 10px;
+}
+
+.summary {
+  font-weight: bold;
+}
