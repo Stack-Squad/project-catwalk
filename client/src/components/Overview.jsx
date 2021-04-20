@@ -6,7 +6,7 @@ import sampleData from '../../../helpers/sampleData.js';
 class Overview extends React.Component {
   constructor() {
     super();
-    this.state = {
+    this.state = { // REFACTOR FOR STYLE CHANGES
       data: sampleData.productStylesById.results, // just here for now, not useful yet, not sure if it will be
       currentImg: sampleData.productStylesById.results[0].photos[0].url, // the currently selected photo from currentSelectedStyleImages reference
       currentSelectedStyleImages: sampleData.productStylesById.results[0].photos, // reference from the current style's photos (CURRENTLY HARDCODED TO BE WORKING WITH ONE STYLE)
@@ -17,6 +17,7 @@ class Overview extends React.Component {
     }
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
     this.nextAndPrevious = this.nextAndPrevious.bind(this);
+    this.galleryImageClick = this.galleryImageClick.bind(this);
   }
 
   galleryScrollClick(e) {
@@ -31,6 +32,14 @@ class Overview extends React.Component {
     this.setState({
       currentPointInGalleryStart: this.state.currentPointInGalleryStart,
       currentPointInGalleryEndNonInclusive: this.state.currentPointInGalleryEndNonInclusive
+    });
+  }
+
+  galleryImageClick(e, index) {
+    this.state.currentPointInGallery = index;
+    this.setState({
+      currentPointInGallery: this.state.currentPointInGallery,
+      currentImg: sampleData.productStylesById.results[0].photos[this.state.currentPointInGallery].url // REFACTOR FOR STYLE CHANGES
     });
   }
 
@@ -58,14 +67,14 @@ class Overview extends React.Component {
     }
     this.setState({
       currentPointInGallery: this.state.currentPointInGallery,
-      currentImg: sampleData.productStylesById.results[0].photos[this.state.currentPointInGallery].url
+      currentImg: sampleData.productStylesById.results[0].photos[this.state.currentPointInGallery].url // REFACTOR FOR STYLE CHANGES
     });
   }
 
   render() {
     return (
       <div>
-        <OverviewImgGal currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} />
+        <OverviewImgGal currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} />
       </div>
     )
   }
