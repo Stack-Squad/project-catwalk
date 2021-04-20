@@ -7,7 +7,13 @@ import sampleData from '../../../helpers/sampleData.js';
 
 const Reviews = (props) => {
   const [sortBy, setSortBy] = useState('relevance');
-  const [reviews, setReviews] = useState(sampleData.reviewList.results);
+  const [allReviews, setAllReviews] = useState(sampleData.reviewList.results);
+  const [reviews, setReviews] = useState(allReviews.slice(0, 2));
+
+  function moreReviews () {
+    var soFar = reviews.length;
+    setReviews(allReviews.slice(0, soFar + 2));
+  }
 
   useEffect(() => {
     console.log(sortBy);
@@ -19,7 +25,9 @@ const Reviews = (props) => {
     <div className={styles.container}>
       <SortOptions setSortBy={setSortBy}/>
       <ReviewsList reviews={reviews}/>
-      <ReviewsButton />
+      <ReviewsButton
+        reviewCount={[reviews.length, allReviews.length]}
+        moreReviews={moreReviews}/>
     </div>
   )
 }
