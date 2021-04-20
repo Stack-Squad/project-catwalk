@@ -1,8 +1,8 @@
-.thumbnail{
+.thumbnail {
+  display: block;
   width: 20%;
   height: auto;
 }
-
 .imageGallery {
   display: grid;
   grid-template-columns: 1fr 0.5fr 2fr 0.5fr;
@@ -15,5 +15,9 @@
   width: 50%;
   height: auto;
 }
-.switchImage { grid-area: 3 / 2 / 4 / 5; }
+.switchImage {
+  grid-area: 3 / 2 / 4 / 5;
+  display: flex;
+  justify-content: space-between;
+}
 .view { grid-area: 1 / 4 / 2 / 5; }

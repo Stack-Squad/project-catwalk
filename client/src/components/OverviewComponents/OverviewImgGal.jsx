@@ -9,18 +9,29 @@ const OverviewImgGal = (props) => {
       );
     }
   };
+  let selectedStyle = {
+    'borderBottom': 'solid black',
+    'marginBottom': '2%',
+    'paddingBottom': '1%'
+  }
+  let notSelectedStyle = {
+    'borderBottom': 'none'
+  }
   return (
     <div className={styles.imageGallery}>
       <div id="gallery" className={styles.gallery}>
         {props.currentSelectedStyleImages.map((image, index) => {
           if (index >= props.currentPointInGalleryStart && index < props.currentPointInGalleryEndNonInclusive) {
-            return <div key={index}><img className={styles.thumbnail} src={image['thumbnail_url']} key={index}></img></div>;
+            return <img key={index} className={styles.thumbnail} src={image['thumbnail_url']}  style={index === props.currentPointInGallery ? selectedStyle : notSelectedStyle}></img>;
           }
         })}
         {renderButton(props.currentGalleryLength)}
       </div>
       <img src={props.currentImg} className={styles.image}></img>
-      <div className={styles.switchImage}>Image Switch</div>
+      <div className={styles.switchImage}>
+        <button onClick={(e) => props.nextAndPrevious(e, 'previous')}>Previous?</button>
+        <button onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
+      </div>
       <div className={styles.view}>View Switch</div>
     </div>
   );
