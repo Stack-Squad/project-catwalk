@@ -1,10 +1,12 @@
+/* eslint-disable */ // ESLint's current rules want me to basically break my functionality. Const cannot work for this.
+// I may try to make it work, but I cannot have this happening right now.
 import React from 'react';
-import OverviewImgGal from './OverviewComponents/OverviewImgGal.jsx';
-import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect.jsx';
+import OverviewImgGal from './OverviewComponents/OverviewImgGal';
+import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect';
 
 import layoutStyles from '../css-modules/overview-layout.module.css';
 
-import sampleData from '../../../helpers/sampleData.js';
+import sampleData from '../../../helpers/sampleData';
 
 class Overview extends React.Component {
   constructor() {
@@ -112,4 +114,4 @@ class Overview extends React.Component {
     }
   }
 }
-export default Overview
+export default Overview;

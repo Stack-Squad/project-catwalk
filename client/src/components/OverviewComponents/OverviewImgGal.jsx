@@ -2,30 +2,44 @@ import React from 'react';
 import styles from '../../css-modules/overview-image-gallery.module.css';
 
 const OverviewImgGal = (props) => {
-  let renderMoreButton = (length) => {
+  const renderMoreButton = (length) => {
     if (length > 4) {
       return (
-        <button onClick={(e) => props.galleryScrollClick(e)}>Click for<br></br>more!</button>
+        <button onClick={(e) => props.galleryScrollClick(e)}>
+          Click for
+          <br />
+          more!
+        </button>
       );
     }
   };
-  let selectedStyle = {
-    'borderBottom': 'solid black',
-  }
-  let notSelectedStyle = {
-    'borderBottom': 'none'
-  }
+  const selectedStyle = {
+    borderBottom: 'solid black',
+  };
+  const notSelectedStyle = {
+    borderBottom: 'none',
+  };
+  const {
+    currentView,
+    currentImg,
+    currentSelectedStyleImages,
+    currentPointInGalleryStart,
+    currentPointInGalleryEndNonInclusive,
+    currentPointInGallery,
+    currentGalleryLength,
+    galleryImageClick,
+  } = props;
   return (
-    <div className={props.currentView === 'regular' ? styles.imageGallery : styles.imageGalleryIfFull}>
+    <div className={currentView === 'regular' ? styles.imageGallery : styles.imageGalleryIfFull}>
       <div id="gallery" className={styles.gallery}>
-        {props.currentSelectedStyleImages.map((image, index) => {
-          if (index >= props.currentPointInGalleryStart && index < props.currentPointInGalleryEndNonInclusive) {
-            return <img key={index} className={props.currentView === 'regular' ? styles.thumbnail : styles.thumbnailIfFull} src={image['thumbnail_url']} style={index === props.currentPointInGallery ? selectedStyle : notSelectedStyle} onClick={(e) => {props.galleryImageClick(e, index)}}></img>;
+        {currentSelectedStyleImages.map((image, index) => {
+          if (index >= currentPointInGalleryStart && index < currentPointInGalleryEndNonInclusive) {
+            return <img key={index} className={currentView === 'regular' ? styles.thumbnail : styles.thumbnailIfFull} src={image.thumbnail_url} alt="" style={index === currentPointInGallery ? selectedStyle : notSelectedStyle} onClick={(e) => { galleryImageClick(e, index); }} />;
           }
         })}
-        {renderMoreButton(props.currentGalleryLength)}
+        {renderMoreButton(currentGalleryLength)}
       </div>
-      <img className={props.currentView === 'regular' ? styles.image : styles.imageIfFull} src={props.currentImg} ></img>
+      <img className={currentView === 'regular' ? styles.image : styles.imageIfFull} src={currentImg} alt="" />
       <div className={styles.switchImage}>
         <button onClick={(e) => props.nextAndPrevious(e, 'previous')}>Prev?</button>
         <button onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
