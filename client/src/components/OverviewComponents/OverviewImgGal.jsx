@@ -5,14 +5,12 @@ const OverviewImgGal = (props) => {
   let renderMoreButton = (length) => {
     if (length > 4) {
       return (
-        <button style={{'marginTop': '2%'}} onClick={(e) => props.galleryScrollClick(e)}>Click for<br></br>more!</button>
+        <button onClick={(e) => props.galleryScrollClick(e)}>Click for<br></br>more!</button>
       );
     }
   };
   let selectedStyle = {
     'borderBottom': 'solid black',
-    'marginBottom': '2%',
-    'paddingBottom': '1%'
   }
   let notSelectedStyle = {
     'borderBottom': 'none'
@@ -32,7 +30,9 @@ const OverviewImgGal = (props) => {
         <button onClick={(e) => props.nextAndPrevious(e, 'previous')}>Prev?</button>
         <button onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
       </div>
-      <div className={styles.view}>CSS Placement: View Change</div>
+      <div className={styles.view}>
+        <button>Full?</button>
+      </div>
     </div>
   );
 };
