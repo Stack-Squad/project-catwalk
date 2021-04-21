@@ -1,16 +1,14 @@
 import React from 'react';
-import Review from './Review.jsx';
+import Review from './Review';
 import styles from '../css-modules/review.module.css';
 
 const ReviewsList = (props) => {
-  const {reviews} = props;
+  const { reviews } = props;
   return (
     <div className={styles.reviewList}>
-      {reviews.map(review => {
-        return (
-        <Review key={review.review_id} review={review}/>
-        );
-      })}
+      {reviews.map((review) => (
+        <Review key={review.review_id} review={review} />
+      ))}
     </div>
   );
 };
