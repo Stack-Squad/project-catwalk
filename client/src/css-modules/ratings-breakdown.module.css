@@ -1,3 +1,26 @@
 .container {
-  border: 1px solid black;
+  margin: 0.5rem;
+  padding: 0 1rem;
+}
+
+.barContainer {
+  margin-left: 1em;
+  width: 60%;
+  height: 10px;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+.bar {
+  height: 10px;
+  background-color: rgb(3, 139, 3);
+}
+
+.layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.5rem 0;
 }
