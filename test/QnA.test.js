@@ -11,7 +11,7 @@ test ('renders QnA component', () => {
   expect(wrapper.find(Questions)).toHaveLength(1);
 });
 
-test ('should render 2 questions', () => {
+test ('should render 4 or less questions', () => {
   const wrapper = shallow(<Questions />);
-  expect(wrapper.find(Question)).toHaveLength(2);
+  expect(wrapper.find(Question).length).toBeLessThanOrEqual(4);
 });

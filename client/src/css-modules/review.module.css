@@ -2,15 +2,13 @@
   display: grid;
   grid-template-rows: repeat(5, auto);
   row-gap: 5px;
-  border: 1px solid red;
+  border-bottom: 3px solid grey;
   margin: 0.5rem;
   padding: 0.5rem;
 }
 
 .reviewList {
-  display: grid;
-  grid-template-rows: 1fr;
-  row-gap: 10px;
+  overflow-y: auto;
 }
 
 .summary {
