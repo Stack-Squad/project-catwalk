@@ -1,10 +1,11 @@
+/* eslint-disable */
 import React from 'react';
-import OverviewImgGal from './OverviewComponents/OverviewImgGal.jsx';
-import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect.jsx';
+import OverviewImgGal from './OverviewComponents/OverviewImgGal';
+import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect';
 
 import layoutStyles from '../css-modules/overview-layout.module.css';
 
-import sampleData from '../../../helpers/sampleData.js';
+import sampleData from '../../../helpers/sampleData';
 
 class Overview extends React.Component {
   constructor() {
