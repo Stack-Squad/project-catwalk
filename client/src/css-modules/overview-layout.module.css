@@ -1,0 +1,26 @@
+.overviewLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 0.2fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "imageGalleryComp infoStyleCart"
+    "productDescriptionComp productDescriptionComp";
+}
+.imageGalleryComp { grid-area: imageGalleryComp; }
+.productDescriptionComp { grid-area: productDescriptionComp; }
+.infoStyleCart {
+  display: grid;
+  grid-template-columns: 2fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "productInfoComp"
+    "styleSelectorComp"
+    "cartComp";
+  grid-area: infoStyleCart;
+  padding: 3%;
+}
+.productInfoComp { grid-area: productInfoComp; }
+.styleSelectorComp { grid-area: styleSelectorComp; }
+.cartComp { grid-area: cartComp; }
