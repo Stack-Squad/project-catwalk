@@ -4,10 +4,12 @@ import React from 'react';
 import RatingsAndReviews from '../client/src/components/RatingsAndReviews.jsx';
 import Ratings from '../client/src/components/Ratings.jsx';
 import Reviews from '../client/src/components/Reviews.jsx';
+import sampleData from '../helpers/sampleData.js';
 
 test ("renders RatingsAndReviews component", () => {
+  const reviewData = sampleData.reviewMetaData;
   const wrapper = shallow(<RatingsAndReviews />);
-  expect(wrapper.contains(<Ratings />)).toEqual(true);
+  expect(wrapper.contains(<Ratings reviewData={reviewData}/>)).toEqual(true);
   expect(wrapper.contains(<Reviews />)).toEqual(true);
 });
 
