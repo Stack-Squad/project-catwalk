@@ -20,8 +20,9 @@ const OverviewStyleSelect = (props) => {
       {data.map((style, index) => {
         if (index === dataSelected) {
           return (
-            <span key={index}>
-              <img className={styles.thumbnail} src={style.photos[0].thumbnail_url} alt="" onClick={(e) => styleSelectSwitchClick(e, index)} />
+            <span key={index} className={styles.thumbnailSelectedLayout}>
+              <img className={styles.thumbnailSelected} src={style.photos[0].thumbnail_url} alt="" onClick={(e) => styleSelectSwitchClick(e, index)} />
+              <span className={styles.checkmark} />
             </span>
           );
         }
