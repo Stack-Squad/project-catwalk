@@ -3,4 +3,3 @@ bundle.*
 .env
 coverage
 .DS_Store
-.eslintrc.js

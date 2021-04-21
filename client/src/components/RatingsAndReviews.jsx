@@ -11,7 +11,10 @@ const RatingsAndReviews = (props) => {
     <div>
       <h1>Ratings & Reviews</h1>
       <div className={styles.container}>
-        <Ratings reviewData={reviewData} />
+        <Ratings
+          reviewData={reviewData}
+          reviewList={reviewList}
+        />
         <Reviews />
       </div>
     </div>

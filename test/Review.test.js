@@ -22,7 +22,7 @@ test('renders Review component with image and button', () => {
   const { photos } = reviews[1];
   const wrapper = shallow(<Review key={reviews[1].review_id} review={reviews[1]} />);
   expect(wrapper.contains(<ReviewImages images={photos} />));
-  expect(wrapper.find('button')).toHaveLength(1);
+  expect(wrapper.find('button')).toHaveLength(3);
 });
 
 test('renders Review component with recommend', () => {
