@@ -76,16 +76,23 @@ Questions and Answers
   margin: auto;
   padding: 40px;
   width: 70%;
+  background-color: rgb(167, 253, 181);
 }
 #qaheading {
-  padding-top: 5px;
   padding-bottom: 5px;
+  font-size: x-large;
 }
 .question_wrapper {
-  padding-top: 5px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   display: grid;
   grid-template-columns: 5% auto 25%;
   grid-template-rows: 25px auto;
+  background-color: rgb(197, 255, 207);
+  border-style: solid;
+  border-color: green;
+  border-width: 2px;
 }
 .qa_label {
   grid-column-start: 1;
@@ -106,11 +113,15 @@ Questions and Answers
 .question_tags {
   grid-area: 1 3 2 4;
 }
-.answer_list {
+.answer_list_wrapper {
   grid-column-start: 2;
   grid-row-start: 2;
 }
-.qa_button {
+.answer_list {
+  max-height: 50vh;
+  overflow: auto;
+}
+.q_button {
   margin: 5px;
 }
 .qa_photo_wrapper {
@@ -120,6 +131,7 @@ Questions and Answers
   height: 75px;
   width: auto;
   vertical-align: middle;
+  margin-bottom: 5px;
 }
 .answer_wrapper {
   display: flex;
@@ -131,6 +143,7 @@ Questions and Answers
   margin-bottom: 10px;
 }
 .answer_tags {
+  font-size: small;
   margin-bottom: 10px;
 }
 

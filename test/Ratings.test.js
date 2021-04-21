@@ -9,8 +9,13 @@ import sampleData from '../helpers/sampleData';
 
 test('renders Ratings component', () => {
   const reviewData = sampleData.reviewMetaData;
-  const wrapper = shallow(<Ratings reviewData={reviewData} />);
+  const { reviewList } = sampleData;
+  const wrapper = shallow(
+    <Ratings reviewData={reviewData} reviewList={reviewList} />,
+  );
   expect(wrapper.contains(<RatingsSummary rating={2.5} />)).toEqual(true);
-  expect(wrapper.contains(<RatingsBreakdown />)).toEqual(true);
+  expect(wrapper.contains(
+    <RatingsBreakdown reviews={reviewList.results} />,
+  )).toEqual(true);
   expect(wrapper.contains(<ProductBreakdown />)).toEqual(true);
 });
