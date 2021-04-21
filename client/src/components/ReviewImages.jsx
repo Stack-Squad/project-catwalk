@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styles from '../css-modules/reviewImages.module.css';
 
-
 const ReviewImages = (props) => {
-  const {images} = props;
+  const { images } = props;
   const [display, setDisplay] = useState('none');
   const [selectedImage, setSelectedImage] = useState('');
 
@@ -15,19 +14,19 @@ const ReviewImages = (props) => {
       setDisplay('none');
       setSelectedImage('');
     }
-  };
+  }
 
   return (
     <>
       <div
         onClick={() => toggle()}
-        style={{ display: display }}
+        style={{ display }}
         className={styles.overlay}
       >
         <div
           className={styles.image}
           style={{ backgroundImage: `url(${selectedImage})` }}
-        ></div>
+        />
       </div>
       <div className={styles.container}>
         {images.map((image) => (
@@ -36,12 +35,11 @@ const ReviewImages = (props) => {
             key={image.id}
             className={styles.imageWrapper}
             style={{ backgroundImage: `url(${image.url})` }}
-          ></div>
+          />
         ))}
       </div>
     </>
   );
 };
-
 
 export default ReviewImages;
