@@ -8,8 +8,11 @@ import sampleData from '../helpers/sampleData';
 
 test('renders RatingsAndReviews component', () => {
   const reviewData = sampleData.reviewMetaData;
+  const { reviewList } = sampleData;
   const wrapper = shallow(<RatingsAndReviews />);
-  expect(wrapper.contains(<Ratings reviewData={reviewData} />)).toEqual(true);
+  expect(wrapper.contains(
+    <Ratings reviewData={reviewData} reviewList={reviewList} />,
+  )).toEqual(true);
   expect(wrapper.contains(<Reviews />)).toEqual(true);
 });
 

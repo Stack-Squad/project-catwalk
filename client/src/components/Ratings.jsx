@@ -6,13 +6,13 @@ import styles from '../css-modules/ratings.module.css';
 import { getAverageRatings } from '../../../helpers/ratingsHelper';
 
 const Ratings = (props) => {
-  const { reviewData } = props;
+  const { reviewData, reviewList } = props;
   const rating = getAverageRatings(reviewData.ratings);
 
   return (
     <div className={styles.container}>
       <RatingsSummary rating={rating} />
-      <RatingsBreakdown />
+      <RatingsBreakdown reviews={reviewList.results} />
       <ProductBreakdown />
     </div>
   );

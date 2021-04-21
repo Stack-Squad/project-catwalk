@@ -51,3 +51,18 @@ export const getAverageRatings = (ratings) => {
   const averageRatings = totalRatings / numRatings;
   return Math.round(averageRatings * 10) / 10;
 };
+
+export const getReviewsBreakdown = (reviews) => {
+  const reviewsBreakdown = {
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+  };
+  for (const review of reviews) {
+    const key = review.rating;
+    reviewsBreakdown[key].push(review);
+  }
+  return reviewsBreakdown;
+};
