@@ -1,17 +1,20 @@
 import React from 'react';
+import styles from '../../css-modules/overview-style-select.module.css';
 
-const OverviewStyleSelect = () => (
-  <div>
+const OverviewStyleSelect = (props) => {
+  const { data } = props;
+  return (
     <div>
-      <b>
-        STYLE
-        {'>'}
-      </b>
-      [insert current style here]
+      <div>
+        <b>
+          STYLE
+          {' > '}
+        </b>
+        [insert current style here]
+      </div>
+      {data.map((style, index) => <img key={index} className={styles.thumbnail} src={style.photos[0].thumbnail_url} alt="" />)}
     </div>
-    <div>[Array of style images to select]</div>
-  </div>
-);
+  );
+};
 
 export default OverviewStyleSelect;
-

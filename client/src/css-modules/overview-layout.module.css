@@ -1,7 +1,7 @@
 .overviewLayout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 0.2fr;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: .3fr 0.2fr;
   gap: 3% 2%;
   grid-template-areas:
     "imageGalleryComp infoStyleCart"
@@ -23,7 +23,7 @@
 .infoStyleCart {
   display: grid;
   grid-template-columns: 2fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: .5fr .5fr .5fr;
   gap: 0px 0px;
   grid-template-areas:
     "productInfoComp"

@@ -98,7 +98,7 @@ class Overview extends React.Component {
           <OverviewImgGal className={layoutStyles.imageGalleryComp} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} currentView={this.state.currentView} />
           <div className={layoutStyles.infoStyleCart}>
             <div className={layoutStyles.productInfoComp}>CSS Placement: Product Info</div>
-            <OverviewStyleSelect className={layoutStyles.styleSelectorComp} />
+            <OverviewStyleSelect className={layoutStyles.styleSelectorComp} data={this.state.data} />
             <div className={layoutStyles.cartComp}>CSS Placement: Cart</div>
           </div>
           <div className={layoutStyles.productDescriptionComp}>CSS Placement: Product Description</div>
