@@ -26,7 +26,11 @@ const OverviewStyleSelect = (props) => {
             </span>
           );
         }
-        return <img key={index} className={styles.thumbnail} src={style.photos[0].thumbnail_url} alt="" onClick={(e) => styleSelectSwitchClick(e, index)} />;
+        return (
+          <span key={index} className={styles.thumbnailSelectedLayout}>
+            <img className={styles.thumbnailSelected} src={style.photos[0].thumbnail_url} alt="" onClick={(e) => styleSelectSwitchClick(e, index)} />
+          </span>
+        );
       })}
     </div>
   );
