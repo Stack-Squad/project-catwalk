@@ -37,3 +37,16 @@ export const getCharacters = (words, length) => {
 
   return summary;
 }
+
+export const getAverageRatings = (ratings) => {
+  var numRatings = 0;
+  var totalRatings = 0;
+  for (var key in ratings) {
+    var rating = parseInt(key);
+    var numRating = parseInt(ratings[key]);
+    totalRatings += (rating * numRating);
+    numRatings += numRating;
+  }
+  var averageRatings = totalRatings / numRatings;
+  return Math.round(averageRatings * 10) / 10;
+};
