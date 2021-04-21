@@ -1,20 +1,20 @@
 import React from 'react';
 import axios from 'axios';
-import sampleData from '../../helpers/sampleData.js';
+import sampleData from '../../helpers/sampleData';
 
-import Banner from './components/Banner.jsx';
-import Overview from './components/Overview.jsx';
-import RatingsAndReviews from './components/RatingsAndReviews.jsx';
-import QnA from './components/QnA.jsx';
-import RelatedItems from './components/RelatedItems.jsx';
+import Banner from './components/Banner';
+import Overview from './components/Overview';
+import RatingsAndReviews from './components/RatingsAndReviews';
+import QnA from './components/QnA';
+import RelatedItems from './components/RelatedItems';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: sampleData.productList,
-      productId: sampleData.productList[0].id
-    }
+      // products: sampleData.productList,
+      productId: sampleData.productList[0].id,
+    };
   }
 
   // Commented this one out so I don't
@@ -34,18 +34,17 @@ class App extends React.Component {
   // }
 
   render() {
-    let id = this.state.productId;
+    const { productId } = this.state;
     return (
       <div>
         <Banner />
-        <Overview productId={id} />
-        <RelatedItems productId={id} />
-        <QnA productId={id} />
+        <Overview productId={productId} />
+        <RelatedItems productId={productId} />
+        <QnA productId={productId} />
         <RatingsAndReviews />
       </div>
     );
   }
 }
-
 
 export default App;
