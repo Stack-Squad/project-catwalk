@@ -5,7 +5,7 @@ const OverviewStyleSelect = () => (
     <div>
       <b>
         STYLE
-        {'>'}
+        {' > '}
       </b>
       [insert current style here]
     </div>
