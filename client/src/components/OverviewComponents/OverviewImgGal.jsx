@@ -17,7 +17,6 @@ const OverviewImgGal = (props) => {
   }
   return (
     <div className={props.currentView === 'regular' ? styles.imageGallery : styles.imageGalleryIfFull}>
-      {console.log(props.currentView)}
       <div id="gallery" className={styles.gallery}>
         {props.currentSelectedStyleImages.map((image, index) => {
           if (index >= props.currentPointInGalleryStart && index < props.currentPointInGalleryEndNonInclusive) {
@@ -31,9 +30,7 @@ const OverviewImgGal = (props) => {
         <button onClick={(e) => props.nextAndPrevious(e, 'previous')}>Prev?</button>
         <button onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
       </div>
-      <button className={styles.view} onClick={(e) => {
-          props.viewSwitchClick(e);
-        }}>Full?</button>
+      <button className={styles.view} onClick={(e) => props.viewSwitchClick(e)}>Full?</button>
     </div>
   );
 };

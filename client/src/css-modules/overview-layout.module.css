@@ -2,14 +2,23 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 0.2fr;
-  gap: 0px 0px;
+  gap: 3% 2%;
   grid-template-areas:
     "imageGalleryComp infoStyleCart"
     "productDescriptionComp productDescriptionComp";
 }
-.imageGalleryComp {
-  grid-area: imageGalleryComp;
+.overviewLayoutIfFull {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.4fr 0.2fr;
+  gap: 3% 2%;
+  grid-template-areas:
+    "imageGalleryComp imageGalleryComp"
+    "productDescriptionComp productDescriptionComp";
 }
+.imageGalleryCompIfFull { grid-area: imageGalleryComp; }
+.productDescriptionCompIfFull { grid-area: productDescriptionComp; }
+.imageGalleryComp { grid-area: imageGalleryComp; }
 .productDescriptionComp { grid-area: productDescriptionComp; }
 .infoStyleCart {
   display: grid;
@@ -28,14 +37,3 @@
 .cartComp { grid-area: cartComp; }
 
 
-.overviewLayoutIfFull {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2.5fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "imageGalleryComp imageGalleryComp"
-    "productDescriptionComp productDescriptionComp";
-}
-.imageGalleryCompIfFull { grid-area: imageGalleryComp; }
-.productDescriptionCompIfFull { grid-area: productDescriptionComp; }
