@@ -75,25 +75,43 @@ class Overview extends React.Component {
     });
   }
 
-  viewSwitchClick(e, option) {
+  viewSwitchClick(e) {
     // console.log('I have been clicked');
     // console.log(e.target.innerHTML);
     // e.target.innerHTML = 'Regular?';
-
+    if (e.target.innerHTML === 'Full?') {
+      e.target.innerHTML = 'Regular?';
+      this.state.currentView = 'full';
+    } else {
+      e.target.innerHTML = 'Full?';
+      this.state.currentView = 'regular';
+    }
+    this.setState({
+      currentView: this.state.currentView
+    });
   }
 
   render() {
-    return (
-      <div className={layoutStyles.overviewLayout}>
-        <OverviewImgGal className={layoutStyles.imageGalleryComp} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} />
-        <div className={layoutStyles.infoStyleCart}>
-          <div className={layoutStyles.productInfoComp}>CSS Placement: Product Info</div>
-          <div className={layoutStyles.styleSelectorComp}>CSS Placement: Style Select</div>
-          <div className={layoutStyles.cartComp}>CSS Placement: Cart</div>
+    if (this.state.currentView === 'regular') {
+      return (
+        <div className={layoutStyles.overviewLayout}>
+          <OverviewImgGal className={layoutStyles.imageGalleryComp} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} currentView={this.state.currentView} />
+          <div className={layoutStyles.infoStyleCart}>
+            <div className={layoutStyles.productInfoComp}>CSS Placement: Product Info</div>
+            <div className={layoutStyles.styleSelectorComp}>CSS Placement: Style Select</div>
+            <div className={layoutStyles.cartComp}>CSS Placement: Cart</div>
+          </div>
+          <div className={layoutStyles.productDescriptionComp}>CSS Placement: Product Description</div>
         </div>
-        <div className={layoutStyles.productDescriptionComp}>CSS Placement: Product Description</div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div className={layoutStyles.overviewLayoutIfFull}>
+          <OverviewImgGal className={layoutStyles.imageGalleryCompIfFull} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} currentView={this.state.currentView} />
+          <div className={layoutStyles.productDescriptionCompIfFull}>CSS Placement: Product Description</div>
+        </div>
+      )
+    }
   }
 }
 export default Overview

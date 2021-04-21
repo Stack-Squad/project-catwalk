@@ -7,7 +7,9 @@
     "imageGalleryComp infoStyleCart"
     "productDescriptionComp productDescriptionComp";
 }
-.imageGalleryComp { grid-area: imageGalleryComp; }
+.imageGalleryComp {
+  grid-area: imageGalleryComp;
+}
 .productDescriptionComp { grid-area: productDescriptionComp; }
 .infoStyleCart {
   display: grid;
@@ -24,3 +26,16 @@
 .productInfoComp { grid-area: productInfoComp; }
 .styleSelectorComp { grid-area: styleSelectorComp; }
 .cartComp { grid-area: cartComp; }
+
+
+.overviewLayoutIfFull {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2.5fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "imageGalleryComp imageGalleryComp"
+    "productDescriptionComp productDescriptionComp";
+}
+.imageGalleryCompIfFull { grid-area: imageGalleryComp; }
+.productDescriptionCompIfFull { grid-area: productDescriptionComp; }

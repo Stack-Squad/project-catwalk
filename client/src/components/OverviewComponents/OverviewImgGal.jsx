@@ -16,23 +16,24 @@ const OverviewImgGal = (props) => {
     'borderBottom': 'none'
   }
   return (
-    <div className={styles.imageGallery}>
+    <div className={props.currentView === 'regular' ? styles.imageGallery : styles.imageGalleryIfFull}>
+      {console.log(props.currentView)}
       <div id="gallery" className={styles.gallery}>
         {props.currentSelectedStyleImages.map((image, index) => {
           if (index >= props.currentPointInGalleryStart && index < props.currentPointInGalleryEndNonInclusive) {
-            return <img key={index} className={styles.thumbnail} src={image['thumbnail_url']} style={index === props.currentPointInGallery ? selectedStyle : notSelectedStyle} onClick={(e) => {props.galleryImageClick(e, index)}}></img>;
+            return <img key={index} className={props.currentView === 'regular' ? styles.thumbnail : styles.thumbnailIfFull} src={image['thumbnail_url']} style={index === props.currentPointInGallery ? selectedStyle : notSelectedStyle} onClick={(e) => {props.galleryImageClick(e, index)}}></img>;
           }
         })}
         {renderMoreButton(props.currentGalleryLength)}
       </div>
-      <img src={props.currentImg} className={styles.image}></img>
+      <img className={props.currentView === 'regular' ? styles.image : styles.imageIfFull} src={props.currentImg} ></img>
       <div className={styles.switchImage}>
         <button onClick={(e) => props.nextAndPrevious(e, 'previous')}>Prev?</button>
         <button onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
       </div>
-      <div className={styles.view}>
-        <button onClick={(e) => props.viewSwitchClick(e)}>Full?</button>
-      </div>
+      <button className={styles.view} onClick={(e) => {
+          props.viewSwitchClick(e);
+        }}>Full?</button>
     </div>
   );
 };
