@@ -42,6 +42,9 @@ const RatingsBreakdown = (props) => {
           </div>
         </div>
       ))}
+      <p>
+        x% of reviews recommended this product
+      </p>
     </div>
   );
 };
