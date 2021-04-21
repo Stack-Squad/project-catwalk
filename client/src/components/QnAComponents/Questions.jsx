@@ -13,7 +13,6 @@ class Questions extends React.Component {
   }
 
   onClick() {
-    console.log('clickety click');
     this.setState({questionList: this.state.fullQuestionList.slice(0, this.state.questionList.length + 2)});
   }
 
