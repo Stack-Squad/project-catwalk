@@ -1,13 +1,17 @@
-var path = require('path');
-var SRC_DIR = path.join(__dirname, './client/src');
-var DIST_DIR = path.join(__dirname, './client/dist');
+const path = require('path');
+
+const SRC_DIR = path.join(__dirname, './client/src');
+const DIST_DIR = path.join(__dirname, './client/dist');
 
 module.exports = {
   devtool: 'source-map',
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',
-    path: DIST_DIR
+    path: DIST_DIR,
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
@@ -19,39 +23,39 @@ module.exports = {
           options: {
             presets: [
               '@babel/preset-env',
-              '@babel/preset-react'
+              '@babel/preset-react',
             ],
             plugins: [
               ['@babel/plugin-transform-runtime',
                 {
-                  'regenerator': true
-                }
-              ]
-            ]
-          }
-        }
+                  regenerator: true,
+                },
+              ],
+            ],
+          },
+        },
       },
       {
         test: /\.css$/,
         use: ['style-loader',
-        {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 1,
-            modules: true,
-          }
-        }
-      ],
-      include: /\.module\.css$/
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+            },
+          },
+        ],
+        include: /\.module\.css$/,
       },
       {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader'
+          'css-loader',
         ],
-        exclude: /\.module\.css$/
-      }
-    ]
-  }
+        exclude: /\.module\.css$/,
+      },
+    ],
+  },
 };
