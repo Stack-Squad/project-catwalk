@@ -38,7 +38,7 @@ class Questions extends React.Component {
     const moreQuestionsButton = <button className='qa_button' onClick={this.onClick}>
       More Answered Questions
     </button>;
-    return (<div className='questionscontainer'>
+    return (<div className='question_list_wrapper'>
       {this.state.questionList}
       {this.state.fullQuestionList.length > this.state.questionList.length && moreQuestionsButton}
       <button className='qa_button'>Add a Question +</button>
