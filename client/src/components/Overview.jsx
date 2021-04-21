@@ -15,11 +15,13 @@ class Overview extends React.Component {
       currentPointInGallery: 0,
       currentPointInGalleryStart: 0,
       currentPointInGalleryEndNonInclusive: 5,
-      currentGalleryLength: sampleData.productStylesById.results[0].photos.length // length of currentSelectedStyleImages reference
+      currentGalleryLength: sampleData.productStylesById.results[0].photos.length, // length of currentSelectedStyleImages reference
+      currentView: 'regular'
     }
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
-    this.nextAndPrevious = this.nextAndPrevious.bind(this);
     this.galleryImageClick = this.galleryImageClick.bind(this);
+    this.nextAndPrevious = this.nextAndPrevious.bind(this);
+    this.viewSwitchClick = this.viewSwitchClick.bind(this);
   }
 
   galleryScrollClick(e) {
@@ -73,10 +75,17 @@ class Overview extends React.Component {
     });
   }
 
+  viewSwitchClick(e, option) {
+    // console.log('I have been clicked');
+    // console.log(e.target.innerHTML);
+    // e.target.innerHTML = 'Regular?';
+
+  }
+
   render() {
     return (
       <div className={layoutStyles.overviewLayout}>
-        <OverviewImgGal className={layoutStyles.imageGalleryComp} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} />
+        <OverviewImgGal className={layoutStyles.imageGalleryComp} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} />
         <div className={layoutStyles.infoStyleCart}>
           <div className={layoutStyles.productInfoComp}>CSS Placement: Product Info</div>
           <div className={layoutStyles.styleSelectorComp}>CSS Placement: Style Select</div>

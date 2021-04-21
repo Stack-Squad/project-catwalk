@@ -1,7 +1,7 @@
 .overviewLayout {
   display: grid;
-  grid-template-columns: 1.4fr 0.6fr;
-  grid-template-rows: 1fr 0.5fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 0.2fr;
   gap: 0px 0px;
   grid-template-areas:
     "imageGalleryComp infoStyleCart"
@@ -11,7 +11,7 @@
 .productDescriptionComp { grid-area: productDescriptionComp; }
 .infoStyleCart {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 2fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
@@ -19,6 +19,7 @@
     "styleSelectorComp"
     "cartComp";
   grid-area: infoStyleCart;
+  padding: 3%;
 }
 .productInfoComp { grid-area: productInfoComp; }
 .styleSelectorComp { grid-area: styleSelectorComp; }

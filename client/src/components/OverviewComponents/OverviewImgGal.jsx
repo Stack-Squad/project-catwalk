@@ -11,8 +11,6 @@ const OverviewImgGal = (props) => {
   };
   let selectedStyle = {
     'borderBottom': 'solid black',
-    'marginBottom': '2%',
-    'paddingBottom': '1%'
   }
   let notSelectedStyle = {
     'borderBottom': 'none'
@@ -29,10 +27,12 @@ const OverviewImgGal = (props) => {
       </div>
       <img src={props.currentImg} className={styles.image}></img>
       <div className={styles.switchImage}>
-        <button onClick={(e) => props.nextAndPrevious(e, 'previous')}>Previous?</button>
-        <button style={{'marginLeft': '80%'}} onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
+        <button onClick={(e) => props.nextAndPrevious(e, 'previous')}>Prev?</button>
+        <button onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
       </div>
-      <div className={styles.view}>CSS Placement: View Change (Coming Back to this Later)</div>
+      <div className={styles.view}>
+        <button onClick={(e) => props.viewSwitchClick(e)}>Full?</button>
+      </div>
     </div>
   );
 };
