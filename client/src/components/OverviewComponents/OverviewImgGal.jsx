@@ -31,7 +31,7 @@ const OverviewImgGal = (props) => {
         <button onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
       </div>
       <div className={styles.view}>
-        <button>Full?</button>
+        <button onClick={(e) => props.viewSwitchClick(e)}>Full?</button>
       </div>
     </div>
   );

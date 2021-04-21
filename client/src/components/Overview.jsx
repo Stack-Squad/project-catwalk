@@ -76,7 +76,10 @@ class Overview extends React.Component {
   }
 
   viewSwitchClick(e, option) {
-    console.log('I have been clicked');
+    // console.log('I have been clicked');
+    // console.log(e.target.innerHTML);
+    // e.target.innerHTML = 'Regular?';
+
   }
 
   render() {

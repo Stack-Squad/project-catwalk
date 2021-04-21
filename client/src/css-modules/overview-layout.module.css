@@ -19,7 +19,7 @@
     "styleSelectorComp"
     "cartComp";
   grid-area: infoStyleCart;
-  margin: 2%;
+  padding: 3%;
 }
 .productInfoComp { grid-area: productInfoComp; }
 .styleSelectorComp { grid-area: styleSelectorComp; }

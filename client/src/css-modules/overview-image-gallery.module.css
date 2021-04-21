@@ -8,6 +8,8 @@
   max-width: 800px;
   min-height: 600px;
   max-height: 600px;
+  background-color: grey;
+  margin: 1%;
 }
 .gallery {
   grid-area: 1 / 1 / 5 / 2;
@@ -25,11 +27,13 @@
   grid-area: 3 / 2 / 4 / 5;
   display: flex;
   justify-content: space-between;
+  padding: 1.5%;
 }
 .view {
   grid-area: 1 / 4 / 2 / 5;
   text-align: right;
-  padding-top: 6%;
+  padding: 6%;
+
 }
 .thumbnail {
   display: block;
