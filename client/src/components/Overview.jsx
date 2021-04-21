@@ -1,9 +1,12 @@
+/* eslint-disable */ // ESLint's current rules want me to basically break my functionality. Const cannot work for this.
+// I may try to make it work, but I cannot have this happening right now.
 import React from 'react';
-import OverviewImgGal from './OverviewComponents/OverviewImgGal.jsx';
+import OverviewImgGal from './OverviewComponents/OverviewImgGal';
+import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect';
 
 import layoutStyles from '../css-modules/overview-layout.module.css';
 
-import sampleData from '../../../helpers/sampleData.js';
+import sampleData from '../../../helpers/sampleData';
 
 class Overview extends React.Component {
   constructor() {
@@ -95,7 +98,7 @@ class Overview extends React.Component {
           <OverviewImgGal className={layoutStyles.imageGalleryComp} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} currentView={this.state.currentView} />
           <div className={layoutStyles.infoStyleCart}>
             <div className={layoutStyles.productInfoComp}>CSS Placement: Product Info</div>
-            <div className={layoutStyles.styleSelectorComp}>CSS Placement: Style Select</div>
+            <OverviewStyleSelect className={layoutStyles.styleSelectorComp} />
             <div className={layoutStyles.cartComp}>CSS Placement: Cart</div>
           </div>
           <div className={layoutStyles.productDescriptionComp}>CSS Placement: Product Description</div>
@@ -111,4 +114,4 @@ class Overview extends React.Component {
     }
   }
 }
-export default Overview
+export default Overview;

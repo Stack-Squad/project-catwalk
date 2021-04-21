@@ -1,18 +1,19 @@
-import {emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,} from './starRatings.js';
-
+import {
+  emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
+} from './starRatings';
 
 export const getStarRatings = (ratings) => {
-  let stars = [];
-  for (var i = 0; i < Math.floor(ratings); i++) {
+  const stars = [];
+  for (let i = 0; i < Math.floor(ratings); i++) {
     stars.push(fullStar);
   }
-  var halfStars = (ratings * 10) % 10;
+  const halfStars = (ratings * 10) % 10;
 
   if (stars.length < 5) {
     if (halfStars < 2) {
       stars.push(emptyStar);
     } else if (halfStars < 5) {
-      stars.push(quarterStar)
+      stars.push(quarterStar);
     } else if (halfStars < 7) {
       stars.push(halfStar);
     } else if (halfStars < 9) {
@@ -27,26 +28,26 @@ export const getStarRatings = (ratings) => {
   }
 
   return stars;
-}
+};
 
 export const getCharacters = (words, length) => {
-  var summary = words.trim();
+  const summary = words.trim();
   if (summary.length > length) {
-    return summary.slice(0, length - 3) + '...';
+    return `${summary.slice(0, length - 3)}...`;
   }
 
   return summary;
-}
+};
 
 export const getAverageRatings = (ratings) => {
-  var numRatings = 0;
-  var totalRatings = 0;
-  for (var key in ratings) {
-    var rating = parseInt(key);
-    var numRating = parseInt(ratings[key]);
+  let numRatings = 0;
+  let totalRatings = 0;
+  for (const key in ratings) {
+    const rating = parseInt(key);
+    const numRating = parseInt(ratings[key]);
     totalRatings += (rating * numRating);
     numRatings += numRating;
   }
-  var averageRatings = totalRatings / numRatings;
+  const averageRatings = totalRatings / numRatings;
   return Math.round(averageRatings * 10) / 10;
 };
