@@ -13,7 +13,8 @@ class Questions extends React.Component {
   }
 
   componentDidMount() {
-    const { questions } = this.props || sampleData.questionList.results;
+    let { questions } = this.props;
+    if (!questions) { questions = sampleData.questionList.results; }
     questions.sort((a, b) => (b.question_helpfulness - a.question_helpfulness));
     const fullQuestionList = questions.map((question) => (
       <div key={question.question_id}>
