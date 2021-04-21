@@ -33,12 +33,12 @@ class Questions extends React.Component {
   }
 
   render() {
+    const { questionList, fullQuestionList } = this.state;
     const moreQuestionsButton = (
-      <button className="qa_button" onClick={this.onClick}>
+      <button className="q_button" onClick={this.onClick}>
         More Answered Questions
       </button>
     );
-    const { questionList, fullQuestionList } = this.state;
 
     return (
       <div className="question_list_wrapper">
