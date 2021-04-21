@@ -27,6 +27,7 @@ class Overview extends React.Component {
       currentView: 'regular',
       // state related to style selector
       data: sampleData.productStylesById.results,
+      dataCurrentStyleName: sampleData.productStylesById.results[0].name
     };
     // image gallery functionality
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
@@ -58,8 +59,7 @@ class Overview extends React.Component {
     this.state.currentPointInGallery = index;
     this.setState({
       currentPointInGallery: this.state.currentPointInGallery,
-      currentImg: sampleData.productStylesById.results[0].photos[this.state.currentPointInGallery].url
-      // REFACTOR FOR STYLE CHANGES
+      currentImg: this.state.currentSelectedStyleImages[this.state.currentPointInGallery].url
     });
   }
 
@@ -87,8 +87,7 @@ class Overview extends React.Component {
     }
     this.setState({
       currentPointInGallery: this.state.currentPointInGallery,
-      currentImg: sampleData.productStylesById.results[0].photos[this.state.currentPointInGallery].url
-      // REFACTOR FOR STYLE CHANGES
+      currentImg: this.state.currentSelectedStyleImages[this.state.currentPointInGallery].url
     });
   }
 
@@ -108,16 +107,18 @@ class Overview extends React.Component {
   // style selector functionality
 
   styleSelectSwitchClick(e, index) {
-    console.log('Style thumbnail clicked woohoo!');
-    console.log('index = ', index);
     this.state.currentImg = sampleData.productStylesById.results[index].photos[0].url;
     this.state.currentSelectedStyleImages = sampleData.productStylesById.results[index].photos;
-    this.state.currentPointInGalleryStart = this.state.currentSelectedStyleImages.length;
-
+    this.state.currentGalleryLength = this.state.currentSelectedStyleImages.length;
+    this.state.dataCurrentStyleName = sampleData.productStylesById.results[index].name;
     this.setState({
       currentImg: this.state.currentImg,
       currentSelectedStyleImages: this.state.currentSelectedStyleImages,
-
+      currentGalleryLength: this.state.currentSelectedStyleImages.length,
+      currentPointInGallery: 0,
+      currentPointInGalleryStart: 0,
+      currentPointInGalleryEndNonInclusive: 5,
+      dataCurrentStyleName: this.state.dataCurrentStyleName
     });
   }
 
@@ -128,7 +129,7 @@ class Overview extends React.Component {
           <OverviewImgGal className={layoutStyles.imageGalleryComp} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} currentView={this.state.currentView} />
           <div className={layoutStyles.infoStyleCart}>
             <div className={layoutStyles.productInfoComp}>CSS Placement: Product Info</div>
-            <OverviewStyleSelect className={layoutStyles.styleSelectorComp} data={this.state.data} styleSelectSwitchClick={this.styleSelectSwitchClick} />
+            <OverviewStyleSelect className={layoutStyles.styleSelectorComp} data={this.state.data} dataCurrentStyleName={this.state.dataCurrentStyleName} styleSelectSwitchClick={this.styleSelectSwitchClick} />
             <div className={layoutStyles.cartComp}>CSS Placement: Cart</div>
           </div>
           <div className={layoutStyles.productDescriptionComp}>CSS Placement: Product Description</div>
