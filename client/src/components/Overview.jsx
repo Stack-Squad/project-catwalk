@@ -1,4 +1,5 @@
-/* eslint-disable */
+/* eslint-disable */ // ESLint's current rules want me to basically break my functionality. Const cannot work for this.
+// I may try to make it work, but I cannot have this happening right now.
 import React from 'react';
 import OverviewImgGal from './OverviewComponents/OverviewImgGal';
 import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect';
@@ -113,4 +114,4 @@ class Overview extends React.Component {
     }
   }
 }
-export default Overview
+export default Overview;
