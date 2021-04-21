@@ -1,4 +1,5 @@
-/* eslint-disable */ // ESLint's current rules want me to basically break my functionality. Const cannot work for this.
+/* eslint-disable */
+// ESLint's current rules want me to basically break my functionality. Const cannot work for this.
 // I may try to make it work, but I cannot have this happening right now.
 import React from 'react';
 import OverviewImgGal from './OverviewComponents/OverviewImgGal';
@@ -12,20 +13,31 @@ class Overview extends React.Component {
   constructor() {
     super();
     this.state = { // REFACTOR FOR STYLE CHANGES
-      data: sampleData.productStylesById.results, // just here for now, not useful yet, not sure if it will be
-      currentImg: sampleData.productStylesById.results[0].photos[0].url, // the currently selected photo from currentSelectedStyleImages reference
-      currentSelectedStyleImages: sampleData.productStylesById.results[0].photos, // reference from the current style's photos (CURRENTLY HARDCODED TO BE WORKING WITH ONE STYLE)
+      // state related to image gallery mostly
+      currentImg: sampleData.productStylesById.results[0].photos[0].url,
+      // the currently selected photo from currentSelectedStyleImages reference
+      currentSelectedStyleImages: sampleData.productStylesById.results[0].photos,
+      // reference from the current style's photos
+      // (CURRENTLY HARDCODED TO BE WORKING WITH ONE STYLE)
       currentPointInGallery: 0,
       currentPointInGalleryStart: 0,
       currentPointInGalleryEndNonInclusive: 5,
-      currentGalleryLength: sampleData.productStylesById.results[0].photos.length, // length of currentSelectedStyleImages reference
-      currentView: 'regular'
-    }
+      currentGalleryLength: sampleData.productStylesById.results[0].photos.length,
+      // length of currentSelectedStyleImages reference
+      currentView: 'regular',
+      // state related to style selector
+      data: sampleData.productStylesById.results,
+    };
+    // image gallery functionality
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
     this.galleryImageClick = this.galleryImageClick.bind(this);
     this.nextAndPrevious = this.nextAndPrevious.bind(this);
     this.viewSwitchClick = this.viewSwitchClick.bind(this);
+    // style selector functionality
+    this.styleSelectSwitchClick = this.styleSelectSwitchClick.bind(this);
   }
+
+  // image gallery functionality
 
   galleryScrollClick(e) {
     if (this.state.currentPointInGalleryEndNonInclusive < this.state.currentGalleryLength) {
@@ -46,7 +58,8 @@ class Overview extends React.Component {
     this.state.currentPointInGallery = index;
     this.setState({
       currentPointInGallery: this.state.currentPointInGallery,
-      currentImg: sampleData.productStylesById.results[0].photos[this.state.currentPointInGallery].url // REFACTOR FOR STYLE CHANGES
+      currentImg: sampleData.productStylesById.results[0].photos[this.state.currentPointInGallery].url
+      // REFACTOR FOR STYLE CHANGES
     });
   }
 
@@ -74,7 +87,8 @@ class Overview extends React.Component {
     }
     this.setState({
       currentPointInGallery: this.state.currentPointInGallery,
-      currentImg: sampleData.productStylesById.results[0].photos[this.state.currentPointInGallery].url // REFACTOR FOR STYLE CHANGES
+      currentImg: sampleData.productStylesById.results[0].photos[this.state.currentPointInGallery].url
+      // REFACTOR FOR STYLE CHANGES
     });
   }
 
@@ -91,6 +105,22 @@ class Overview extends React.Component {
     });
   }
 
+  // style selector functionality
+
+  styleSelectSwitchClick(e, index) {
+    console.log('Style thumbnail clicked woohoo!');
+    console.log('index = ', index);
+    this.state.currentImg = sampleData.productStylesById.results[index].photos[0].url;
+    this.state.currentSelectedStyleImages = sampleData.productStylesById.results[index].photos;
+    this.state.currentPointInGalleryStart = this.state.currentSelectedStyleImages.length;
+
+    this.setState({
+      currentImg: this.state.currentImg,
+      currentSelectedStyleImages: this.state.currentSelectedStyleImages,
+
+    });
+  }
+
   render() {
     if (this.state.currentView === 'regular') {
       return (
@@ -98,20 +128,19 @@ class Overview extends React.Component {
           <OverviewImgGal className={layoutStyles.imageGalleryComp} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} currentView={this.state.currentView} />
           <div className={layoutStyles.infoStyleCart}>
             <div className={layoutStyles.productInfoComp}>CSS Placement: Product Info</div>
-            <OverviewStyleSelect className={layoutStyles.styleSelectorComp} data={this.state.data} />
+            <OverviewStyleSelect className={layoutStyles.styleSelectorComp} data={this.state.data} styleSelectSwitchClick={this.styleSelectSwitchClick} />
             <div className={layoutStyles.cartComp}>CSS Placement: Cart</div>
           </div>
           <div className={layoutStyles.productDescriptionComp}>CSS Placement: Product Description</div>
         </div>
-      )
-    } else {
-      return (
-        <div className={layoutStyles.overviewLayoutIfFull}>
-          <OverviewImgGal className={layoutStyles.imageGalleryCompIfFull} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} currentView={this.state.currentView} />
-          <div className={layoutStyles.productDescriptionCompIfFull}>CSS Placement: Product Description</div>
-        </div>
-      )
+      );
     }
+    return (
+      <div className={layoutStyles.overviewLayoutIfFull}>
+        <OverviewImgGal className={layoutStyles.imageGalleryCompIfFull} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} currentView={this.state.currentView} />
+        <div className={layoutStyles.productDescriptionCompIfFull}>CSS Placement: Product Description</div>
+      </div>
+    );
   }
 }
 export default Overview;
