@@ -76,9 +76,6 @@ class Overview extends React.Component {
   }
 
   viewSwitchClick(e) {
-    // console.log('I have been clicked');
-    // console.log(e.target.innerHTML);
-    // e.target.innerHTML = 'Regular?';
     if (e.target.innerHTML === 'Full?') {
       e.target.innerHTML = 'Regular?';
       this.state.currentView = 'full';
