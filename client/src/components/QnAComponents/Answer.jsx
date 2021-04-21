@@ -20,8 +20,11 @@ class Answer extends React.Component {
 
     let photos = null;
     if (answer.photos.length) {
+      let index = 0;
       photos = answer.photos.map(photo =>
-        <img className='qa_photo' src={photo}/>
+        <div key={index++}>
+          <img className='qa_photo' src={photo}/>
+        </div>
       );
     }
 
