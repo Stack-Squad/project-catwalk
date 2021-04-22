@@ -13,7 +13,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       productId: sampleData.productList[0].id,
-      // questionList
+      questionList: sampleData.questionList,
     };
   }
 
@@ -27,23 +27,27 @@ class App extends React.Component {
         this.setState({ productId });
         return productId;
       })
-      // .then((productId) => {
-      //   // getquestionList(productId)
-      //     // setState({ questionList })
-      // })
+      .then((productId) => {
+        axios.get(`qa/questions/${productId}`)
+          .then((response) => response.data)
+          .then((questionList) => {
+            console.log(questionList);
+            this.setState({ questionList });
+          });
+      })
       .catch((err) => {
         console.log(err);
       });
   }
 
   render() {
-    const { productId } = this.state;
+    const { productId, questionList } = this.state;
     return (
       <div>
         <Banner />
         <Overview productId={productId} />
         <RelatedItems productId={productId} />
-        <QnA productId={productId} />
+        <QnA questionList={questionList} />
         <RatingsAndReviews />
       </div>
     );
