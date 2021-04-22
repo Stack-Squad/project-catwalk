@@ -12,13 +12,12 @@ import sampleData from '../../../helpers/sampleData';
 class Overview extends React.Component {
   constructor() {
     super();
-    this.state = { // REFACTOR FOR STYLE CHANGES
+    this.state = {
       // state related to image gallery mostly
       currentImg: sampleData.productStylesById.results[0].photos[0].url,
       // the currently selected photo from currentSelectedStyleImages reference
       currentSelectedStyleImages: sampleData.productStylesById.results[0].photos,
       // reference from the current style's photos
-      // (CURRENTLY HARDCODED TO BE WORKING WITH ONE STYLE)
       currentPointInGallery: 0,
       currentPointInGalleryStart: 0,
       currentPointInGalleryEndNonInclusive: 5,

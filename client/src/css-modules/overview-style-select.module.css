@@ -24,7 +24,6 @@
 .checkmark {
   grid-area: 1 / 3 / 2 / 4;
   display: inline-block;
-  display: inline-block;
   transform: rotate(45deg);
   height: var(--height);
   width: var(--width);
