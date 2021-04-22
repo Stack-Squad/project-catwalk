@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../css-modules/overview-style-select.module.css';
 
 const OverviewStyleSelect = (props) => {
-  const { data } = props;
+  const { data, styleSelectSwitchClick, dataCurrentStyleName } = props;
   return (
     <div>
       <div>
@@ -10,9 +10,9 @@ const OverviewStyleSelect = (props) => {
           STYLE
           {' > '}
         </b>
-        [insert current style here]
+        {dataCurrentStyleName}
       </div>
-      {data.map((style, index) => <img key={index} className={styles.thumbnail} src={style.photos[0].thumbnail_url} alt="" />)}
+      {data.map((style, index) => <img key={index} className={styles.thumbnail} src={style.photos[0].thumbnail_url} alt="" onClick={(e) => styleSelectSwitchClick(e, index)} />)}
     </div>
   );
 };
