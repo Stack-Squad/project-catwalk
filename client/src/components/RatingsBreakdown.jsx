@@ -3,7 +3,7 @@ import styles from '../css-modules/ratings-breakdown.module.css';
 import { getReviewsBreakdown } from '../../../helpers/ratingsHelper';
 
 const RatingsBreakdown = (props) => {
-  const { reviews } = props;
+  const { reviews, recommend } = props;
   const reviewsBreakdown = getReviewsBreakdown(reviews);
 
   const getPercentBreakown = (star) => {
@@ -42,6 +42,12 @@ const RatingsBreakdown = (props) => {
           </div>
         </div>
       ))}
+      <p>
+        {recommend}
+        %
+        {' '}
+        of reviews recommended this product
+      </p>
     </div>
   );
 };
