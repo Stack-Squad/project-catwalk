@@ -17,5 +17,7 @@ test('renders Ratings component', () => {
   expect(wrapper.contains(
     <RatingsBreakdown reviews={reviewList.results} />,
   )).toEqual(true);
-  expect(wrapper.contains(<ProductBreakdown />)).toEqual(true);
+  expect(wrapper.contains(
+    <ProductBreakdown characteristics={reviewData.characteristics} />,
+  )).toEqual(true);
 });
