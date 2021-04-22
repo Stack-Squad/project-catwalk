@@ -5,6 +5,7 @@ import React from 'react';
 import OverviewImgGal from './OverviewComponents/OverviewImgGal';
 import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect';
 import OverviewProductInfo from './OverviewComponents/OverviewProductInfo';
+import { getAverageRatings, getStarRatings } from '../../../helpers/ratingsHelper';
 
 import layoutStyles from '../css-modules/overview-layout.module.css';
 
@@ -31,6 +32,8 @@ class Overview extends React.Component {
       dataSelected: 0,
       ////// state related to product info //////
       infoData: sampleData.productById,
+      // sampleData.reviewMetaData.ratings = type object -> key/val pairs of ratings and total of those ratings 1 through 5 ** value is a string
+      stars: getStarRatings(getAverageRatings(sampleData.reviewMetaData.ratings)),
     };
     ////// image gallery functionality //////
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
@@ -149,6 +152,7 @@ class Overview extends React.Component {
             <OverviewProductInfo
               className={layoutStyles.productInfoComp}
               infoData={this.state.infoData}
+              stars={this.state.stars}
             />
             <OverviewStyleSelect
               className={layoutStyles.styleSelectorComp}

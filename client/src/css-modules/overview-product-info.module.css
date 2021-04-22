@@ -17,4 +17,7 @@
   font-weight: bolder;
 }
 .category { grid-area: category; }
-.rating { grid-area: rating; }
+.rating {
+  grid-area: rating;
+  display: inline;
+}
