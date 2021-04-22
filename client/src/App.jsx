@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: sampleData.productList[0].id,
+      productId: '',
       // questionList
     };
   }
@@ -44,7 +44,7 @@ class App extends React.Component {
         <Overview productId={productId} />
         <RelatedItems productId={productId} />
         <QnA productId={productId} />
-        <RatingsAndReviews />
+        <RatingsAndReviews productId={productId} />
       </div>
     );
   }

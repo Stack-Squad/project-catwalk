@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../css-modules/ratings-breakdown.module.css';
 import { getReviewsBreakdown } from '../../../helpers/ratingsHelper';
 
 const RatingsBreakdown = (props) => {
-  const { reviews, recommend } = props;
+  const { reviews, recommend, setReviewList } = props;
+
   const reviewsBreakdown = getReviewsBreakdown(reviews);
 
   const getPercentBreakown = (star) => {
@@ -22,6 +23,8 @@ const RatingsBreakdown = (props) => {
     */
     console.log(event.target.value);
     console.log(reviewsBreakdown[event.target.value]);
+    const selectReviews = reviewsBreakdown[event.target.value];
+    setReviewList([...selectReviews]);
   };
 
   return (

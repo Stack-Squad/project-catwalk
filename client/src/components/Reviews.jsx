@@ -6,9 +6,15 @@ import styles from '../css-modules/reviews.module.css';
 import sampleData from '../../../helpers/sampleData';
 
 const Reviews = (props) => {
+  const { reviewsList } = props;
   const [sortBy, setSortBy] = useState('relevance');
-  const [allReviews, setAllReviews] = useState(sampleData.reviewList.results);
-  const [reviews, setReviews] = useState(allReviews.slice(0, 2));
+  const [allReviews, setAllReviews] = useState([...reviewsList]);
+  const [reviews, setReviews] = useState(reviewsList.slice(0, 2));
+
+  useEffect(() => {
+    setAllReviews([...reviewsList]);
+    setReviews(reviewsList.slice(0, 2));
+  }, [reviewsList]);
 
   function moreReviews() {
     const soFar = reviews.length;
