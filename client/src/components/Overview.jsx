@@ -4,6 +4,7 @@
 import React from 'react';
 import OverviewImgGal from './OverviewComponents/OverviewImgGal';
 import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect';
+import OverviewProductInfo from './OverviewComponents/OverviewProductInfo';
 
 import layoutStyles from '../css-modules/overview-layout.module.css';
 
