@@ -12,26 +12,29 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // products: sampleData.productList,
       productId: sampleData.productList[0].id,
+      // questionList
     };
   }
 
-  // Commented this one out so I don't
-  // make network calls for now.
-  // Just using sampleData for now.
-  // componentDidMount() {
-  //   utils.getProducts()
-  //   .then(productList => {
-  //     this.setState({
-  //       products: productList,
-  //       productId: productList[0].id
-  //     });
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
-  // }
+  componentDidMount() {
+    // grabs a random product from the productList response
+    const index = Math.floor(Math.random() * 5);
+    axios.get('/products')
+      .then((response) => response.data)
+      .then((productList) => productList[index].id)
+      .then((productId) => {
+        this.setState({ productId });
+        return productId;
+      })
+      // .then((productId) => {
+      //   // getquestionList(productId)
+      //     // setState({ questionList })
+      // })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   render() {
     const { productId } = this.state;
