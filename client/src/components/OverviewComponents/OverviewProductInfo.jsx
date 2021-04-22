@@ -12,8 +12,3 @@ const OverviewProductInfo = () => (
 );
 
 export default OverviewProductInfo;
-
-// "rating"
-// "category"
-// "name"
-// "price share";
