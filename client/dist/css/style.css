@@ -154,7 +154,6 @@ Search Bar
 .searchbarwrapper {
   position: relative;
   display: flex;
-  min-width: 500px;
   padding: 5px 0px 10px 0px;
 }
 .search-icon {
