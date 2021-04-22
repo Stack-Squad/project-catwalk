@@ -1,13 +1,14 @@
 .productInfoLayout {
   display: grid;
-  grid-template-columns: 0.7fr 1.3fr;
-  grid-template-rows: 1fr 0.5fr 1.5fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 0.5fr 1.5fr 0.5fr 0.5fr;
   gap: 0px 0px;
   grid-template-areas:
     "rating rating"
     "category category"
     "name name"
-    "price share";
+    "price price"
+    "share share";
 }
 .price { grid-area: price; }
 .share { grid-area: share; }
@@ -20,4 +21,4 @@
 .rating {
   grid-area: rating;
   display: inline;
-}
+.shareButton { margin: 1% }
