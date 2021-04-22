@@ -27,7 +27,8 @@ class Overview extends React.Component {
       currentView: 'regular',
       // state related to style selector
       data: sampleData.productStylesById.results,
-      dataCurrentStyleName: sampleData.productStylesById.results[0].name
+      dataCurrentStyleName: sampleData.productStylesById.results[0].name,
+      dataSelected: 0
     };
     // image gallery functionality
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
@@ -111,6 +112,7 @@ class Overview extends React.Component {
     this.state.currentSelectedStyleImages = sampleData.productStylesById.results[index].photos;
     this.state.currentGalleryLength = this.state.currentSelectedStyleImages.length;
     this.state.dataCurrentStyleName = sampleData.productStylesById.results[index].name;
+    this.state.dataSelected = index;
     this.setState({
       currentImg: this.state.currentImg,
       currentSelectedStyleImages: this.state.currentSelectedStyleImages,
@@ -118,7 +120,8 @@ class Overview extends React.Component {
       currentPointInGallery: 0,
       currentPointInGalleryStart: 0,
       currentPointInGalleryEndNonInclusive: 5,
-      dataCurrentStyleName: this.state.dataCurrentStyleName
+      dataCurrentStyleName: this.state.dataCurrentStyleName,
+      dataSelected: this.state.dataSelected
     });
   }
 
@@ -129,7 +132,7 @@ class Overview extends React.Component {
           <OverviewImgGal className={layoutStyles.imageGalleryComp} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} currentView={this.state.currentView} />
           <div className={layoutStyles.infoStyleCart}>
             <div className={layoutStyles.productInfoComp}>CSS Placement: Product Info</div>
-            <OverviewStyleSelect className={layoutStyles.styleSelectorComp} data={this.state.data} dataCurrentStyleName={this.state.dataCurrentStyleName} styleSelectSwitchClick={this.styleSelectSwitchClick} />
+            <OverviewStyleSelect className={layoutStyles.styleSelectorComp} data={this.state.data} dataCurrentStyleName={this.state.dataCurrentStyleName} styleSelectSwitchClick={this.styleSelectSwitchClick} dataSelected={this.state.dataSelected}/>
             <div className={layoutStyles.cartComp}>CSS Placement: Cart</div>
           </div>
           <div className={layoutStyles.productDescriptionComp}>CSS Placement: Product Description</div>
