@@ -24,7 +24,7 @@
 .category { grid-area: category; }
 .rating {
   grid-area: rating;
-  display: inline;
+  display: inline-flex;
 }
 .slogan { grid-area: slogan; }
 .shareButton { margin: 1% }

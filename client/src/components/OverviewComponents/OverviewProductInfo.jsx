@@ -32,12 +32,13 @@ const OverviewProductInfo = (props) => {
       return (
         <div className={styles.rating}>
           {stars.map((star, index) => <span key={index}>{star}</span>)}
-          {/* <a href="#ratings-reviews">{`Read all ${amountOfReviews} reviews`}</a> */}
-          <a href="#ratings-reviews" onClick={(e) => smoothScrollClick(e)}>{`Read all ${amountOfReviews} reviews`}</a>
+          {/* {stars.map((star, index) => <div key={index}>{star}</div>)} */}
+          <a style={{ marginTop: '0.25%' }} href="#ratings-reviews" onClick={(e) => smoothScrollClick(e)}>{`Read all ${amountOfReviews} reviews`}</a>
         </div>
       );
     }
     return <div>[No reviews for this product]</div>;
+    // placeholder for now to visualize truthiness of no reviews
   };
 
   return (
