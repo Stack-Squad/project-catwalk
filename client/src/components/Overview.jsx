@@ -34,6 +34,7 @@ class Overview extends React.Component {
       infoData: sampleData.productById,
       stars: getStarRatings(getAverageRatings(sampleData.reviewMetaData.ratings)),
       actualPrice: sampleData.productStylesById.results[0].sale_price ? sampleData.productStylesById.results[0].sale_price : sampleData.productStylesById.results[0].original_price,
+      amountOfReviews: sampleData.reviewList.count,
     };
     ////// image gallery functionality //////
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
@@ -157,6 +158,7 @@ class Overview extends React.Component {
               infoData={this.state.infoData}
               stars={this.state.stars}
               actualPrice={this.state.actualPrice}
+              amountOfReviews={this.state.amountOfReviews}
             />
             <OverviewStyleSelect
               className={layoutStyles.styleSelectorComp}

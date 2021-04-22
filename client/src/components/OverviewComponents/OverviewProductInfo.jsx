@@ -2,7 +2,12 @@ import React from 'react';
 import styles from '../../css-modules/overview-product-info.module.css';
 
 const OverviewProductInfo = (props) => {
-  const { infoData, stars, actualPrice } = props;
+  const {
+    infoData,
+    stars,
+    actualPrice,
+    amountOfReviews,
+  } = props;
 
   const defaultOrChange = () => {
     if (infoData.default_price !== actualPrice) {
@@ -16,16 +21,36 @@ const OverviewProductInfo = (props) => {
     return <div className={styles.price}>{`$${infoData.default_price}`}</div>;
   };
 
+  const smoothScrollClick = (e) => {
+    e.preventDefault();
+    const rateAndRev = document.getElementById('ratings-reviews');
+    rateAndRev.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const renderReviewsOrNo = () => {
+    if (amountOfReviews) {
+      return (
+        <div className={styles.rating}>
+          {stars.map((star, index) => <span key={index}>{star}</span>)}
+          {/* <a href="#ratings-reviews">{`Read all ${amountOfReviews} reviews`}</a> */}
+          <a href="#ratings-reviews" onClick={(e) => smoothScrollClick(e)}>{`Read all ${amountOfReviews} reviews`}</a>
+        </div>
+      );
+    }
+    return <div>[No reviews for this product]</div>;
+  };
+
   return (
     <div className={styles.productInfoLayout}>
-      <div className={styles.rating}>
-        {stars.map((star, index) => <span key={index}>{star}</span>)}
-        <a href="#ratings-reviews">Read all reviews</a>
-        {' <-- Fix to show number of reviews !OR! Fix to not show this section IF no reviews exist'}
-      </div>
+      {renderReviewsOrNo()}
       <div className={styles.category}>{infoData.category}</div>
       <div className={styles.name}>{infoData.name}</div>
       {defaultOrChange()}
+      <div className={styles.slogan}>
+        {`?Product Overview?: "${infoData.slogan}"`}
+        {/* ^ using the slogan property from productById for this ^ */}
+        {' <-- Not on wireframe, although it is in biz docs'}
+      </div>
       <div className={styles.share}>
         <button className={styles.shareButton}>Facebook</button>
         <button className={styles.shareButton}>Twitter</button>
