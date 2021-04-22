@@ -37,13 +37,19 @@ module.exports.getProductById = (id) => {
     });
 };
 
-// module.exports.getQuestionList = (id) => {
-//   const options = {
-//     url: `qa/questions?product_id=${id}`,
-//     method: 'get',
-//     baseURL,
-//     headers: {
-//       Authorization: token,
-//     },
-//   };
-// }
+module.exports.getQuestionList = (id) => {
+  const options = {
+    url: `qa/questions?product_id=${id}`,
+    method: 'get',
+    baseURL,
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return axios(options)
+    .then((response) => response.data)
+    .catch((err) => {
+      console.log(err);
+    });
+};
