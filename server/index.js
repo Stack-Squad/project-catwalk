@@ -56,6 +56,32 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
     });
 });
 
+app.put('/qa/answers/:answer_id/helpful', (req, res) => {
+  const id = req.params.answer_id;
+  console.log(`serving PUT request to /qa/answers/${id}/helpful`);
+  utils.markAnswerHelpful(id)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.end();
+    });
+});
+
+app.put('/qa/answers/:answer_id/report', (req, res) => {
+  const id = req.params.answer_id;
+  console.log(`serving PUT request to /qa/answers/${id}/report`);
+  utils.reportAnswer(id)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.end();
+    });
+});
+
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`);
 });
