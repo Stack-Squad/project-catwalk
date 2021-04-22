@@ -554,6 +554,10 @@ module.exports.reviewMetaData = {
       id: 57230,
       value: '2.3333333333333333',
     },
+    Width: {
+      id: 57231,
+      value: '1.3333333333333333',
+    },
   },
 };
 

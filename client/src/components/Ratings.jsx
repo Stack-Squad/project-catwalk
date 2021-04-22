@@ -13,7 +13,7 @@ const Ratings = (props) => {
     <div className={styles.container}>
       <RatingsSummary rating={rating} />
       <RatingsBreakdown reviews={reviewList.results} />
-      <ProductBreakdown />
+      <ProductBreakdown characteristics={reviewData.characteristics} />
     </div>
   );
 };
