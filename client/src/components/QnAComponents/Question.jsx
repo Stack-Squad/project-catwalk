@@ -39,7 +39,6 @@ class Question extends React.Component {
   }
 
   markHelpful() {
-    console.log('HELPFUL');
     const { markedHelpful } = this.state;
     const { question } = this.props;
     if (!markedHelpful) {
