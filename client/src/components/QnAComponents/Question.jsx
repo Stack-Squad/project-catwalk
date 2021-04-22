@@ -65,8 +65,6 @@ class Question extends React.Component {
       </button>
     );
 
-    const questionTag = `Helpful? <button onClick={this.markHelpful}>Yes</button>(${markedHelpful ? question.question_helpfulness + 1 : question.question_helpfulness})`;
-
     return (
       <div className="question_wrapper">
         <span className="qa_label" id="q_label">Q:</span>
