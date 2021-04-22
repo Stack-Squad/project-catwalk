@@ -66,3 +66,16 @@ export const getReviewsBreakdown = (reviews) => {
   }
   return reviewsBreakdown;
 };
+
+export const getCharacteristicOptions = (option) => {
+  const characteristics = {
+    Size: ['Too Small', 'Perfect', 'Too large'],
+    Width: ['Too narrow', 'Perfect', 'Too wide'],
+    Comfort: ['Uncomfortable', 'Ok', 'Perfect'],
+    Quality: ['Poor', 'What I expected', 'Perfect'],
+    Length: ['Short', 'Perfect', 'Long'],
+    Fit: ['tight', 'Perfect', 'long'],
+  };
+
+  return characteristics[option];
+};
