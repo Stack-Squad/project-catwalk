@@ -1,7 +1,7 @@
 .productInfoLayout {
   display: grid;
   grid-template-columns: 0.7fr 1.3fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 0.5fr 1.5fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
     "rating rating"
@@ -11,6 +11,10 @@
 }
 .price { grid-area: price; }
 .share { grid-area: share; }
-.name { grid-area: name; }
+.name {
+  grid-area: name;
+  font-size: x-large;
+  font-weight: bolder;
+}
 .category { grid-area: category; }
 .rating { grid-area: rating; }
