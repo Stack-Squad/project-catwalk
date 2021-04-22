@@ -66,3 +66,10 @@ export const getReviewsBreakdown = (reviews) => {
   }
   return reviewsBreakdown;
 };
+
+export const getPercentageRecommend = (recommended) => {
+  const trueValue = parseInt(recommended.true);
+  const falseValue = parseInt(recommended.false);
+  const percent = (trueValue / (trueValue + falseValue));
+  return Math.round((percent * 100) * 10) / 10;
+};
