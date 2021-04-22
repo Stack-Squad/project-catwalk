@@ -1,0 +1,16 @@
+.productInfoLayout {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "rating rating"
+    "category category"
+    "name name"
+    "price share";
+}
+.price { grid-area: price; }
+.share { grid-area: share; }
+.name { grid-area: name; }
+.category { grid-area: category; }
+.rating { grid-area: rating; }
