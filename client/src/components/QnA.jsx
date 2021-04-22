@@ -16,8 +16,20 @@ class QnA extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    const { questionList } = this.props;
+    if (prevProps.questionList !== questionList) {
+      const fullQuestionList = questionList.results;
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        questionList: fullQuestionList.slice(0, 4),
+        queryList: fullQuestionList,
+        fullQuestionList,
+      });
+    }
+  }
+
   onClick() {
-    console.log('clickety click');
     const { questionList, queryList } = this.state;
     this.setState({
       questionList: queryList.slice(0, questionList.length + 2),

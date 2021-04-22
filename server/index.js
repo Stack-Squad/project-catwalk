@@ -30,6 +30,19 @@ app.get('/products/:product_id', (req, res) => {
     });
 });
 
+app.get('/qa/questions/:product_id', (req, res) => {
+  const id = req.params.product_id;
+  console.log(`serving get request to /qa/questions/${id}`);
+  utils.getQuestionList(id)
+    .then((questionList) => {
+      res.json(questionList);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.end();
+    });
+});
+
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`);
 });
