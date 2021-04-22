@@ -14,7 +14,7 @@ class Overview extends React.Component {
   constructor() {
     super();
     this.state = {
-      // state related to image gallery mostly
+      ////// state related to image gallery mostly //////
       currentImg: sampleData.productStylesById.results[0].photos[0].url,
       // the currently selected photo from currentSelectedStyleImages reference
       currentSelectedStyleImages: sampleData.productStylesById.results[0].photos,
@@ -25,17 +25,19 @@ class Overview extends React.Component {
       currentGalleryLength: sampleData.productStylesById.results[0].photos.length,
       // length of currentSelectedStyleImages reference
       currentView: 'regular',
-      // state related to style selector
+      ////// state related to style selector //////
       data: sampleData.productStylesById.results,
       dataCurrentStyleName: sampleData.productStylesById.results[0].name,
-      dataSelected: 0
+      dataSelected: 0,
+      ////// state related to product info //////
+      infoData: sampleData.productById,
     };
-    // image gallery functionality
+    ////// image gallery functionality //////
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
     this.galleryImageClick = this.galleryImageClick.bind(this);
     this.nextAndPrevious = this.nextAndPrevious.bind(this);
     this.viewSwitchClick = this.viewSwitchClick.bind(this);
-    // style selector functionality
+    ////// style selector functionality //////
     this.styleSelectSwitchClick = this.styleSelectSwitchClick.bind(this);
   }
 
@@ -129,20 +131,59 @@ class Overview extends React.Component {
     if (this.state.currentView === 'regular') {
       return (
         <div className={layoutStyles.overviewLayout}>
-          <OverviewImgGal className={layoutStyles.imageGalleryComp} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} currentView={this.state.currentView} />
+          <OverviewImgGal
+            className={layoutStyles.imageGalleryComp}
+            currentImg={this.state.currentImg}
+            currentSelectedStyleImages={this.state.currentSelectedStyleImages}
+            galleryScrollClick={this.galleryScrollClick}
+            currentPointInGalleryStart={this.state.currentPointInGalleryStart}
+            currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive}
+            currentGalleryLength={this.state.currentGalleryLength}
+            nextAndPrevious={this.nextAndPrevious}
+            currentPointInGallery={this.state.currentPointInGallery}
+            galleryImageClick={this.galleryImageClick}
+            viewSwitchClick={this.viewSwitchClick}
+            currentView={this.state.currentView}
+          />
           <div className={layoutStyles.infoStyleCart}>
-            <OverviewProductInfo className={layoutStyles.productInfoComp} />
-            <OverviewStyleSelect className={layoutStyles.styleSelectorComp} data={this.state.data} dataCurrentStyleName={this.state.dataCurrentStyleName} styleSelectSwitchClick={this.styleSelectSwitchClick} dataSelected={this.state.dataSelected}/>
+            <OverviewProductInfo
+              className={layoutStyles.productInfoComp}
+              infoData={this.state.infoData}
+            />
+            <OverviewStyleSelect
+              className={layoutStyles.styleSelectorComp}
+              data={this.state.data}
+              dataCurrentStyleName={this.state.dataCurrentStyleName}
+              styleSelectSwitchClick={this.styleSelectSwitchClick}
+              dataSelected={this.state.dataSelected}
+            />
             <div className={layoutStyles.cartComp}>CSS Placement: Cart</div>
           </div>
-          <div className={layoutStyles.productDescriptionComp}>CSS Placement: Product Description</div>
+          <div className={layoutStyles.productDescriptionComp}>
+            CSS Placement: Product Description
+          </div>
         </div>
       );
     }
     return (
       <div className={layoutStyles.overviewLayoutIfFull}>
-        <OverviewImgGal className={layoutStyles.imageGalleryCompIfFull} currentImg={this.state.currentImg} currentSelectedStyleImages={this.state.currentSelectedStyleImages} galleryScrollClick={this.galleryScrollClick} currentPointInGalleryStart={this.state.currentPointInGalleryStart} currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive} currentGalleryLength={this.state.currentGalleryLength} nextAndPrevious={this.nextAndPrevious} currentPointInGallery={this.state.currentPointInGallery} galleryImageClick={this.galleryImageClick} viewSwitchClick={this.viewSwitchClick} currentView={this.state.currentView} />
-        <div className={layoutStyles.productDescriptionCompIfFull}>CSS Placement: Product Description</div>
+        <OverviewImgGal
+          className={layoutStyles.imageGalleryCompIfFull}
+          currentImg={this.state.currentImg}
+          currentSelectedStyleImages={this.state.currentSelectedStyleImages}
+          galleryScrollClick={this.galleryScrollClick}
+          currentPointInGalleryStart={this.state.currentPointInGalleryStart}
+          currentPointInGalleryEndNonInclusive={this.state.currentPointInGalleryEndNonInclusive}
+          currentGalleryLength={this.state.currentGalleryLength}
+          nextAndPrevious={this.nextAndPrevious}
+          currentPointInGallery={this.state.currentPointInGallery}
+          galleryImageClick={this.galleryImageClick}
+          viewSwitchClick={this.viewSwitchClick}
+          currentView={this.state.currentView}
+        />
+        <div className={layoutStyles.productDescriptionCompIfFull}>
+          CSS Placement: Product Description
+        </div>
       </div>
     );
   }
