@@ -15,7 +15,6 @@ const OverviewProductInfo = (props) => {
     }
     return <div className={styles.price}>{`$${infoData.default_price}`}</div>;
   };
-
   return (
     <div className={styles.productInfoLayout}>
       <div className={styles.rating}>

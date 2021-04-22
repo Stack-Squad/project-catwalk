@@ -21,5 +21,4 @@
 .rating {
   grid-area: rating;
   display: inline;
-}
 .shareButton { margin: 1% }
