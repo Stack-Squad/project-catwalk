@@ -33,17 +33,14 @@ class QnA extends React.Component {
       if (query.length < 3) {
         queryList = fullQuestionList;
         questionList = queryList.slice(0, 4);
-        // console.log('line 24: ', questionList);
         this.setState({ questionList, queryList });
       } else {
         for (const question of fullQuestionList) {
-          // console.log(question.question_body);
           if (question.question_body.toLowerCase().includes(query.toLowerCase())) {
             queryList.push(question);
           }
         }
         questionList = queryList.slice(0, 4);
-        // console.log('line 32: ', questionList);
         this.setState({ questionList, queryList });
       }
     });
