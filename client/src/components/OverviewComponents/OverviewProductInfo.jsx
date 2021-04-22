@@ -9,7 +9,7 @@ const OverviewProductInfo = (props) => {
       return (
         <div className={styles.price}>
           <div style={{ textDecoration: 'line-through' }}>{`$${infoData.default_price}`}</div>
-          <div>{`$${actualPrice}`}</div>
+          <div style={{ color: 'red' }}>{`$${actualPrice}`}</div>
         </div>
       );
     }
@@ -21,11 +21,17 @@ const OverviewProductInfo = (props) => {
       <div className={styles.rating}>
         {stars.map((star, index) => <span key={index}>{star}</span>)}
         <a href="#ratings-reviews">Read all reviews</a>
+        {' <-- Fix to show number of reviews !OR! Fix to not show this section IF no reviews exist'}
       </div>
       <div className={styles.category}>{infoData.category}</div>
       <div className={styles.name}>{infoData.name}</div>
       {defaultOrChange()}
-      <div className={styles.share}>CSS Placement: Share</div>
+      <div className={styles.share}>
+        <button className={styles.shareButton}>Facebook</button>
+        <button className={styles.shareButton}>Twitter</button>
+        <button className={styles.shareButton}>Pinterest</button>
+        {' <-- Implement Share Functionality.'}
+      </div>
     </div>
   );
 };
