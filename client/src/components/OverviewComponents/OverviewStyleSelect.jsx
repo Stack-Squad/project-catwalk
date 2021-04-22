@@ -11,10 +11,9 @@ const OverviewStyleSelect = (props) => {
   return (
     <div>
       <div>
-        <b>
-          STYLE
-          {' > '}
-        </b>
+        <p style={{ fontWeight: 'bolder', display: 'inline' }}>
+          {'STYLE > '}
+        </p>
         {dataCurrentStyleName}
       </div>
       {data.map((style, index) => {
