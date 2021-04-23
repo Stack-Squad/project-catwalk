@@ -59,11 +59,11 @@ class Answer extends React.Component {
       let index = 0;
       photos = answer.photos.map((photo) => (
         <div key={index++}>
-          <img className="qa_photo" src={photo} alt={index} />
+          <img className="qa_photo" src={photo} alt="" />
         </div>
       ));
     }
-    const answerTag = `by ${answerer}, ${date} | Helpful? Yes(${answer.helpfulness}) | Report`;
+    const answerTag = `by ${answerer}, ${date} | Helpful?`;
 
     return (
       <div className="answer_wrapper">
@@ -72,12 +72,12 @@ class Answer extends React.Component {
           {photos}
         </div>
         <span className="answer_tags">
-          <span>Helpful?</span>
-          <button onClick={this.markHelpful}>Yes</button>
+          <span>{answerTag}</span>
+          <button className="tag" onClick={this.markHelpful}>Yes</button>
           <span>
             {markedHelpful ? `(${answer.helpfulness + 1})` : `(${answer.helpfulness})`}
           </span>
-          {reported ? <span>Reported</span> : <button onClick={this.report}>Report</button>}
+          {reported ? <span className="report">Reported</span> : <button className="tag" onClick={this.report}>Report</button>}
         </span>
       </div>
     );

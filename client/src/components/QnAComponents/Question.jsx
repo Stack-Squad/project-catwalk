@@ -70,11 +70,11 @@ class Question extends React.Component {
         <span className="question_body">{question.question_body}</span>
         <span className="question_tags">
           <span>Helpful?</span>
-          <button onClick={this.markHelpful}>Yes</button>
+          <button className="tag" onClick={this.markHelpful}>Yes</button>
           <span>
             {markedHelpful ? `(${question.question_helpfulness + 1})` : `(${question.question_helpfulness})`}
           </span>
-          <button>Add Answer</button>
+          <button className="tag">Add Answer</button>
         </span>
         <span className="qa_label" id="a_label">A:</span>
         <div className="answer_list_wrapper">
