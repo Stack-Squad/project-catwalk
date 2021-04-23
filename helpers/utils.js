@@ -117,27 +117,24 @@ module.exports.getCart = () => {
 
   return axios(options)
     .then((response) => response.data)
-    .catch((err) => {
-      console.log('utils get cart error:', error);
-    });
+    .catch((error) => error);
 };
 
 module.exports.postToCart = (skuId) => {
   const options = {
     url: '/cart',
-    body: {
-      sku_id: Number.parseInt(skuId),
-    },
     method: 'post',
     baseURL,
     headers: {
       Authorization: token,
+      'Content-Type': 'application/json',
     },
+    data: JSON.stringify({
+      sku_id: Number.parseInt(skuId),
+    }),
   };
 
   return axios(options)
-    .then((response) => response)
-    .catch((error) => {
-      console.log('utils post to cart error: ', error);
-    });
+    .then((response) => JSON.stringify(response.data))
+    .catch((error) => error);
 };
