@@ -5,6 +5,7 @@ import React from 'react';
 import OverviewImgGal from './OverviewComponents/OverviewImgGal';
 import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect';
 import OverviewProductInfo from './OverviewComponents/OverviewProductInfo';
+import OverviewCart from './OverviewComponents/OverviewCart';
 import { getAverageRatings, getStarRatings } from '../../../helpers/ratingsHelper';
 
 import layoutStyles from '../css-modules/overview-layout.module.css';
@@ -184,7 +185,7 @@ class Overview extends React.Component {
               styleSelectSwitchClick={this.styleSelectSwitchClick}
               dataSelected={this.state.dataSelected}
             />
-            <div className={layoutStyles.cartComp}>CSS Placement: Cart</div>
+            <OverviewCart className={layoutStyles.cartComp} />
           </div>
           <div className={layoutStyles.productDescriptionComp}>
             CSS Placement: Product Description
