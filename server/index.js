@@ -82,6 +82,26 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
     });
 });
 
+app.get('/reviews/:productId/:sort', (req, res) => {
+  const { productId, sort } = req.params;
+  utils.getReviews(`/reviews?product_id=${productId}&sort=${sort}`)
+    .then((response) => res.send(response))
+    .catch((err) => {
+      console.log(err.message);
+      res.end();
+    });
+});
+
+app.get('/reviews/:productId', (req, res) => {
+  const { productId } = req.params;
+  utils.getReviews(`/reviews/meta?product_id=${productId}`)
+    .then((response) => res.send(response))
+    .catch((err) => {
+      console.log(err.message);
+      res.end();
+    });
+});
+
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`);
 });
