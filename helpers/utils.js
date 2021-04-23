@@ -53,3 +53,37 @@ module.exports.getQuestionList = (id) => {
       console.log(err);
     });
 };
+
+module.exports.getCart = () => {
+  const options = {
+    url: '/cart',
+    method: 'get',
+    baseURL,
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return axios(options)
+    .then((response) => response.data)
+    .catch((err) => {
+      console.log('utils get cart error:', error);
+    });
+};
+
+module.exports.postToCart = (skuId) => {
+  const options = {
+    url: `/cart?sku_id=${skuId}`,
+    method: 'post',
+    baseURL,
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return axios(options)
+    .then((response) => response.data)
+    .catch(() => {
+      console.log('utils post to cart error: ', error);
+    });
+};

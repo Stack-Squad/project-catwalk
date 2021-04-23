@@ -43,6 +43,21 @@ app.get('/qa/questions/:product_id', (req, res) => {
     });
 });
 
+app.get('/cart', (req, res) => {
+  console.log('cart access request');
+  utils.getCart()
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+app.post('/cart/:sku_id', (req, res) => {
+  console.log('addition to cart request');
+});
+
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`);
 });
