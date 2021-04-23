@@ -1,21 +1,24 @@
 .productInfoLayout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr 0.5fr 1.1fr 0.9fr 0.5fr;
   gap: 0px 0px;
   grid-template-areas:
-    "rating rating"
-    "category category"
-    "name name"
-    "price price"
-    "slogan slogan"
-    "share share";
+    "rating"
+    "category"
+    "name"
+    "price"
+    "slogan"
+    "share";
 }
 .price {
   grid-area: price;
   margin-bottom: 1%
 }
-.share { grid-area: share; }
+.share {
+  grid-area: share;
+  display: inline-flex;
+}
 .name {
   grid-area: name;
   font-size: x-large;
