@@ -47,13 +47,8 @@ class App extends React.Component {
         <Banner />
         <Overview productId={productId} />
         <RelatedItems productId={productId} />
-<<<<<<< HEAD
-        <QnA productId={productId} />
-        <RatingsAndReviews productId={productId} />
-=======
         <QnA questionList={questionList} />
-        <RatingsAndReviews />
->>>>>>> 2a96a09170088924dab4293fa77a02a4b4679d34
+        <RatingsAndReviews productId={productId} />
       </div>
     );
   }
