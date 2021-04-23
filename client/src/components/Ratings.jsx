@@ -9,7 +9,6 @@ const Ratings = (props) => {
   const { reviewData, reviewList, setReviewList } = props;
   const rating = getAverageRatings(reviewData.ratings);
   const recommend = getPercentageRecommend(reviewData.recommended);
-  console.log(reviewList);
 
   return (
     <div className={styles.container}>

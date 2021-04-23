@@ -18,7 +18,7 @@ const Reviews = (props) => {
 
   function moreReviews() {
     const soFar = reviews.length;
-    setReviews(allReviews.slice(0, soFar + 2));
+    setReviews(reviewsList.slice(0, soFar + 2));
   }
 
   useEffect(() => {
@@ -29,7 +29,10 @@ const Reviews = (props) => {
 
   return (
     <div className={styles.container}>
-      <SortOptions setSortBy={setSortBy} />
+      <SortOptions
+        setSortBy={setSortBy}
+        reviewCount={[reviews.length, allReviews.length]}
+      />
       <ReviewsList reviews={reviews} />
       <ReviewsButton
         reviewCount={[reviews.length, allReviews.length]}
