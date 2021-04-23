@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../css-modules/ratings-breakdown.module.css';
-import { getReviewsBreakdown } from '../../../helpers/ratingsHelper';
+import { getReviewsBreakdown, filter, unfilter } from '../../../helpers/ratingsHelper';
 
 const RatingsBreakdown = (props) => {
-  const { reviews, recommend } = props;
+  const { reviews, recommend, setReviewList } = props;
+
+  const [filteredReviews, setFilteredReviews] = useState({});
+
+  const [filters, setFilters] = useState([]);
+
   const reviewsBreakdown = getReviewsBreakdown(reviews);
 
   const getPercentBreakown = (star) => {
@@ -13,20 +18,61 @@ const RatingsBreakdown = (props) => {
   };
 
   const showStarReviews = (event) => {
-    /*
-    * TODO:
-    * Pass function as props to be invoke here
-    * function should take reviewsBreakdown[event.target.value]
-    * as reviews to be rendered in reviewList component
-    * figure out how to make this additive
-    */
-    console.log(event.target.value);
-    console.log(reviewsBreakdown[event.target.value]);
+    const key = event.target.value;
+    const selectedReviews = { ...filteredReviews };
+
+    // if current star ratings doesn't exist in
+    // filtered Ratings
+    if (!(key in filteredReviews)) {
+      selectedReviews[key] = [...reviewsBreakdown[key]];
+    } else {
+      // Selected star ratings exist in filtered reviews.
+      delete selectedReviews[key];
+    }
+
+    if (Object.keys(selectedReviews).length === 0) {
+      setFilteredReviews({});
+      setFilters([]);
+      setReviewList([...reviews]);
+    } else {
+      setFilteredReviews({
+        ...selectedReviews,
+      });
+      let results = [];
+      const selectedFilters = [];
+      for (const star in selectedReviews) {
+        results = [...results, ...selectedReviews[star]];
+        selectedFilters.push(star);
+      }
+
+      setFilters([...selectedFilters]);
+      setReviewList([...results]);
+    }
+  };
+
+  const clearFilters = () => {
+    setFilteredReviews({});
+    setFilters([]);
+    setReviewList([...reviews]);
   };
 
   return (
     <div className={styles.container}>
       <h4>Ratings Breakdown</h4>
+      <div className={styles.filters}>
+        {filters.length > 0 && (
+          <>
+            {filters.map((starRating) => (
+              <span key={starRating} className={styles.ratings}>
+                {starRating}
+                {' '}
+                stars
+              </span>
+            ))}
+            <button onClick={clearFilters}>clear</button>
+          </>
+        )}
+      </div>
       {[5, 4, 3, 2, 1].map((star) => (
         <div key={star} className={styles.layout}>
           <button onClick={showStarReviews} value={star}>

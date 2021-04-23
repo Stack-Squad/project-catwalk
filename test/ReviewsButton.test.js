@@ -1,12 +1,15 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import ReviewsButton from '../client/src/components/ReviewsButton.jsx';
+import ReviewsButton from '../client/src/components/ReviewsButton';
 
-test ("renders ReviewsButton component", () => {
+test('renders ReviewsButton component', () => {
   const wrapper = shallow(
-    <ReviewsButton reviewCount={[2, 5]}
-      moreReviews={undefined}/>);
-    expect(wrapper.hasClass('container')).toEqual(true);
-    expect(wrapper.find('div.container')).toHaveLength(1);
+    <ReviewsButton
+      reviewCount={[2, 5]}
+      moreReviews={undefined}
+    />,
+  );
+  expect(wrapper.hasClass('container')).toEqual(true);
+  expect(wrapper.find('div.container')).toHaveLength(1);
 });
