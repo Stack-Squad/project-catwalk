@@ -5,6 +5,7 @@ import React from 'react';
 import OverviewImgGal from './OverviewComponents/OverviewImgGal';
 import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect';
 import OverviewProductInfo from './OverviewComponents/OverviewProductInfo';
+import { getAverageRatings, getStarRatings } from '../../../helpers/ratingsHelper';
 
 import layoutStyles from '../css-modules/overview-layout.module.css';
 
@@ -31,6 +32,8 @@ class Overview extends React.Component {
       dataSelected: 0,
       ////// state related to product info //////
       infoData: sampleData.productById,
+      stars: getStarRatings(getAverageRatings(sampleData.reviewMetaData.ratings)),
+      actualPrice: sampleData.productStylesById.results[0].sale_price ? sampleData.productStylesById.results[0].sale_price : sampleData.productStylesById.results[0].original_price,
     };
     ////// image gallery functionality //////
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
@@ -115,6 +118,8 @@ class Overview extends React.Component {
     this.state.currentGalleryLength = this.state.currentSelectedStyleImages.length;
     this.state.dataCurrentStyleName = sampleData.productStylesById.results[index].name;
     this.state.dataSelected = index;
+    // change for price
+    this.state.actualPrice = sampleData.productStylesById.results[index].sale_price ? sampleData.productStylesById.results[index].sale_price : sampleData.productStylesById.results[index].original_price
     this.setState({
       currentImg: this.state.currentImg,
       currentSelectedStyleImages: this.state.currentSelectedStyleImages,
@@ -123,7 +128,8 @@ class Overview extends React.Component {
       currentPointInGalleryStart: 0,
       currentPointInGalleryEndNonInclusive: 5,
       dataCurrentStyleName: this.state.dataCurrentStyleName,
-      dataSelected: this.state.dataSelected
+      dataSelected: this.state.dataSelected,
+      actualPrice: this.state.actualPrice // for price changes
     });
   }
 
@@ -149,6 +155,8 @@ class Overview extends React.Component {
             <OverviewProductInfo
               className={layoutStyles.productInfoComp}
               infoData={this.state.infoData}
+              stars={this.state.stars}
+              actualPrice={this.state.actualPrice}
             />
             <OverviewStyleSelect
               className={layoutStyles.styleSelectorComp}
