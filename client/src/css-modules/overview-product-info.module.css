@@ -18,6 +18,7 @@
 .share {
   grid-area: share;
   display: inline-flex;
+  padding-bottom: 1%;
 }
 .name {
   grid-area: name;
@@ -30,4 +31,3 @@
   display: inline-flex;
 }
 .slogan { grid-area: slogan; }
-.shareButton { margin: 1% }
