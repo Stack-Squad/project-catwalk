@@ -105,6 +105,7 @@ class Overview extends React.Component {
     } else {
       e.target.innerHTML = 'Full?';
       this.state.currentView = 'regular';
+
     }
     this.setState({
       currentView: this.state.currentView
@@ -132,6 +133,29 @@ class Overview extends React.Component {
       dataSelected: this.state.dataSelected,
       actualPrice: this.state.actualPrice // for price changes
     });
+  }
+
+  // <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+  // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+  componentDidUpdate (prevProps, prevState) {
+
+    const scriptTwitter = document.createElement("script");
+
+    scriptTwitter.src = "https://platform.twitter.com/widgets.js";
+    scriptTwitter.async = true;
+    scriptTwitter.charset = "utf-8";
+
+    document.body.appendChild(scriptTwitter);
+
+    const scriptPinterest = document.createElement("script");
+
+    scriptPinterest.async = true;
+    scriptPinterest.defer = true;
+    scriptPinterest.src = "//assets.pinterest.com/js/pinit.js";
+    scriptPinterest.dataset.pinBuild = 'doBuild';
+
+    document.body.appendChild(scriptPinterest);
   }
 
   render() {
