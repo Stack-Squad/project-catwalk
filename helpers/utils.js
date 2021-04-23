@@ -73,7 +73,10 @@ module.exports.getCart = () => {
 
 module.exports.postToCart = (skuId) => {
   const options = {
-    url: `/cart?sku_id=${skuId}`,
+    url: '/cart',
+    body: {
+      sku_id: Number.parseInt(skuId),
+    },
     method: 'post',
     baseURL,
     headers: {
@@ -82,8 +85,8 @@ module.exports.postToCart = (skuId) => {
   };
 
   return axios(options)
-    .then((response) => response.data)
-    .catch(() => {
+    .then((response) => response)
+    .catch((error) => {
       console.log('utils post to cart error: ', error);
     });
 };

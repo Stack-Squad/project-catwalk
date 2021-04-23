@@ -55,9 +55,9 @@ app.get('/cart', (req, res) => {
 });
 
 app.post('/cart/:sku_id', (req, res) => {
-  const skuId = req.params.skus_id;
+  const skuId = req.params.sku_id;
   console.log(`addition to cart request for sku_id: ${skuId}`);
-  utils.postToCart()
+  utils.postToCart(skuId)
     .then((data) => {
       console.log(data);
     })
