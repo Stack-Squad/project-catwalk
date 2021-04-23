@@ -121,7 +121,7 @@ class Overview extends React.Component {
     this.state.dataCurrentStyleName = sampleData.productStylesById.results[index].name;
     this.state.dataSelected = index;
     // change for price
-    this.state.actualPrice = sampleData.productStylesById.results[index].sale_price ? sampleData.productStylesById.results[index].sale_price : sampleData.productStylesById.results[index].original_price
+    this.state.actualPrice = sampleData.productStylesById.results[index].sale_price ? sampleData.productStylesById.results[index].sale_price : sampleData.productStylesById.results[index].original_price;
     this.setState({
       currentImg: this.state.currentImg,
       currentSelectedStyleImages: this.state.currentSelectedStyleImages,
@@ -139,23 +139,16 @@ class Overview extends React.Component {
   // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
   // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
   componentDidUpdate (prevProps, prevState) {
-
     const scriptTwitter = document.createElement("script");
-
     scriptTwitter.src = "https://platform.twitter.com/widgets.js";
     scriptTwitter.async = true;
     scriptTwitter.charset = "utf-8";
-
-    document.body.appendChild(scriptTwitter);
-
-    const scriptPinterest = document.createElement("script");
-
-    scriptPinterest.async = true;
-    scriptPinterest.defer = true;
-    scriptPinterest.src = "//assets.pinterest.com/js/pinit.js";
-    scriptPinterest.dataset.pinBuild = 'doBuild';
-
-    document.body.appendChild(scriptPinterest);
+    document.head.appendChild(scriptTwitter);
+    // const scriptPinterest = document.createElement("script");
+    // scriptPinterest.async = true;
+    // scriptPinterest.defer = true;
+    // scriptPinterest.src = "//assets.pinterest.com/js/pinit.js";
+    // document.head.appendChild(scriptPinterest);
   }
 
   render() {
