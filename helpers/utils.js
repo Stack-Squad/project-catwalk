@@ -53,3 +53,54 @@ module.exports.getQuestionList = (id) => {
       console.log(err);
     });
 };
+
+module.exports.markQuestionHelpful = (id) => {
+  const options = {
+    url: `qa/questions/${id}/helpful`,
+    method: 'put',
+    baseURL,
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return axios(options)
+    .then((response) => response.data)
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+module.exports.markAnswerHelpful = (id) => {
+  const options = {
+    url: `qa/answers/${id}/helpful`,
+    method: 'put',
+    baseURL,
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return axios(options)
+    .then((response) => response.data)
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+module.exports.reportAnswer = (id) => {
+  const options = {
+    url: `qa/answers/${id}/report`,
+    method: 'put',
+    baseURL,
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return axios(options)
+    .then((response) => response.data)
+    .catch((err) => {
+      console.log(err);
+    });
+};

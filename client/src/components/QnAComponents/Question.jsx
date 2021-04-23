@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import sampleData from '../../../../helpers/sampleData';
 import Answer from './Answer';
 
@@ -9,8 +10,10 @@ class Question extends React.Component {
       fullAnswerList: [],
       answerList: [],
       isExpanded: false,
+      markedHelpful: false,
     };
     this.onClick = this.onClick.bind(this);
+    this.markHelpful = this.markHelpful.bind(this);
   }
 
   componentDidMount() {
@@ -35,9 +38,25 @@ class Question extends React.Component {
     this.setState({ isExpanded });
   }
 
+  markHelpful() {
+    const { markedHelpful } = this.state;
+    const { question } = this.props;
+    if (!markedHelpful) {
+      axios.put(`/qa/questions/${question.question_id}/helpful`)
+        .then((response) => {
+          this.setState({ markedHelpful: true });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
   render() {
     const { question } = this.props;
-    const { answerList, fullAnswerList, isExpanded } = this.state;
+    const {
+      answerList, fullAnswerList, isExpanded, markedHelpful,
+    } = this.state;
     const buttonText = isExpanded ? 'Collapse Answers' : 'See More Answers';
     const answersButton = (
       <button onClick={this.onClick}>
@@ -45,14 +64,17 @@ class Question extends React.Component {
       </button>
     );
 
-    const questionTag = `Helpful? Yes(${question.question_helpfulness}) | Add Answer`;
-
     return (
       <div className="question_wrapper">
         <span className="qa_label" id="q_label">Q:</span>
         <span className="question_body">{question.question_body}</span>
         <span className="question_tags">
-          {questionTag}
+          <span>Helpful?</span>
+          <button className="tag" onClick={this.markHelpful}>Yes</button>
+          <span>
+            {markedHelpful ? `(${question.question_helpfulness + 1})` : `(${question.question_helpfulness})`}
+          </span>
+          <button className="tag">Add Answer</button>
         </span>
         <span className="qa_label" id="a_label">A:</span>
         <div className="answer_list_wrapper">

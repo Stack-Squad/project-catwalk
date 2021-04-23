@@ -31,7 +31,6 @@ class App extends React.Component {
         axios.get(`qa/questions/${productId}`)
           .then((response) => response.data)
           .then((questionList) => {
-            console.log(questionList);
             this.setState({ questionList });
           });
       })
