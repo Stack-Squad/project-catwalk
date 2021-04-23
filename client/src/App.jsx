@@ -31,7 +31,6 @@ class App extends React.Component {
         axios.get(`qa/questions/${productId}`)
           .then((response) => response.data)
           .then((questionList) => {
-            console.log(questionList);
             this.setState({ questionList });
           });
       })
@@ -48,7 +47,7 @@ class App extends React.Component {
         <Overview productId={productId} />
         <RelatedItems productId={productId} />
         <QnA questionList={questionList} />
-        <RatingsAndReviews />
+        <RatingsAndReviews productId={productId} />
       </div>
     );
   }

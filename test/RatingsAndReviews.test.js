@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import React from 'react';
+import React, { useState } from 'react';
 
 import RatingsAndReviews from '../client/src/components/RatingsAndReviews';
 import Ratings from '../client/src/components/Ratings';
@@ -8,17 +8,20 @@ import sampleData from '../helpers/sampleData';
 
 test('renders RatingsAndReviews component', () => {
   const reviewData = sampleData.reviewMetaData;
-  const { reviewList } = sampleData;
-  const wrapper = shallow(<RatingsAndReviews />);
-  expect(wrapper.contains(
-    <Ratings reviewData={reviewData} reviewList={reviewList} />,
-  )).toEqual(true);
-  expect(wrapper.contains(<Reviews />)).toEqual(true);
+  const reviewList = sampleData.reviewList.results;
+  const setReviews = () => {};
+  const wrapper = shallow(<RatingsAndReviews productId="" />);
+  expect(wrapper.contains(<Reviews reviewsList={reviewList} />)).toEqual(true);
 });
 
 test('renders Ratings component', () => {
   const wrapper = shallow(<RatingsAndReviews />);
   expect(wrapper.find(Ratings)).toHaveLength(1);
+});
+
+test('renders h1 element', () => {
+  const wrapper = shallow(<RatingsAndReviews />);
+  expect(wrapper.find('h1')).toHaveLength(1);
 });
 
 test('renders Reviews component ', () => {

@@ -6,13 +6,19 @@ import styles from '../css-modules/reviews.module.css';
 import sampleData from '../../../helpers/sampleData';
 
 const Reviews = (props) => {
+  const { reviewsList } = props;
   const [sortBy, setSortBy] = useState('relevance');
-  const [allReviews, setAllReviews] = useState(sampleData.reviewList.results);
-  const [reviews, setReviews] = useState(allReviews.slice(0, 2));
+  const [allReviews, setAllReviews] = useState([...reviewsList]);
+  const [reviews, setReviews] = useState(reviewsList.slice(0, 2));
+
+  useEffect(() => {
+    setAllReviews([...reviewsList]);
+    setReviews(reviewsList.slice(0, 2));
+  }, [reviewsList]);
 
   function moreReviews() {
     const soFar = reviews.length;
-    setReviews(allReviews.slice(0, soFar + 2));
+    setReviews(reviewsList.slice(0, soFar + 2));
   }
 
   useEffect(() => {
@@ -23,7 +29,10 @@ const Reviews = (props) => {
 
   return (
     <div className={styles.container}>
-      <SortOptions setSortBy={setSortBy} />
+      <SortOptions
+        setSortBy={setSortBy}
+        reviewCount={[reviews.length, allReviews.length]}
+      />
       <ReviewsList reviews={reviews} />
       <ReviewsButton
         reviewCount={[reviews.length, allReviews.length]}

@@ -12,7 +12,7 @@ test('renders App component', () => {
   const wrapper = shallow(<App />);
   expect(wrapper.contains(<Banner />)).toEqual(true);
   expect(wrapper.contains(<Overview />)).toEqual(false);
-  expect(wrapper.contains(<RatingsAndReviews />)).toEqual(true);
+  expect(wrapper.contains(<RatingsAndReviews productId={17067} />)).toEqual(true);
   expect(wrapper.contains(<QuestionsAnswers />)).toEqual(false);
   expect(wrapper.contains(<RelatedItems />)).toEqual(false);
 });

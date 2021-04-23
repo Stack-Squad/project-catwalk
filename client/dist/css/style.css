@@ -131,7 +131,7 @@ Questions and Answers
   height: 75px;
   width: auto;
   vertical-align: middle;
-  margin-bottom: 5px;
+  margin: 0px 3px 5px 0px;
 }
 .answer_wrapper {
   display: flex;
@@ -145,6 +145,14 @@ Questions and Answers
 .answer_tags {
   font-size: small;
   margin-bottom: 10px;
+}
+.tag {
+  padding: 1px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.report {
+  margin: 5px;
 }
 
 /*************************************

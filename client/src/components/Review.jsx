@@ -1,4 +1,4 @@
-import React, { useState, effect } from 'react';
+import React, { useState, useEffect } from 'react';
 import StarRatings from './StarRatings';
 import ReviewImages from './ReviewImages';
 import styles from '../css-modules/review.module.css';
@@ -7,9 +7,15 @@ import formatDate from '../../../helpers/dateFormatter';
 
 const Review = (props) => {
   const { review } = props;
-  const message = getCharacters(review.body, 250);
+  let message = getCharacters(review.body, 250);
   const [body, setBody] = useState(message);
   const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    message = getCharacters(review.body, 250);
+    setBody(message);
+    setShow(false);
+  }, [review]);
 
   function onToggle() {
     setShow(!show);
