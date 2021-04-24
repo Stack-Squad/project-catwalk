@@ -6,12 +6,12 @@ import Ratings from '../client/src/components/Ratings';
 import Reviews from '../client/src/components/Reviews';
 import sampleData from '../helpers/sampleData';
 
-test('renders RatingsAndReviews component', () => {
-  const reviewData = sampleData.reviewMetaData;
-  const reviewList = sampleData.reviewList.results;
-  const wrapper = shallow(<RatingsAndReviews productId="" />);
-  expect(wrapper.contains(<Reviews reviewsList={reviewList} />)).toEqual(true);
-});
+// test('renders RatingsAndReviews component', () => {
+//   const reviewData = sampleData.reviewMetaData;
+//   const reviewList = sampleData.reviewList.results;
+//   const wrapper = shallow(<RatingsAndReviews productId="" />);
+//   expect(wrapper.contains(<Reviews reviewsList={reviewList} />)).toEqual(true);
+// });
 
 test('renders Ratings component', () => {
   const wrapper = shallow(<RatingsAndReviews />);

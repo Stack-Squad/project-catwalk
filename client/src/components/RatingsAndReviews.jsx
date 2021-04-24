@@ -8,24 +8,20 @@ import { getReviews, getReviewMetadata } from '../../../helpers/api';
 
 const RatingsAndReviews = (props) => {
   const { productId } = props;
-  const [reviewList, setReviewList] = useState(sampleData.reviewList.results);
-  const [reviews, setReviews] = useState(sampleData.reviewList.results);
+  const [reviewList, setReviewList] = useState([...sampleData.reviewList.results]);
+  const [reviews, setReviews] = useState([...sampleData.reviewList.results]);
   const [reviewData, setReviewData] = useState({ ...sampleData.reviewMetaData });
+  const [sortBy, setSortBy] = useState('relevance');
 
   useEffect(() => {
     getReviewMetadata(productId)
       .then((reviewsMeta) => setReviewData({ ...reviewsMeta }))
-      .then(() => getReviews(productId))
+      .then(() => getReviews(productId, sortBy))
       .then((reviewsData) => {
         setReviewList([...reviewsData]);
         setReviews([...reviewsData]);
       });
-    // const reviewsData = await getReviews(productId);
-    // const reviewsMeta = await getReviewMetadata(productId);
-    // setReviewList([...reviewsData]);
-    // setReviews([...reviewsData]);
-    // setReviewData({ ...reviewsMeta });
-  }, []);
+  }, [productId, sortBy]);
 
   return (
     <div id="ratings-reviews">
@@ -36,7 +32,7 @@ const RatingsAndReviews = (props) => {
           reviewList={reviewList}
           setReviewList={setReviews}
         />
-        <Reviews reviewsList={reviews} />
+        <Reviews reviewsList={reviews} setSortBy={setSortBy} />
       </div>
     </div>
   );
