@@ -5,17 +5,19 @@ const OverviewCart = (props) => {
   const { currentStyle } = props;
   const { skus } = currentStyle;
 
-  let sizesFinder = () => {
+  const sizesFinder = () => {
+    const result = new Set();
     for (const sku in skus) {
-      console.log(skus[sku].size)
+      result.add(skus[sku].size);
     }
+    return Array.from(result);
   };
 
   return (
     <form className={styles.cartLayout}>
-      {sizesFinder()}
       <select className={styles.size}>
         <option value="Select Size">Select Size</option>
+        {sizesFinder().map((size) => <option value={size}>{size}</option>)}
       </select>
       <select className={styles.quantity}>
         <option value="1">1</option>
