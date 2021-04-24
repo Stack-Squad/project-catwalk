@@ -104,3 +104,37 @@ module.exports.reportAnswer = (id) => {
       console.log(err);
     });
 };
+
+module.exports.getCart = () => {
+  const options = {
+    url: '/cart',
+    method: 'get',
+    baseURL,
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return axios(options)
+    .then((response) => response.data)
+    .catch((error) => error);
+};
+
+module.exports.postToCart = (skuId) => {
+  const options = {
+    url: '/cart',
+    method: 'post',
+    baseURL,
+    headers: {
+      Authorization: token,
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      sku_id: Number.parseInt(skuId),
+    }),
+  };
+
+  return axios(options)
+    .then((response) => JSON.stringify(response.data))
+    .catch((error) => error);
+};

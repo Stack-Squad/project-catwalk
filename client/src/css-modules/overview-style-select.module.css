@@ -4,7 +4,7 @@
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-area: thumbnailSelectedLayout;
-  padding: 3%;
+  padding: 4%;
 }
 
 .thumbnailSelected {

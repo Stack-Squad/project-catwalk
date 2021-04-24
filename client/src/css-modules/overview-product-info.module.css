@@ -1,17 +1,25 @@
 .productInfoLayout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 0.5fr 1.5fr 0.5fr 0.5fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 0.5fr 1.1fr 0.9fr 0.5fr;
   gap: 0px 0px;
   grid-template-areas:
-    "rating rating"
-    "category category"
-    "name name"
-    "price price"
-    "share share";
+    "rating"
+    "category"
+    "name"
+    "price"
+    "slogan"
+    "share";
 }
-.price { grid-area: price; }
-.share { grid-area: share; }
+.price {
+  grid-area: price;
+  margin-bottom: 1%
+}
+.share {
+  grid-area: share;
+  display: inline-flex;
+  padding-bottom: 1%;
+}
 .name {
   grid-area: name;
   font-size: x-large;
@@ -20,7 +28,6 @@
 .category { grid-area: category; }
 .rating {
   grid-area: rating;
-  display: inline;
+  display: inline-flex;
 }
-
-.shareButton { margin: 1% }
+.slogan { grid-area: slogan; }
