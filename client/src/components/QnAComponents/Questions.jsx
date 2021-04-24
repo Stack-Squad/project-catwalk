@@ -1,17 +1,24 @@
 import React from 'react';
 import Question from './Question';
+import QAModal from './QAModal';
 import sampleData from '../../../../helpers/sampleData';
 
 class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      showModal: false,
     };
+    this.handleToggleModal = this.handleToggleModal.bind(this);
+  }
+
+  handleToggleModal() {
+    this.setState({ showModal: !this.state.showModal });
   }
 
   render() {
     const { questions, fullList, onClick } = this.props;
+    const { showModal } = this.state;
     questions.sort((a, b) => (b.question_helpfulness - a.question_helpfulness));
     const listItems = questions.map((question) => (
       <div key={question.question_id}>
@@ -29,7 +36,12 @@ class Questions extends React.Component {
       <div className="question_list_wrapper">
         {listItems}
         {fullList.length > questions.length && moreQuestionsButton}
-        <button className="qa_button">Add a Question +</button>
+        <button className="qa_button" onClick={this.handleToggleModal}>Add a Question +</button>
+        {showModal && (
+          <QAModal onCloseRequest={this.handleToggleModal}>
+            Hello Modal!
+          </QAModal>
+        )}
       </div>
     );
   }
