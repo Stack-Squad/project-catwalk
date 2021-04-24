@@ -217,15 +217,23 @@ Modal Stuff
 
 /* The Close Button */
 .qa-close {
-  color: #aaa;
+  color: rgb(180, 180, 180);
   float: right;
   font-size: 28px;
   font-weight: bold;
+  background-color: green;
+  border-radius: 5px;
 }
 
 .qa-close:hover,
 .qa-close:focus {
-  color: black;
+  color: white;
   text-decoration: none;
   cursor: pointer;
 }
+
+/*************************************
+Add Question Form
+*************************************/
+
+
