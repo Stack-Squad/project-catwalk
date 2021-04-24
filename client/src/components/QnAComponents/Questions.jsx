@@ -1,6 +1,7 @@
 import React from 'react';
 import Question from './Question';
 import QAModal from './QAModal';
+import AddQuestionForm from './AddQuestionForm';
 import sampleData from '../../../../helpers/sampleData';
 
 class Questions extends React.Component {
@@ -19,7 +20,12 @@ class Questions extends React.Component {
   }
 
   render() {
-    const { questions, fullList, onClick } = this.props;
+    const {
+      questions,
+      fullList,
+      productName,
+      onClick,
+    } = this.props;
     const { showModal } = this.state;
     questions.sort((a, b) => (b.question_helpfulness - a.question_helpfulness));
     const listItems = questions.map((question) => (
@@ -41,7 +47,7 @@ class Questions extends React.Component {
         <button className="qa_button" onClick={this.handleToggleModal}>Add a Question +</button>
         {showModal && (
           <QAModal onCloseRequest={this.handleToggleModal}>
-            Hello Question Modal!
+            <AddQuestionForm productName={productName} />
           </QAModal>
         )}
       </div>
