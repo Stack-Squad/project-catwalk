@@ -132,6 +132,8 @@ Questions and Answers
   width: auto;
   vertical-align: middle;
   margin: 0px 3px 5px 0px;
+  border-style: solid;
+  border-width: 1px;
 }
 .answer_wrapper {
   display: flex;
