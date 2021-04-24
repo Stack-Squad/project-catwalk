@@ -20,11 +20,6 @@ const RatingsAndReviews = (props) => {
         setReviewList([...reviewsData]);
         setReviews([...reviewsData]);
       });
-    // const reviewsData = await getReviews(productId);
-    // const reviewsMeta = await getReviewMetadata(productId);
-    // setReviewList([...reviewsData]);
-    // setReviews([...reviewsData]);
-    // setReviewData({ ...reviewsMeta });
   }, []);
 
   return (
