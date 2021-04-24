@@ -36,6 +36,8 @@ class Overview extends React.Component {
       stars: getStarRatings(getAverageRatings(sampleData.reviewMetaData.ratings)),
       actualPrice: sampleData.productStylesById.results[0].sale_price ? sampleData.productStylesById.results[0].sale_price : sampleData.productStylesById.results[0].original_price,
       amountOfReviews: sampleData.reviewList.count,
+      ////// state related to cart //////
+      currentStyle: sampleData.productStylesById.results[0],
     };
     ////// image gallery functionality //////
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
@@ -185,7 +187,10 @@ class Overview extends React.Component {
               styleSelectSwitchClick={this.styleSelectSwitchClick}
               dataSelected={this.state.dataSelected}
             />
-            <OverviewCart className={layoutStyles.cartComp} />
+            <OverviewCart
+              className={layoutStyles.cartComp}
+              currentStyle={this.state.currentStyle}
+            />
           </div>
           <div className={layoutStyles.productDescriptionComp}>
             CSS Placement: Product Description
