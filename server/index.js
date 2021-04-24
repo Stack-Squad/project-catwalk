@@ -88,6 +88,21 @@ app.get('/reviews/:productId/:sort', (req, res) => {
     .then((response) => res.send(response))
     .catch((err) => {
       console.log(err.message);
+    });
+});
+
+app.get('/cart', (req, res) => {
+  console.log('cart access request');
+  utils.getCart()
+    .then((data) => {
+      res.statusCode = 200;
+      res.send(data);
+      res.end();
+    })
+    .catch((error) => {
+      console.log(`Error for getting cart from API: ${error}`);
+      res.statusCode = 404;
+      res.statusMessage = `Could not get cart info: ${error}`;
       res.end();
     });
 });
@@ -98,6 +113,23 @@ app.get('/reviews/:productId', (req, res) => {
     .then((response) => res.send(response))
     .catch((err) => {
       console.log(err.message);
+    });
+});
+
+app.post('/cart/:sku_id', (req, res) => {
+  const skuId = req.params.sku_id;
+  console.log(`Addition to cart request for sku_id: ${skuId}`);
+  utils.postToCart(skuId)
+    .then((data) => {
+      res.statusCode = 201;
+      res.statusMessage = 'Created';
+      res.send(data);
+      res.end();
+    })
+    .catch((error) => {
+      console.log(`Error for addition to cart with sku_id, '${skuId}': ${error}`);
+      res.statusCode = 404;
+      res.statusMessage = `Could not add to cart: ${error}`;
       res.end();
     });
 });

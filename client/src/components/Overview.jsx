@@ -34,6 +34,7 @@ class Overview extends React.Component {
       infoData: sampleData.productById,
       stars: getStarRatings(getAverageRatings(sampleData.reviewMetaData.ratings)),
       actualPrice: sampleData.productStylesById.results[0].sale_price ? sampleData.productStylesById.results[0].sale_price : sampleData.productStylesById.results[0].original_price,
+      amountOfReviews: sampleData.reviewList.count,
     };
     ////// image gallery functionality //////
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
@@ -104,6 +105,7 @@ class Overview extends React.Component {
     } else {
       e.target.innerHTML = 'Full?';
       this.state.currentView = 'regular';
+
     }
     this.setState({
       currentView: this.state.currentView
@@ -119,7 +121,7 @@ class Overview extends React.Component {
     this.state.dataCurrentStyleName = sampleData.productStylesById.results[index].name;
     this.state.dataSelected = index;
     // change for price
-    this.state.actualPrice = sampleData.productStylesById.results[index].sale_price ? sampleData.productStylesById.results[index].sale_price : sampleData.productStylesById.results[index].original_price
+    this.state.actualPrice = sampleData.productStylesById.results[index].sale_price ? sampleData.productStylesById.results[index].sale_price : sampleData.productStylesById.results[index].original_price;
     this.setState({
       currentImg: this.state.currentImg,
       currentSelectedStyleImages: this.state.currentSelectedStyleImages,
@@ -131,6 +133,22 @@ class Overview extends React.Component {
       dataSelected: this.state.dataSelected,
       actualPrice: this.state.actualPrice // for price changes
     });
+  }
+
+  // <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+  // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+  componentDidUpdate (prevProps, prevState) {
+    const scriptTwitter = document.createElement("script");
+    scriptTwitter.src = "https://platform.twitter.com/widgets.js";
+    scriptTwitter.async = true;
+    scriptTwitter.charset = "utf-8";
+    document.head.appendChild(scriptTwitter);
+    // const scriptPinterest = document.createElement("script");
+    // scriptPinterest.async = true;
+    // scriptPinterest.defer = true;
+    // scriptPinterest.src = "//assets.pinterest.com/js/pinit.js";
+    // document.head.appendChild(scriptPinterest);
   }
 
   render() {
@@ -157,6 +175,7 @@ class Overview extends React.Component {
               infoData={this.state.infoData}
               stars={this.state.stars}
               actualPrice={this.state.actualPrice}
+              amountOfReviews={this.state.amountOfReviews}
             />
             <OverviewStyleSelect
               className={layoutStyles.styleSelectorComp}
