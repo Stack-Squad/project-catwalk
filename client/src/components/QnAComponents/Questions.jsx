@@ -13,7 +13,9 @@ class Questions extends React.Component {
   }
 
   handleToggleModal() {
-    this.setState({ showModal: !this.state.showModal });
+    let { showModal } = this.state;
+    showModal = !showModal;
+    this.setState({ showModal });
   }
 
   render() {
@@ -39,7 +41,7 @@ class Questions extends React.Component {
         <button className="qa_button" onClick={this.handleToggleModal}>Add a Question +</button>
         {showModal && (
           <QAModal onCloseRequest={this.handleToggleModal}>
-            Hello Modal!
+            Hello Question Modal!
           </QAModal>
         )}
       </div>

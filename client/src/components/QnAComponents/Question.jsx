@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import sampleData from '../../../../helpers/sampleData';
 import Answer from './Answer';
+import QAModal from './QAModal';
 
 class Question extends React.Component {
   constructor(props) {
@@ -11,9 +12,11 @@ class Question extends React.Component {
       answerList: [],
       isExpanded: false,
       markedHelpful: false,
+      showModal: false,
     };
     this.onClick = this.onClick.bind(this);
     this.markHelpful = this.markHelpful.bind(this);
+    this.handleToggleModal = this.handleToggleModal.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +33,12 @@ class Question extends React.Component {
     ));
     const answerList = fullAnswerList.slice(0, 2);
     this.setState({ fullAnswerList, answerList });
+  }
+
+  handleToggleModal() {
+    let { showModal } = this.state;
+    showModal = !showModal;
+    this.setState({ showModal });
   }
 
   onClick() {
@@ -55,7 +64,7 @@ class Question extends React.Component {
   render() {
     const { question } = this.props;
     const {
-      answerList, fullAnswerList, isExpanded, markedHelpful,
+      answerList, fullAnswerList, isExpanded, markedHelpful, showModal,
     } = this.state;
     const buttonText = isExpanded ? 'Collapse Answers' : 'See More Answers';
     const answersButton = (
@@ -74,7 +83,12 @@ class Question extends React.Component {
           <span>
             {markedHelpful ? `(${question.question_helpfulness + 1})` : `(${question.question_helpfulness})`}
           </span>
-          <button className="tag">Add Answer</button>
+          <button className="tag" onClick={this.handleToggleModal}>Add Answer</button>
+          {showModal && (
+            <QAModal onCloseRequest={this.handleToggleModal}>
+              Hello Answer Modal!
+            </QAModal>
+          )}
         </span>
         <span className="qa_label" id="a_label">A:</span>
         <div className="answer_list_wrapper">
