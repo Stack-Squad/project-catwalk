@@ -30,7 +30,7 @@ class Questions extends React.Component {
     questions.sort((a, b) => (b.question_helpfulness - a.question_helpfulness));
     const listItems = questions.map((question) => (
       <div key={question.question_id}>
-        <Question question={question} />
+        <Question question={question} productName={productName} />
       </div>
     ));
 

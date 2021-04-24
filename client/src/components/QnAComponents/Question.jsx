@@ -3,6 +3,7 @@ import axios from 'axios';
 import sampleData from '../../../../helpers/sampleData';
 import Answer from './Answer';
 import QAModal from './QAModal';
+import AddAnswerForm from './AddAnswerForm';
 
 class Question extends React.Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class Question extends React.Component {
   }
 
   render() {
-    const { question } = this.props;
+    const { question, productName } = this.props;
     const {
       answerList, fullAnswerList, isExpanded, markedHelpful, showModal,
     } = this.state;
@@ -86,7 +87,7 @@ class Question extends React.Component {
           <button className="tag" onClick={this.handleToggleModal}>Add Answer</button>
           {showModal && (
             <QAModal onCloseRequest={this.handleToggleModal}>
-              Hello Answer Modal!
+              <AddAnswerForm productName={productName} questionBody={question.question_body} />
             </QAModal>
           )}
         </span>
