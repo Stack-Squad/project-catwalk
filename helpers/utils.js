@@ -3,6 +3,19 @@ const axios = require('axios');
 const token = process.env.TOKEN;
 const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
+const option = {
+  baseURL,
+  headers: {
+    Authorization: token,
+  },
+};
+
+module.exports.getReviews = (url) => axios.get(url, option)
+  .then((response) => response.data)
+  .catch((err) => {
+    console.error(err.message);
+  });
+
 module.exports.getProducts = () => {
   const options = {
     url: '/products',
