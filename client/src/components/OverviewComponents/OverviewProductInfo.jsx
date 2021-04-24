@@ -47,7 +47,7 @@ const OverviewProductInfo = (props) => {
       <div className={styles.category}>{infoData.category}</div>
       <div className={styles.name}>{infoData.name}</div>
       {defaultOrChange()}
-      <div className={styles.slogan}>{infoData.slogan}</div>
+      <div className={styles.slogan}>{`"${infoData.slogan}"`}</div>
       <div className={styles.share}>
         <iframe title="share" src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A3000%2F&layout=button&size=small&width=67&height=20&appId" width="67" height="20" style={{ border: 'none', overflow: 'hidden' }} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" />
         <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-show-count="false">Tweet</a>
