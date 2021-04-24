@@ -6,16 +6,10 @@ import { getCharacters } from '../../../helpers/ratingsHelper';
 import formatDate from '../../../helpers/dateFormatter';
 
 const Review = (props) => {
-  const { review } = props;
-  let message = getCharacters(review.body, 250);
+  const { review, markHelpFul } = props;
+  const message = getCharacters(review.body, 250);
   const [body, setBody] = useState(message);
   const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    message = getCharacters(review.body, 250);
-    setBody(message);
-    setShow(false);
-  }, [review]);
 
   function onToggle() {
     setShow(!show);
@@ -24,6 +18,17 @@ const Review = (props) => {
     } else {
       setBody(review.body);
     }
+  }
+
+  function onSelect(event) {
+    /*
+     * on click check if current selected reviewId exist
+     * in feedback.
+     * If no then add reviewId to feedback
+     * setFeedback with new set of feedbacks.
+    */
+    const reviewId = event.target.value;
+    markHelpFul(reviewId);
   }
 
   return (
@@ -82,7 +87,7 @@ const Review = (props) => {
           Helpful?
           {'  '}
           <span>
-            <button>
+            <button value={review.review_id} onClick={onSelect}>
               Yes
               {' '}
             </button>

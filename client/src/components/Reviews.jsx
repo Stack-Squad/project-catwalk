@@ -6,7 +6,9 @@ import styles from '../css-modules/reviews.module.css';
 import sampleData from '../../../helpers/sampleData';
 
 const Reviews = (props) => {
-  const { reviewsList, setSortBy } = props;
+  const {
+    reviewsList, setSortBy, markHelpFul,
+  } = props;
   const [allReviews, setAllReviews] = useState([...reviewsList]);
   const [reviews, setReviews] = useState(reviewsList.slice(0, 2));
 
@@ -26,7 +28,10 @@ const Reviews = (props) => {
         setSortBy={setSortBy}
         reviewCount={[reviews.length, allReviews.length]}
       />
-      <ReviewsList reviews={reviews} />
+      <ReviewsList
+        reviews={reviews}
+        markHelpFul={markHelpFul}
+      />
       <ReviewsButton
         reviewCount={[reviews.length, allReviews.length]}
         moreReviews={moreReviews}
