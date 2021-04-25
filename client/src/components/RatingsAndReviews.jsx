@@ -55,7 +55,6 @@ const RatingsAndReviews = (props) => {
           setReviews([...reviewsData]);
           setFeedback(newFeedback);
         });
-      console.log('Clicked Yes');
     }
   }
 
