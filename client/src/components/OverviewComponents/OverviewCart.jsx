@@ -17,7 +17,7 @@ const OverviewCart = (props) => {
     <form className={styles.cartLayout}>
       <select className={styles.size}>
         <option value="Select Size">Select Size</option>
-        {sizesFinder().map((size) => <option value={size}>{size}</option>)}
+        {sizesFinder().map((size, index) => <option key={index} value={size}>{size}</option>)}
       </select>
       <select className={styles.quantity}>
         <option value="1">1</option>
