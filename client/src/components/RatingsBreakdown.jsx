@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../css-modules/ratings-breakdown.module.css';
-import { getReviewsBreakdown, filter, unfilter } from '../../../helpers/ratingsHelper';
+import { getReviewsBreakdown } from '../../../helpers/ratingsHelper';
 
 const RatingsBreakdown = (props) => {
   const { reviews, recommend, setReviewList } = props;
