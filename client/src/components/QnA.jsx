@@ -61,6 +61,8 @@ class QnA extends React.Component {
   render() {
     const { questionList, query, queryList } = this.state;
     const { productName } = this.props;
+    // eslint-disable-next-line react/destructuring-assignment
+    const productId = this.props.questionList.product_id;
     const qaHeading = 'QUESTIONS & ANSWERS';
 
     return (
@@ -74,6 +76,7 @@ class QnA extends React.Component {
           questions={questionList}
           fullList={queryList}
           productName={productName}
+          productId={productId}
           onClick={this.onClick}
         />
       </div>

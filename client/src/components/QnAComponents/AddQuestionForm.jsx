@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class AddQuestionForm extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class AddQuestionForm extends React.Component {
       nickname: '',
       email: '',
       warning: false,
+      success: false,
     };
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.handleNicknameChange = this.handleNicknameChange.bind(this);
@@ -30,28 +32,50 @@ class AddQuestionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const { questionBody, nickname, email } = this.state;
-    if (!questionBody || !nickname || !email) {
+    const { productId } = this.props;
+    const emailValidation = /.{1,}@[^.]{1,}/;
+    if (!questionBody || !nickname || !emailValidation.test(email)) {
       this.setState({warning: true});
       return;
     }
-    this.setState({warning: false});
+    // this.setState({warning: false, success: true});
+    // e.target.reset();
+    axios.post('/qa/questions', {
+      body: questionBody,
+      name: nickname,
+      email: email,
+      product_id: productId,
+    })
+    .then((response) => {
+      this.setState({
+        questionBody: '',
+        nickname: '',
+        email: '',
+        warning: false,
+        success: true,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   render() {
-    const { questionBody, nickname, email, warning } = this.state;
+    const { questionBody, nickname, email, warning, success } = this.state;
     const { productName } = this.props;
 
     const title = 'Ask Your Question';
     const subtitle = `About the ${productName}`;
 
     let warningMessage = 'You must enter the following: ';
+    const emailValidation = /.{1,}@[^.]{1,}/;
     if (!questionBody) {
       warningMessage = warningMessage + 'your question, ';
     }
     if (!nickname) {
       warningMessage = warningMessage + 'your nickname, ';
     }
-    if (!email) {
+    if (!emailValidation.test(email)) {
       warningMessage = warningMessage + 'your email, ';
     }
     warningMessage = warningMessage.slice(0, warningMessage.length - 2);
@@ -72,9 +96,13 @@ class AddQuestionForm extends React.Component {
           <input type="submit" value="Submit" />
         </form>
         {warning && <span>{warningMessage}</span>}
+        {success && <span>Success!</span>}
       </div>
     );
   }
 }
 
 export default AddQuestionForm;
+
+// email validation regex:
+// .{1,}@[^.]{1,}

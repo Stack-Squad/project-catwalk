@@ -25,6 +25,7 @@ class Questions extends React.Component {
       fullList,
       productName,
       onClick,
+      productId,
     } = this.props;
     const { showModal } = this.state;
     questions.sort((a, b) => (b.question_helpfulness - a.question_helpfulness));
@@ -47,7 +48,7 @@ class Questions extends React.Component {
         <button className="qa_button" onClick={this.handleToggleModal}>Add a Question +</button>
         {showModal && (
           <QAModal onCloseRequest={this.handleToggleModal}>
-            <AddQuestionForm productName={productName} />
+            <AddQuestionForm productName={productName} productId={productId} />
           </QAModal>
         )}
       </div>
