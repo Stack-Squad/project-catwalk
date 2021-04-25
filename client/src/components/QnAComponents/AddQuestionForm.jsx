@@ -7,6 +7,7 @@ class AddQuestionForm extends React.Component {
       questionBody: '',
       nickname: '',
       email: '',
+      warning: false,
     };
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.handleNicknameChange = this.handleNicknameChange.bind(this);
@@ -27,15 +28,33 @@ class AddQuestionForm extends React.Component {
   }
 
   handleSubmit(e) {
-
+    e.preventDefault();
+    const { questionBody, nickname, email } = this.state;
+    if (!questionBody || !nickname || !email) {
+      this.setState({warning: true});
+      return;
+    }
+    this.setState({warning: false});
   }
 
   render() {
-    const { questionBody, nickname, email } = this.state;
+    const { questionBody, nickname, email, warning } = this.state;
     const { productName } = this.props;
 
     const title = 'Ask Your Question';
     const subtitle = `About the ${productName}`;
+
+    let warningMessage = 'You must enter the following: ';
+    if (!questionBody) {
+      warningMessage = warningMessage + 'your question, ';
+    }
+    if (!nickname) {
+      warningMessage = warningMessage + 'your nickname, ';
+    }
+    if (!email) {
+      warningMessage = warningMessage + 'your email, ';
+    }
+    warningMessage = warningMessage.slice(0, warningMessage.length - 2);
 
     return (
       <div className="question-form-wrapper">
@@ -43,13 +62,16 @@ class AddQuestionForm extends React.Component {
         <div className="form-subtitle" id="q-form-subtitle">{subtitle}</div>
         <form className="question-form" onSubmit={this.handleSubmit}>
           <label htmlFor="question-body">Your Question*: </label>
-          <textarea id="question-body" name="fname" value={questionBody} onChange={this.handleQuestionChange} maxLength="100" required />
+          <textarea id="question-body" name="fname" value={questionBody} onChange={this.handleQuestionChange} maxLength="100"  />
           <label htmlFor="nickname">What is your nickname*: </label>
-          <input type="text" id="nickname" name="nickname" value={nickname} onChange={this.handleNicknameChange} required />
+          <input type="text" id="nickname" name="nickname" value={nickname} onChange={this.handleNicknameChange} placeholder="Example: jackson11!" maxLength="60"  />
+          <span>For privacy reasons, do not use your full name or email address.</span>
           <label htmlFor="email">Your email*: </label>
-          <input type="text" id="email" name="email" value={email} onChange={this.handleEmailChange} required />
+          <input type="text" id="email" name="email" value={email} onChange={this.handleEmailChange} placeholder="Example: jane@doe.com" maxLength="60"  />
+          <span>For authentication reason, you will not be emailed.</span>
           <input type="submit" value="Submit" />
         </form>
+        {warning && <span>{warningMessage}</span>}
       </div>
     );
   }
