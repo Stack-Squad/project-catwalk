@@ -11,3 +11,7 @@ export const getReviewMetadata = (productId) => axios.get(`/reviews/${productId}
 export const markReviewHelpful = (reviewId) => axios.put(`/reviews/${reviewId}/helpful`)
   .then((response) => response.data)
   .catch((err) => console.log(err.message));
+
+export const reportReview = (reviewId) => axios.put(`/reviews/${reviewId}/report`)
+  .then((response) => response.data)
+  .catch((err) => console.log(err.message));

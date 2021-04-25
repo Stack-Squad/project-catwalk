@@ -16,7 +16,7 @@ module.exports.getReviews = (url) => axios.get(url, option)
     console.error(err.message);
   });
 
-module.exports.markReviewHelpful = (url) => axios.put(url, null, option)
+module.exports.updateReview = (url) => axios.put(url, null, option)
   .then((response) => response.data)
   .catch((err) => {
     console.error(err.message);
