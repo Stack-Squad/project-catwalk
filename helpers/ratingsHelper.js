@@ -48,8 +48,10 @@ export const getAverageRatings = (ratings) => {
     totalRatings += (rating * numRating);
     numRatings += numRating;
   }
+
   const averageRatings = totalRatings / numRatings;
-  return Math.round(averageRatings * 10) / 10;
+  // return Math.round(averageRatings * 10) / 10;
+  return parseFloat(averageRatings).toFixed(1);
 };
 
 export const getReviewsBreakdown = (reviews) => {
