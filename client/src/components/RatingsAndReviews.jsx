@@ -61,6 +61,7 @@ const RatingsAndReviews = (props) => {
   }
 
   function report(reviewId) {
+    const newFeedback = new Set(feedback);
     reportReview(reviewId)
       .then(() => getReviews(productId, sortBy))
       .then((reviewsData) => {
