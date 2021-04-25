@@ -82,6 +82,26 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
     });
 });
 
+app.get('/reviews/:productId/:sort', (req, res) => {
+  const { productId, sort } = req.params;
+  utils.getReviews(`/reviews?product_id=${productId}&sort=${sort}`)
+    .then((response) => res.send(response))
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
+app.put('/reviews/:reviewId/helpful', (req, res) => {
+  const { reviewId } = req.params;
+  utils.markReviewHelpful(`/reviews/${reviewId}/helpful`)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
 app.get('/cart', (req, res) => {
   console.log('cart access request');
   utils.getCart()
@@ -95,6 +115,15 @@ app.get('/cart', (req, res) => {
       res.statusCode = 404;
       res.statusMessage = `Could not get cart info: ${error}`;
       res.end();
+    });
+});
+
+app.get('/reviews/:productId', (req, res) => {
+  const { productId } = req.params;
+  utils.getReviews(`/reviews/meta?product_id=${productId}`)
+    .then((response) => res.send(response))
+    .catch((err) => {
+      console.log(err.message);
     });
 });
 

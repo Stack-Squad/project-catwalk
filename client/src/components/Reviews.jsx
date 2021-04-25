@@ -6,8 +6,9 @@ import styles from '../css-modules/reviews.module.css';
 import sampleData from '../../../helpers/sampleData';
 
 const Reviews = (props) => {
-  const { reviewsList } = props;
-  const [sortBy, setSortBy] = useState('relevance');
+  const {
+    reviewsList, setSortBy, markHelpFul,
+  } = props;
   const [allReviews, setAllReviews] = useState([...reviewsList]);
   const [reviews, setReviews] = useState(reviewsList.slice(0, 2));
 
@@ -21,19 +22,16 @@ const Reviews = (props) => {
     setReviews(reviewsList.slice(0, soFar + 2));
   }
 
-  useEffect(() => {
-    console.log(sortBy);
-    // TODO: Make api call here to get
-    // product reviews.
-  }, [sortBy]);
-
   return (
     <div className={styles.container}>
       <SortOptions
         setSortBy={setSortBy}
         reviewCount={[reviews.length, allReviews.length]}
       />
-      <ReviewsList reviews={reviews} />
+      <ReviewsList
+        reviews={reviews}
+        markHelpFul={markHelpFul}
+      />
       <ReviewsButton
         reviewCount={[reviews.length, allReviews.length]}
         moreReviews={moreReviews}
