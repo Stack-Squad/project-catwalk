@@ -91,6 +91,28 @@ app.get('/reviews/:productId/:sort', (req, res) => {
     });
 });
 
+app.put('/reviews/:reviewId/helpful', (req, res) => {
+  const { reviewId } = req.params;
+  utils.updateReview(`/reviews/${reviewId}/helpful`)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
+app.put('/reviews/:reviewId/report', (req, res) => {
+  const { reviewId } = req.params;
+  utils.updateReview(`/reviews/${reviewId}/report`)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
 app.get('/cart', (req, res) => {
   console.log('cart access request');
   utils.getCart()

@@ -6,16 +6,10 @@ import { getCharacters } from '../../../helpers/ratingsHelper';
 import formatDate from '../../../helpers/dateFormatter';
 
 const Review = (props) => {
-  const { review } = props;
-  let message = getCharacters(review.body, 250);
+  const { review, markHelpFul, report } = props;
+  const message = getCharacters(review.body, 250);
   const [body, setBody] = useState(message);
   const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    message = getCharacters(review.body, 250);
-    setBody(message);
-    setShow(false);
-  }, [review]);
 
   function onToggle() {
     setShow(!show);
@@ -82,7 +76,10 @@ const Review = (props) => {
           Helpful?
           {'  '}
           <span>
-            <button>
+            <button
+              value={review.review_id}
+              onClick={(event) => markHelpFul(event.target.value)}
+            >
               Yes
               {' '}
             </button>
@@ -93,7 +90,14 @@ const Review = (props) => {
           {' '}
           |
           {' '}
-          <span><button>Report</button></span>
+          <span>
+            <button
+              value={review.review_id}
+              onClick={(event) => report(event.target.value)}
+            >
+              Report
+            </button>
+          </span>
         </p>
       </div>
     </div>

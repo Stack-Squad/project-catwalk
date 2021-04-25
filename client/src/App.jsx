@@ -51,7 +51,7 @@ class App extends React.Component {
         <Overview productId={productId} />
         <RelatedItems productId={productId} />
         <QnA questionList={questionList} productName={currentProduct.name} />
-        <RatingsAndReviews productId={17071} />
+        <RatingsAndReviews productId={productId} />
       </div>
     );
   }
