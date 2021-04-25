@@ -20,17 +20,6 @@ const Review = (props) => {
     }
   }
 
-  function onSelect(event) {
-    /*
-     * on click check if current selected reviewId exist
-     * in feedback.
-     * If no then add reviewId to feedback
-     * setFeedback with new set of feedbacks.
-    */
-    const reviewId = event.target.value;
-    markHelpFul(reviewId);
-  }
-
   return (
     <div className={styles.container}>
       <div className={styles.reviewHeading}>
@@ -87,7 +76,10 @@ const Review = (props) => {
           Helpful?
           {'  '}
           <span>
-            <button value={review.review_id} onClick={onSelect}>
+            <button
+              value={review.review_id}
+              onClick={(event) => markHelpFul(event.target.value)}
+            >
               Yes
               {' '}
             </button>
