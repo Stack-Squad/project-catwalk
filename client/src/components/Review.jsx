@@ -6,7 +6,7 @@ import { getCharacters } from '../../../helpers/ratingsHelper';
 import formatDate from '../../../helpers/dateFormatter';
 
 const Review = (props) => {
-  const { review, markHelpFul } = props;
+  const { review, markHelpFul, report } = props;
   const message = getCharacters(review.body, 250);
   const [body, setBody] = useState(message);
   const [show, setShow] = useState(false);
@@ -90,7 +90,14 @@ const Review = (props) => {
           {' '}
           |
           {' '}
-          <span><button>Report</button></span>
+          <span>
+            <button
+              value={review.review_id}
+              onClick={(event) => report(event.target.value)}
+            >
+              Report
+            </button>
+          </span>
         </p>
       </div>
     </div>
