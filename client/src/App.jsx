@@ -14,6 +14,7 @@ class App extends React.Component {
     this.state = {
       productId: sampleData.productList[0].id,
       questionList: sampleData.questionList,
+      currentProduct: sampleData.productList[0],
     };
   }
 
@@ -22,7 +23,10 @@ class App extends React.Component {
     const index = Math.floor(Math.random() * 5);
     axios.get('/products')
       .then((response) => response.data)
-      .then((productList) => productList[index].id)
+      .then((productList) => {
+        this.setState({ currentProduct: productList[index] });
+        return productList[index].id;
+      })
       .then((productId) => {
         this.setState({ productId });
         return productId;
@@ -40,14 +44,17 @@ class App extends React.Component {
   }
 
   render() {
-    const { productId, questionList } = this.state;
+    const { productId, questionList, currentProduct } = this.state;
     return (
       <div>
         <Banner />
         <Overview productId={productId} />
         <RelatedItems productId={productId} />
-        <QnA questionList={questionList} />
-        <RatingsAndReviews productId={productId} />
+        <QnA questionList={questionList} productName={currentProduct.name} />
+        <RatingsAndReviews
+          productId={productId}
+          productName={currentProduct.name}
+        />
       </div>
     );
   }

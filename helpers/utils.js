@@ -16,7 +16,7 @@ module.exports.getReviews = (url) => axios.get(url, option)
     console.error(err.message);
   });
 
-module.exports.markReviewHelpful = (url) => axios.put(url, null, option)
+module.exports.updateReview = (url) => axios.put(url, null, option)
   .then((response) => response.data)
   .catch((err) => {
     console.error(err.message);
@@ -156,4 +156,28 @@ module.exports.postToCart = (skuId) => {
   return axios(options)
     .then((response) => JSON.stringify(response.data))
     .catch((error) => error);
+};
+
+module.exports.addQuestion = (form) => {
+  const { body, name, email } = form;
+  const id = parseInt(form.product_id);
+
+  const options = {
+    url: '/qa/questions',
+    baseURL,
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return axios.post('/qa/questions', {
+    body,
+    name,
+    email,
+    product_id: id,
+  }, options)
+    .then((response) => response.data)
+    .catch((err) => {
+      console.log(err.message);
+    });
 };
