@@ -86,18 +86,20 @@ class AddQuestionForm extends React.Component {
         <div className="form-title" id="q-form-title">{title}</div>
         <div className="form-subtitle" id="q-form-subtitle">{subtitle}</div>
         <form className="question-form" onSubmit={this.handleSubmit}>
-          <label htmlFor="question-body">Your Question*: </label>
-          <textarea id="question-body" name="fname" value={questionBody} onChange={this.handleQuestionChange} maxLength="100"  />
-          <label htmlFor="nickname">What is your nickname*: </label>
+          <label htmlFor="question-body" id="question-body-label">Your Question*: </label>
+          <textarea id="question-body" name="fname" value={questionBody} onChange={this.handleQuestionChange} maxLength="1000"  />
+          <label htmlFor="nickname" id="nickname-label">What is your nickname*: </label>
           <input type="text" id="nickname" name="nickname" value={nickname} onChange={this.handleNicknameChange} placeholder="Example: jackson11!" maxLength="60"  />
-          <span>For privacy reasons, do not use your full name or email address.</span>
-          <label htmlFor="email">Your email*: </label>
+          <span id="nickname-disclaimer">For privacy reasons, do not use your full name or email address.</span>
+          <label htmlFor="email" id="email-label">Your email*: </label>
           <input type="text" id="email" name="email" value={email} onChange={this.handleEmailChange} placeholder="Example: jane@doe.com" maxLength="60"  />
-          <span>For authentication reason, you will not be emailed.</span>
-          <input type="submit" value="Submit" />
+          <span id="email-disclaimer">For authentication reason, you will not be emailed.</span>
+          <input type="submit" value="Submit" id="q-form-submit" />
         </form>
-        {warning && <span>{warningMessage}</span>}
-        {success && <span>Success!</span>}
+        <div className="q-form-message">
+          {warning && <span>{warningMessage}</span>}
+          {success && <span>Success!</span>}
+        </div>
       </div>
     );
   }
