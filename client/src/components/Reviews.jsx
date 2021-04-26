@@ -7,7 +7,7 @@ import sampleData from '../../../helpers/sampleData';
 
 const Reviews = (props) => {
   const {
-    reviewsList, setSortBy, markHelpFul, report,
+    reviewsList, setSortBy, markHelpFul, report, productName,
   } = props;
   const [allReviews, setAllReviews] = useState([...reviewsList]);
   const [reviews, setReviews] = useState(reviewsList.slice(0, 2));
@@ -36,6 +36,7 @@ const Reviews = (props) => {
       <ReviewsButton
         reviewCount={[reviews.length, allReviews.length]}
         moreReviews={moreReviews}
+        productName={productName}
       />
     </div>
   );
