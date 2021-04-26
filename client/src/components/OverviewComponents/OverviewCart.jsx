@@ -5,22 +5,27 @@ const OverviewCart = (props) => {
   const { currentStyle } = props;
   const { skus } = currentStyle;
 
-  const sizesFinder = () => {
-    const result = new Set();
+  const sizeQtyFinder = () => {
+    const result = [];
     for (const sku in skus) {
-      result.add(skus[sku].size);
+      result.push([skus[sku].size, skus[sku].quantity]);
     }
-    return Array.from(result);
+    return result;
   };
 
   return (
     <form className={styles.cartLayout}>
       <select className={styles.size}>
         <option value="Select Size">Select Size</option>
-        {sizesFinder().map((size, index) => <option key={index} value={size}>{size}</option>)}
+        {sizeQtyFinder().map((val, idx) => <option key={idx} value={val[0]}>{val[0]}</option>)}
       </select>
       <select className={styles.quantity}>
         <option value="1">1</option>
+        {sizeQtyFinder().map((val, idx) => {
+          if (val[1] !== 1) {
+            return <option key={idx} value={val[1]}>{val[1]}</option>;
+          }
+        })}
       </select>
       <br />
       <input type="submit" className={styles.submit} value="ADD TO BAG" />
