@@ -5,6 +5,7 @@ import React from 'react';
 import OverviewImgGal from './OverviewComponents/OverviewImgGal';
 import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect';
 import OverviewProductInfo from './OverviewComponents/OverviewProductInfo';
+import OverviewCart from './OverviewComponents/OverviewCart';
 import { getAverageRatings, getStarRatings } from '../../../helpers/ratingsHelper';
 
 import layoutStyles from '../css-modules/overview-layout.module.css';
@@ -35,6 +36,9 @@ class Overview extends React.Component {
       stars: getStarRatings(getAverageRatings(sampleData.reviewMetaData.ratings)),
       actualPrice: sampleData.productStylesById.results[0].sale_price ? sampleData.productStylesById.results[0].sale_price : sampleData.productStylesById.results[0].original_price,
       amountOfReviews: sampleData.reviewList.count,
+      ////// state related to cart //////
+      currentStyle: sampleData.productStylesById.results[0],
+      currentSize: '',
     };
     ////// image gallery functionality //////
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
@@ -43,6 +47,8 @@ class Overview extends React.Component {
     this.viewSwitchClick = this.viewSwitchClick.bind(this);
     ////// style selector functionality //////
     this.styleSelectSwitchClick = this.styleSelectSwitchClick.bind(this);
+    ////// cart functionality  //////
+    this.sizeSelectedSwitchClick = this.sizeSelectedSwitchClick.bind(this);
   }
 
   // image gallery functionality
@@ -135,6 +141,17 @@ class Overview extends React.Component {
     });
   }
 
+  // cart functionality
+
+  sizeSelectedSwitchClick(e) {
+    this.state.currentSize = e.target.value;
+    this.setState({
+      currentSize: this.state.currentSize
+    });
+  }
+
+
+
   // <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
   // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
@@ -184,7 +201,12 @@ class Overview extends React.Component {
               styleSelectSwitchClick={this.styleSelectSwitchClick}
               dataSelected={this.state.dataSelected}
             />
-            <div className={layoutStyles.cartComp}>CSS Placement: Cart</div>
+            <OverviewCart
+              className={layoutStyles.cartComp}
+              currentStyle={this.state.currentStyle}
+              sizeSelectedSwitchClick={this.sizeSelectedSwitchClick}
+              currentSize={this.state.currentSize}
+            />
           </div>
           <div className={layoutStyles.productDescriptionComp}>
             CSS Placement: Product Description
