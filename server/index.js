@@ -4,6 +4,8 @@ const utils = require('../helpers/utils.js');
 const app = express();
 const port = process.env.PORT;
 app.use(express.static(`${__dirname}/../client/dist`));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/products', (req, res) => {
   console.log('serving GET request to /products');
@@ -152,6 +154,18 @@ app.post('/cart/:sku_id', (req, res) => {
       console.log(`Error for addition to cart with sku_id, '${skuId}': ${error}`);
       res.statusCode = 404;
       res.statusMessage = `Could not add to cart: ${error}`;
+      res.end();
+    });
+});
+
+app.post('/qa/questions', (req, res) => {
+  console.log('serving POST request to /qa/questions');
+  utils.addQuestion(req.body)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log('err in index');
       res.end();
     });
 });
