@@ -9,7 +9,7 @@ import {
 } from '../../../helpers/api';
 
 const RatingsAndReviews = (props) => {
-  const { productId } = props;
+  const { productId, productName } = props;
   const [reviewList, setReviewList] = useState([...sampleData.reviewList.results]);
   const [reviews, setReviews] = useState([...sampleData.reviewList.results]);
   const [reviewData, setReviewData] = useState({ ...sampleData.reviewMetaData });
@@ -87,6 +87,7 @@ const RatingsAndReviews = (props) => {
           setSortBy={setSortBy}
           markHelpFul={markHelpFul}
           report={report}
+          productName={productName}
         />
       </div>
     </div>
