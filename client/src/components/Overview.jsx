@@ -39,6 +39,7 @@ class Overview extends React.Component {
       ////// state related to cart //////
       currentStyle: sampleData.productStylesById.results[0],
       currentSize: '',
+      currentQuantity: 0,
     };
     ////// image gallery functionality //////
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
@@ -49,6 +50,7 @@ class Overview extends React.Component {
     this.styleSelectSwitchClick = this.styleSelectSwitchClick.bind(this);
     ////// cart functionality  //////
     this.sizeSelectedSwitchClick = this.sizeSelectedSwitchClick.bind(this);
+    this.quantitySelectedSwitchClick = this.quantitySelectedSwitchClick.bind(this);
   }
 
   // image gallery functionality
@@ -150,7 +152,12 @@ class Overview extends React.Component {
     });
   }
 
-
+  quantitySelectedSwitchClick(e) {
+    this.state.currentQuantity = e.target.value;
+    this.setState({
+      currentQuantity: this.state.currentQuantity
+    });
+  }
 
   // <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
@@ -206,6 +213,8 @@ class Overview extends React.Component {
               currentStyle={this.state.currentStyle}
               sizeSelectedSwitchClick={this.sizeSelectedSwitchClick}
               currentSize={this.state.currentSize}
+              quantitySelectedSwitchClick={this.quantitySelectedSwitchClick}
+              currentQuantity={this.state.currentQuantity}
             />
           </div>
           <div className={layoutStyles.productDescriptionComp}>

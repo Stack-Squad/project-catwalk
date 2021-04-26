@@ -2,7 +2,13 @@ import React from 'react';
 import styles from '../../css-modules/overview-cart.module.css';
 
 const OverviewCart = (props) => {
-  const { currentStyle, sizeSelectedSwitchClick, currentSize } = props;
+  const {
+    currentStyle,
+    sizeSelectedSwitchClick,
+    currentSize,
+    quantitySelectedSwitchClick,
+    currentQuantity,
+  } = props;
   const { skus } = currentStyle;
 
   const sizeQtyFinder = () => {
@@ -14,13 +20,12 @@ const OverviewCart = (props) => {
   };
 
   const qtyOptions = () => {
-    // return <option key={idx} value={val[1]}>{val[1]}</option>
     const result = [];
     for (const skuTuple of sizeQtyFinder()) {
       const size = skuTuple[0];
       const quantity = skuTuple[1];
       if (size === currentSize) {
-        for (let i = 1; i <= size; i++) {
+        for (let i = 1; i <= quantity; i++) {
           if (i <= 15) {
             result.push(i);
           }
