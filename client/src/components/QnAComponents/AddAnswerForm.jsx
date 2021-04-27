@@ -41,8 +41,7 @@ class AddAnswerForm extends React.Component {
     const { images } = this.state;
     const selectedImage = e.target.files[0];
     if (selectedImage) {
-      // console.log(URL.createObjectURL(selectedImage));
-      images.push(selectedImage);
+      images.push(URL.createObjectURL(image));
       this.setState({ images });
     }
   }
@@ -70,7 +69,7 @@ class AddAnswerForm extends React.Component {
     warningMessage = warningMessage.slice(0, warningMessage.length - 2);
 
     let imgkey = 0;
-    const imagePreview = images.map((image) => <img src={URL.createObjectURL(image)} key={imgkey++} className="qa_photo" alt="" />);
+    const imagePreview = images.map((image) => <img src={image} key={imgkey++} className="qa_photo" alt="" />);
 
     return (
       <div className="form-wrapper">
