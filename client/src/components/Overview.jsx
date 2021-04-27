@@ -2,15 +2,18 @@
 // ESLint's current rules want me to basically break my functionality. Const cannot work for this.
 // I may try to make it work, but I cannot have this happening right now.
 import React from 'react';
+import axios from 'axios';
+
 import OverviewImgGal from './OverviewComponents/OverviewImgGal';
 import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect';
 import OverviewProductInfo from './OverviewComponents/OverviewProductInfo';
 import OverviewCart from './OverviewComponents/OverviewCart';
-import { getAverageRatings, getStarRatings } from '../../../helpers/ratingsHelper';
 
 import layoutStyles from '../css-modules/overview-layout.module.css';
 
 import sampleData from '../../../helpers/sampleData';
+
+import { getAverageRatings, getStarRatings } from '../../../helpers/ratingsHelper';
 
 class Overview extends React.Component {
   constructor() {
@@ -39,6 +42,7 @@ class Overview extends React.Component {
       ////// state related to cart //////
       currentStyle: sampleData.productStylesById.results[0],
       currentSize: '',
+      currentQuantity: 0,
     };
     ////// image gallery functionality //////
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
@@ -49,6 +53,8 @@ class Overview extends React.Component {
     this.styleSelectSwitchClick = this.styleSelectSwitchClick.bind(this);
     ////// cart functionality  //////
     this.sizeSelectedSwitchClick = this.sizeSelectedSwitchClick.bind(this);
+    this.quantitySelectedSwitchClick = this.quantitySelectedSwitchClick.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   // image gallery functionality
@@ -126,6 +132,9 @@ class Overview extends React.Component {
     this.state.currentGalleryLength = this.state.currentSelectedStyleImages.length;
     this.state.dataCurrentStyleName = sampleData.productStylesById.results[index].name;
     this.state.dataSelected = index;
+    this.state.currentStyle = sampleData.productStylesById.results[index];
+    this.state.currentSize = '';
+    document.getElementById('cart').reset();
     // change for price
     this.state.actualPrice = sampleData.productStylesById.results[index].sale_price ? sampleData.productStylesById.results[index].sale_price : sampleData.productStylesById.results[index].original_price;
     this.setState({
@@ -137,7 +146,9 @@ class Overview extends React.Component {
       currentPointInGalleryEndNonInclusive: 5,
       dataCurrentStyleName: this.state.dataCurrentStyleName,
       dataSelected: this.state.dataSelected,
-      actualPrice: this.state.actualPrice // for price changes
+      actualPrice: this.state.actualPrice, // for price changes
+      currentStyle: this.state.currentStyle,
+      currentSize: this.state.currentSize,
     });
   }
 
@@ -145,12 +156,34 @@ class Overview extends React.Component {
 
   sizeSelectedSwitchClick(e) {
     this.state.currentSize = e.target.value;
+    this.state.currentQuantity = 1;
     this.setState({
-      currentSize: this.state.currentSize
+      currentSize: this.state.currentSize,
+      currentQuantity: this.state.currentQuantity,
     });
   }
 
+  quantitySelectedSwitchClick(e) {
+    this.state.currentQuantity = e.target.value;
+    this.setState({
+      currentQuantity: this.state.currentQuantity
+    });
+  }
 
+  addToCart(e) {
+    e.preventDefault();
+    if (this.state.currentSize === '' || this.state.currentSize === 'Select Size') {
+      document.getElementById('oopsSize').hidden = false;
+      let sizeSelect = document.getElementById('sizeSelect');
+      let length = sizeSelect.options.length;
+      sizeSelect.size = length;
+      return;
+    }
+    document.getElementById('oopsSize').hidden = true;
+    let sizeSelect = document.getElementById('sizeSelect');
+    sizeSelect.size = 0;
+
+  }
 
   // <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
@@ -206,6 +239,9 @@ class Overview extends React.Component {
               currentStyle={this.state.currentStyle}
               sizeSelectedSwitchClick={this.sizeSelectedSwitchClick}
               currentSize={this.state.currentSize}
+              quantitySelectedSwitchClick={this.quantitySelectedSwitchClick}
+              currentQuantity={this.state.currentQuantity}
+              addToCart={this.addToCart}
             />
           </div>
           <div className={layoutStyles.productDescriptionComp}>
