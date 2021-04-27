@@ -115,6 +115,9 @@ const WriteReview = (props) => {
         characteristics: { ...property },
         photos: [...images],
       };
+      if (!('summary' in data)) {
+        data.summary = '';
+      }
       postReview(data)
         .then((response) => console.log(response))
         .catch((err) => console.log(err.message));
