@@ -22,6 +22,12 @@ module.exports.updateReview = (url) => axios.put(url, null, option)
     console.error(err.message);
   });
 
+module.exports.postReview = (url, data) => axios.post(url, data, option)
+  .then((response) => response.data)
+  .catch((err) => {
+    console.error(err.message);
+  });
+
 module.exports.getProducts = () => {
   const options = {
     url: '/products',
