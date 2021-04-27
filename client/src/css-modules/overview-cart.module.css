@@ -1,11 +1,12 @@
 .cartLayout {
   display: grid;
   grid-template-columns: 1.5fr 0.5fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 0.1fr 1fr 1fr;
   gap: 5% 2%;
   grid-template-areas:
-   "size quantity"
-   "submit whatIsThis";
+    "oopsSize oopsSize"
+    "size quantity"
+    "submit whatIsThis";
 }
 .size {
   grid-area: size;
@@ -22,4 +23,7 @@
 }
 .whatIsThis {
   grid-area: whatIsThis;
+}
+.oopsSize {
+  grid-area: oopsSize;
 }
