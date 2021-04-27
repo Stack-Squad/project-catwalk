@@ -182,11 +182,26 @@ class Overview extends React.Component {
     document.getElementById('oopsSize').hidden = true;
     let sizeSelect = document.getElementById('sizeSelect');
     sizeSelect.size = 0;
-
+    let skuId = '';
+    for (const sku in this.state.currentStyle.skus) {
+      // console.log(sku);
+      // console.log(this.state.currentStyle.skus[sku]);
+      // console.log(this.state.currentStyle.skus[sku].size);
+      if (this.state.currentSize === this.state.currentStyle.skus[sku].size) {
+        // console.log('THIS ONE -->', sku);
+        skuId = sku;
+      }
+    }
+    axios.post(`/cart/${skuId}`)
+      .then((response) => {
+        axios.get('/cart')
+          .then((res) => alert('Your cart: ' + JSON.stringify(res.data)))
+          .catch((error) => alert('An error in getting your cart, we have for you: ', error));
+      })
+      .catch((error) => alert('An error in adding your item(s) to cart, there was. Error, here is: ', error));
   }
 
   // <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
   // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
   componentDidUpdate (prevProps, prevState) {
     const scriptTwitter = document.createElement("script");
