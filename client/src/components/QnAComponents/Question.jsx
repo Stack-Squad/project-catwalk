@@ -90,7 +90,7 @@ class Question extends React.Component {
               <AddAnswerForm
                 productName={productName}
                 questionBody={question.question_body}
-                productId={productId}
+                questionId={question.question_id}
               />
             </QAModal>
           )}

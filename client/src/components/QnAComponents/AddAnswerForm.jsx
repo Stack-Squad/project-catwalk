@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class AddAnswerForm extends React.Component {
   constructor(props) {
@@ -39,22 +40,40 @@ class AddAnswerForm extends React.Component {
       email,
       images,
     } = this.state;
-    const { productId } = this.props;
+    const { questionId } = this.props;
     const emailValidation = /.{1,}@[^.]{1,}/;
     if (!answerBody || !nickname || !emailValidation.test(email)) {
       console.log('submission error');
       this.setState({ warning: true });
       return;
     }
-    console.log('submitted');
-    this.setState({});
+    axios.post(`/qa/questions/${questionId}/answers`, {
+      body: answerBody,
+      name: nickname,
+      email,
+      photos: images,
+    })
+      .then((response) => {
+        this.setState({
+          answerBody: '',
+          nickname: '',
+          email: '',
+          selectedImage: '',
+          images: [],
+          warning: false,
+          success: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   addImage(e) {
     const { images } = this.state;
     const selectedImage = e.target.files[0];
     if (selectedImage) {
-      images.push(URL.createObjectURL(image));
+      images.push(URL.createObjectURL(selectedImage));
       this.setState({ images });
     }
   }
@@ -97,12 +116,9 @@ class AddAnswerForm extends React.Component {
           <label htmlFor="email" id="email-label">Your email*: </label>
           <input type="text" id="email" name="email" value={email} onChange={this.handleEmailChange} placeholder="Example: jane@doe.com" maxLength="60" />
           <span id="email-disclaimer">For authentication reason, you will not be emailed.</span>
-
           <label htmlFor="img-button" id="img-button-label">Upload Your Photos: </label>
-          <input type="file" accept="image/*" id="img-button" onChange={this.addImage} />
-
+          {images.length < 5 && <input type="file" accept="image/*" id="img-button" onChange={this.addImage} />}
           <div id="img-preview">{imagePreview}</div>
-
           <input type="submit" value="Submit" id="a-form-submit" />
         </form>
         <div className="a-form-message">
