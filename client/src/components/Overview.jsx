@@ -128,6 +128,8 @@ class Overview extends React.Component {
     this.state.currentGalleryLength = this.state.currentSelectedStyleImages.length;
     this.state.dataCurrentStyleName = sampleData.productStylesById.results[index].name;
     this.state.dataSelected = index;
+    this.state.currentStyle = sampleData.productStylesById.results[index];
+    this.state.currentSize = '';
     // change for price
     this.state.actualPrice = sampleData.productStylesById.results[index].sale_price ? sampleData.productStylesById.results[index].sale_price : sampleData.productStylesById.results[index].original_price;
     this.setState({
@@ -139,7 +141,9 @@ class Overview extends React.Component {
       currentPointInGalleryEndNonInclusive: 5,
       dataCurrentStyleName: this.state.dataCurrentStyleName,
       dataSelected: this.state.dataSelected,
-      actualPrice: this.state.actualPrice // for price changes
+      actualPrice: this.state.actualPrice, // for price changes
+      currentStyle: this.state.currentStyle,
+      currentSize: this.state.currentSize,
     });
   }
 
