@@ -2,14 +2,18 @@
 // ESLint's current rules want me to basically break my functionality. Const cannot work for this.
 // I may try to make it work, but I cannot have this happening right now.
 import React from 'react';
+import axios from 'axios';
+
 import OverviewImgGal from './OverviewComponents/OverviewImgGal';
 import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect';
 import OverviewProductInfo from './OverviewComponents/OverviewProductInfo';
-import { getAverageRatings, getStarRatings } from '../../../helpers/ratingsHelper';
+import OverviewCart from './OverviewComponents/OverviewCart';
 
 import layoutStyles from '../css-modules/overview-layout.module.css';
 
 import sampleData from '../../../helpers/sampleData';
+
+import { getAverageRatings, getStarRatings } from '../../../helpers/ratingsHelper';
 
 class Overview extends React.Component {
   constructor() {
@@ -35,6 +39,10 @@ class Overview extends React.Component {
       stars: getStarRatings(getAverageRatings(sampleData.reviewMetaData.ratings)),
       actualPrice: sampleData.productStylesById.results[0].sale_price ? sampleData.productStylesById.results[0].sale_price : sampleData.productStylesById.results[0].original_price,
       amountOfReviews: sampleData.reviewList.count,
+      ////// state related to cart //////
+      currentStyle: sampleData.productStylesById.results[0],
+      currentSize: '',
+      currentQuantity: 0,
     };
     ////// image gallery functionality //////
     this.galleryScrollClick = this.galleryScrollClick.bind(this);
@@ -43,6 +51,10 @@ class Overview extends React.Component {
     this.viewSwitchClick = this.viewSwitchClick.bind(this);
     ////// style selector functionality //////
     this.styleSelectSwitchClick = this.styleSelectSwitchClick.bind(this);
+    ////// cart functionality  //////
+    this.sizeSelectedSwitchClick = this.sizeSelectedSwitchClick.bind(this);
+    this.quantitySelectedSwitchClick = this.quantitySelectedSwitchClick.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   // image gallery functionality
@@ -120,6 +132,9 @@ class Overview extends React.Component {
     this.state.currentGalleryLength = this.state.currentSelectedStyleImages.length;
     this.state.dataCurrentStyleName = sampleData.productStylesById.results[index].name;
     this.state.dataSelected = index;
+    this.state.currentStyle = sampleData.productStylesById.results[index];
+    this.state.currentSize = '';
+    document.getElementById('cart').reset();
     // change for price
     this.state.actualPrice = sampleData.productStylesById.results[index].sale_price ? sampleData.productStylesById.results[index].sale_price : sampleData.productStylesById.results[index].original_price;
     this.setState({
@@ -131,8 +146,43 @@ class Overview extends React.Component {
       currentPointInGalleryEndNonInclusive: 5,
       dataCurrentStyleName: this.state.dataCurrentStyleName,
       dataSelected: this.state.dataSelected,
-      actualPrice: this.state.actualPrice // for price changes
+      actualPrice: this.state.actualPrice, // for price changes
+      currentStyle: this.state.currentStyle,
+      currentSize: this.state.currentSize,
     });
+  }
+
+  // cart functionality
+
+  sizeSelectedSwitchClick(e) {
+    this.state.currentSize = e.target.value;
+    this.state.currentQuantity = 1;
+    this.setState({
+      currentSize: this.state.currentSize,
+      currentQuantity: this.state.currentQuantity,
+    });
+  }
+
+  quantitySelectedSwitchClick(e) {
+    this.state.currentQuantity = e.target.value;
+    this.setState({
+      currentQuantity: this.state.currentQuantity
+    });
+  }
+
+  addToCart(e) {
+    e.preventDefault();
+    if (this.state.currentSize === '' || this.state.currentSize === 'Select Size') {
+      document.getElementById('oopsSize').hidden = false;
+      let sizeSelect = document.getElementById('sizeSelect');
+      let length = sizeSelect.options.length;
+      sizeSelect.size = length;
+      return;
+    }
+    document.getElementById('oopsSize').hidden = true;
+    let sizeSelect = document.getElementById('sizeSelect');
+    sizeSelect.size = 0;
+
   }
 
   // <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -184,7 +234,15 @@ class Overview extends React.Component {
               styleSelectSwitchClick={this.styleSelectSwitchClick}
               dataSelected={this.state.dataSelected}
             />
-            <div className={layoutStyles.cartComp}>CSS Placement: Cart</div>
+            <OverviewCart
+              className={layoutStyles.cartComp}
+              currentStyle={this.state.currentStyle}
+              sizeSelectedSwitchClick={this.sizeSelectedSwitchClick}
+              currentSize={this.state.currentSize}
+              quantitySelectedSwitchClick={this.quantitySelectedSwitchClick}
+              currentQuantity={this.state.currentQuantity}
+              addToCart={this.addToCart}
+            />
           </div>
           <div className={layoutStyles.productDescriptionComp}>
             CSS Placement: Product Description

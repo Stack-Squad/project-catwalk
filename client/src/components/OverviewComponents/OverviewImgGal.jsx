@@ -29,6 +29,7 @@ const OverviewImgGal = (props) => {
     currentGalleryLength,
     galleryImageClick,
   } = props;
+
   return (
     <div className={currentView === 'regular' ? styles.imageGallery : styles.imageGalleryIfFull}>
       <div id="gallery" className={styles.gallery}>

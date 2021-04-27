@@ -1,0 +1,29 @@
+.cartLayout {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  grid-template-rows: 0.1fr 1fr 1fr;
+  gap: 5% 2%;
+  grid-template-areas:
+    "oopsSize oopsSize"
+    "size quantity"
+    "submit whatIsThis";
+}
+.size {
+  grid-area: size;
+  text-indent: 15%;
+}
+.quantity {
+  grid-area: quantity;
+  text-indent: 25%;
+}
+.submit {
+  grid-area: submit;
+  text-align: left;
+  text-indent: 14%;
+}
+.whatIsThis {
+  grid-area: whatIsThis;
+}
+.oopsSize {
+  grid-area: oopsSize;
+}
