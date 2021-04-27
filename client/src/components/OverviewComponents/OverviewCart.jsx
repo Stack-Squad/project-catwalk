@@ -12,7 +12,7 @@ const OverviewCart = (props) => {
   const { skus } = currentStyle;
 
   const sizeQtyFinder = () => {
-    const result = [];
+    const result = [['Select Size', 0]];
     let isSupplyAvailable = 0;
     for (const sku in skus) {
       isSupplyAvailable += skus[sku].quantity;

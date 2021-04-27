@@ -122,27 +122,27 @@ module.exports.productStylesById = {
       ],
       skus: {
         522076: {
-          quantity: 8,
+          quantity: 0, // 8
           size: 'XS',
         },
         522077: {
-          quantity: 16,
+          quantity: 0, // 16
           size: 'S',
         },
         522078: {
-          quantity: 17,
+          quantity: 0, // 17
           size: 'M',
         },
         522079: {
-          quantity: 10,
+          quantity: 0, // 10
           size: 'L',
         },
         522080: {
-          quantity: 15,
+          quantity: 0, // 15
           size: 'XL',
         },
         522081: {
-          quantity: 6,
+          quantity: 0, // 6
           size: 'XXL',
         },
       },
@@ -240,27 +240,27 @@ module.exports.productStylesById = {
       ],
       skus: {
         522088: {
-          quantity: 8,
+          quantity: 0, // 8
           size: 'XS',
         },
         522089: {
-          quantity: 16,
+          quantity: 0, // 16
           size: 'S',
         },
         522090: {
-          quantity: 17,
+          quantity: 0, // 17
           size: 'M',
         },
         522091: {
-          quantity: 10,
+          quantity: 0, // 10
           size: 'L',
         },
         522092: {
-          quantity: 15,
+          quantity: 0, // 15
           size: 'XL',
         },
         522093: {
-          quantity: 6,
+          quantity: 1, // 6
           size: 'XXL',
         },
       },
