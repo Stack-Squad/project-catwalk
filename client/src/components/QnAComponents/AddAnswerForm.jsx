@@ -33,6 +33,19 @@ class AddAnswerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const {
+      answerBody,
+      nickname,
+      email,
+      images,
+    } = this.state;
+    const { productId } = this.props;
+    const emailValidation = /.{1,}@[^.]{1,}/;
+    if (!answerBody || !nickname || !emailValidation.test(email)) {
+      console.log('submission error');
+      this.setState({ warning: true });
+      return;
+    }
     console.log('submitted');
     this.setState({});
   }
