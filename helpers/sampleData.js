@@ -122,27 +122,27 @@ module.exports.productStylesById = {
       ],
       skus: {
         522076: {
-          quantity: 0,
+          quantity: 8,
           size: 'XS',
         },
         522077: {
-          quantity: 0,
+          quantity: 16,
           size: 'S',
         },
         522078: {
-          quantity: 0,
+          quantity: 17,
           size: 'M',
         },
         522079: {
-          quantity: 0,
+          quantity: 10,
           size: 'L',
         },
         522080: {
-          quantity: 0,
+          quantity: 15,
           size: 'XL',
         },
         522081: {
-          quantity: 0,
+          quantity: 6,
           size: 'XXL',
         },
       },
@@ -201,7 +201,7 @@ module.exports.productStylesById = {
           size: 'XL',
         },
         522087: {
-          quantity: 9,
+          quantity: 6,
           size: 'XXL',
         },
       },
