@@ -15,3 +15,7 @@ export const markReviewHelpful = (reviewId) => axios.put(`/reviews/${reviewId}/h
 export const reportReview = (reviewId) => axios.put(`/reviews/${reviewId}/report`)
   .then((response) => response.data)
   .catch((err) => console.log(err.message));
+
+export const postReview = (body) => axios.post('/reviews', { ...body })
+  .then((response) => response.data)
+  .catch((err) => console.log(err.message));
