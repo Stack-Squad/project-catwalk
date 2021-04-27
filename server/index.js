@@ -140,6 +140,16 @@ app.get('/reviews/:productId', (req, res) => {
     });
 });
 
+app.post('/reviews', (req, res) => {
+  utils.postReview('/reviews', req.body)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
 app.post('/cart/:sku_id', (req, res) => {
   const skuId = req.params.sku_id;
   console.log(`Addition to cart request for sku_id: ${skuId}`);

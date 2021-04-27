@@ -88,6 +88,8 @@ const RatingsAndReviews = (props) => {
           markHelpFul={markHelpFul}
           report={report}
           productName={productName}
+          productId={productId}
+          characteristics={reviewData.characteristics}
         />
       </div>
     </div>
