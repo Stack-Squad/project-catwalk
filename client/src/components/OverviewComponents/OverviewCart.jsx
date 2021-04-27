@@ -19,7 +19,7 @@ const OverviewCart = (props) => {
       result.push([skus[sku].size, skus[sku].quantity]);
     }
     if (isSupplyAvailable === 0) {
-      return false;
+      return [['OUT OF STOCK', 0]];
     }
     return result;
   };
@@ -46,9 +46,7 @@ const OverviewCart = (props) => {
   return (
     <form className={styles.cartLayout}>
       <select className={styles.size} onChange={(e) => { sizeSelectedSwitchClick(e); }}>
-        {sizeQtyFinder() !== false
-          ? sizeQtyFinder().map((val, idx) => <option key={idx} value={val[0]}>{val[0]}</option>)
-          : <option value="OUT OF STOCK">OUT OF STOCK</option> }
+        {sizeQtyFinder().map((val, idx) => <option key={idx} value={val[0]}>{val[0]}</option>)}
       </select>
       <select
         className={styles.quantity}
