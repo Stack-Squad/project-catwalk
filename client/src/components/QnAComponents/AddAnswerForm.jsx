@@ -7,12 +7,15 @@ class AddAnswerForm extends React.Component {
       answerBody: '',
       nickname: '',
       email: '',
+      selectedImage: '',
+      images: [],
       warning: false,
       success: false,
     };
     this.handleAnswerChange = this.handleAnswerChange.bind(this);
     this.handleNicknameChange = this.handleNicknameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.addImage = this.addImage.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -31,11 +34,22 @@ class AddAnswerForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log('submitted');
+    this.setState({});
+  }
+
+  addImage(e) {
+    const { images } = this.state;
+    const selectedImage = e.target.files[0];
+    if (selectedImage) {
+      // console.log(URL.createObjectURL(selectedImage));
+      images.push(selectedImage);
+      this.setState({ images });
+    }
   }
 
   render() {
     const {
-      answerBody, nickname, email, warning, success,
+      answerBody, nickname, email, warning, success, selectedImage, images,
     } = this.state;
     const { productName, questionBody } = this.props;
 
@@ -55,12 +69,15 @@ class AddAnswerForm extends React.Component {
     }
     warningMessage = warningMessage.slice(0, warningMessage.length - 2);
 
+    let imgkey = 0;
+    const imagePreview = images.map((image) => <img src={URL.createObjectURL(image)} key={imgkey++} className="qa_photo" alt="" />);
+
     return (
       <div className="form-wrapper">
         <div className="form-title" id="a-form-title">{title}</div>
         <div className="form-subtitle" id="a-form-subtitle">{subtitle}</div>
         <form className="a-form" onSubmit={this.handleSubmit}>
-          <label htmlFor="form-body" id="form-body-label">Your Question*: </label>
+          <label htmlFor="form-body" id="form-body-label">Your Answer*: </label>
           <textarea id="form-body" name="body" value={answerBody} onChange={this.handleAnswerChange} maxLength="1000" />
           <label htmlFor="nickname" id="nickname-label">What is your nickname*: </label>
           <input type="text" id="nickname" name="nickname" value={nickname} onChange={this.handleNicknameChange} placeholder="Example: jackson11!" maxLength="60" />
@@ -68,8 +85,12 @@ class AddAnswerForm extends React.Component {
           <label htmlFor="email" id="email-label">Your email*: </label>
           <input type="text" id="email" name="email" value={email} onChange={this.handleEmailChange} placeholder="Example: jane@doe.com" maxLength="60" />
           <span id="email-disclaimer">For authentication reason, you will not be emailed.</span>
-          <div id="img-input-placeholder">picture fields here</div>
-          <div id="img-preview-placeholder">picture preview here</div>
+
+          <label htmlFor="img-button" id="img-button-label">Upload Your Photos: </label>
+          <input type="file" accept="image/*" id="img-button" onChange={this.addImage} />
+
+          <div id="img-preview">{imagePreview}</div>
+
           <input type="submit" value="Submit" id="a-form-submit" />
         </form>
         <div className="a-form-message">

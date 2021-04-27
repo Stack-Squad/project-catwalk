@@ -136,8 +136,9 @@ Questions and Answers
   width: auto;
   vertical-align: middle;
   margin: 0px 3px 5px 0px;
-  border-style: solid;
-  border-width: 1px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* border-style: solid;
+  border-width: 1px; */
 }
 .answer_wrapper {
   display: flex;
@@ -211,10 +212,10 @@ Modal Stuff
   background-color: #fefefe;
   margin: auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 5px solid green;
   border-radius: 15px;
   width: 80%; /* Could be more or less, depending on screen size */
   max-width: 800px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* The Close Button */
@@ -249,6 +250,7 @@ Add Question Form
 }
 
 .form-subtitle {
+  font-size: medium;
   grid-row: 2 / 3;
   padding-top: 5px;
   padding-bottom: 15px;
@@ -270,7 +272,7 @@ Add Question Form
 
 /* Question Form Grid Items */
 
-#question-body-label {
+#form-body-label {
   grid-area: 1/1/2/2;
   justify-self: end;
 }
@@ -315,7 +317,8 @@ Add Question Form
 Add Answer Form
 *************************************/
 
-.q-form {
+.a-form {
+  font-size: medium;
   grid-row: 3 / 4;
   display: grid;
   grid-template-rows: auto auto auto auto auto auto auto auto;
@@ -326,7 +329,14 @@ Add Answer Form
   grid-area: 6/1/7/3;
   margin: auto;
 }
-#img-preview-placeholder {
+#img-button-label {
+  grid-area: 6/1/7/2;
+  justify-self: end;
+}
+#img-button {
+  grid-area: 6/2/7/3;
+}
+#img-preview {
   grid-area: 7/1/8/3;
   margin: auto;
 }

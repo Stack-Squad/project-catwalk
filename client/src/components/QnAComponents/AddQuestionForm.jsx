@@ -86,8 +86,8 @@ class AddQuestionForm extends React.Component {
         <div className="form-title" id="q-form-title">{title}</div>
         <div className="form-subtitle" id="q-form-subtitle">{subtitle}</div>
         <form className="q-form" onSubmit={this.handleSubmit}>
-          <label htmlFor="question-body" id="question-body-label">Your Question*: </label>
-          <textarea id="question-body" name="body" value={questionBody} onChange={this.handleQuestionChange} maxLength="1000" />
+          <label htmlFor="question-body" id="form-body-label">Your Question*: </label>
+          <textarea id="form-body" name="body" value={questionBody} onChange={this.handleQuestionChange} maxLength="1000" />
           <label htmlFor="nickname" id="nickname-label">What is your nickname*: </label>
           <input type="text" id="nickname" name="nickname" value={nickname} onChange={this.handleNicknameChange} placeholder="Example: jackson11!" maxLength="60" />
           <span id="nickname-disclaimer">For privacy reasons, do not use your full name or email address.</span>
