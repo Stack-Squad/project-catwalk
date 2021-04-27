@@ -33,7 +33,6 @@ class AddQuestionForm extends React.Component {
     e.preventDefault();
     const { questionBody, nickname, email } = this.state;
     const { productId } = this.props;
-    console.log(productId);
     const emailValidation = /.{1,}@[^.]{1,}/;
     if (!questionBody || !nickname || !emailValidation.test(email)) {
       this.setState({ warning: true });
