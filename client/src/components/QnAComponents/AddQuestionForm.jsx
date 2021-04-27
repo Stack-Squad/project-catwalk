@@ -36,33 +36,33 @@ class AddQuestionForm extends React.Component {
     console.log(productId);
     const emailValidation = /.{1,}@[^.]{1,}/;
     if (!questionBody || !nickname || !emailValidation.test(email)) {
-      this.setState({warning: true});
+      this.setState({ warning: true });
       return;
     }
-    // this.setState({warning: false, success: true});
-    // e.target.reset();
     axios.post('/qa/questions', {
       body: questionBody,
       name: nickname,
-      email: email,
+      email,
       product_id: productId,
     })
-    .then((response) => {
-      this.setState({
-        questionBody: '',
-        nickname: '',
-        email: '',
-        warning: false,
-        success: true,
+      .then((response) => {
+        this.setState({
+          questionBody: '',
+          nickname: '',
+          email: '',
+          warning: false,
+          success: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
   }
 
   render() {
-    const { questionBody, nickname, email, warning, success } = this.state;
+    const {
+      questionBody, nickname, email, warning, success,
+    } = this.state;
     const { productName } = this.props;
 
     const title = 'Ask Your Question';
@@ -71,28 +71,28 @@ class AddQuestionForm extends React.Component {
     let warningMessage = 'You must enter the following: ';
     const emailValidation = /.{1,}@[^.]{1,}/;
     if (!questionBody) {
-      warningMessage = warningMessage + 'your question, ';
+      warningMessage += 'your question, ';
     }
     if (!nickname) {
-      warningMessage = warningMessage + 'your nickname, ';
+      warningMessage += 'your nickname, ';
     }
     if (!emailValidation.test(email)) {
-      warningMessage = warningMessage + 'your email, ';
+      warningMessage += 'your email, ';
     }
     warningMessage = warningMessage.slice(0, warningMessage.length - 2);
 
     return (
-      <div className="question-form-wrapper">
+      <div className="form-wrapper">
         <div className="form-title" id="q-form-title">{title}</div>
         <div className="form-subtitle" id="q-form-subtitle">{subtitle}</div>
-        <form className="question-form" onSubmit={this.handleSubmit}>
+        <form className="q-form" onSubmit={this.handleSubmit}>
           <label htmlFor="question-body" id="question-body-label">Your Question*: </label>
-          <textarea id="question-body" name="fname" value={questionBody} onChange={this.handleQuestionChange} maxLength="1000"  />
+          <textarea id="question-body" name="body" value={questionBody} onChange={this.handleQuestionChange} maxLength="1000" />
           <label htmlFor="nickname" id="nickname-label">What is your nickname*: </label>
-          <input type="text" id="nickname" name="nickname" value={nickname} onChange={this.handleNicknameChange} placeholder="Example: jackson11!" maxLength="60"  />
+          <input type="text" id="nickname" name="nickname" value={nickname} onChange={this.handleNicknameChange} placeholder="Example: jackson11!" maxLength="60" />
           <span id="nickname-disclaimer">For privacy reasons, do not use your full name or email address.</span>
           <label htmlFor="email" id="email-label">Your email*: </label>
-          <input type="text" id="email" name="email" value={email} onChange={this.handleEmailChange} placeholder="Example: jane@doe.com" maxLength="60"  />
+          <input type="text" id="email" name="email" value={email} onChange={this.handleEmailChange} placeholder="Example: jane@doe.com" maxLength="60" />
           <span id="email-disclaimer">For authentication reason, you will not be emailed.</span>
           <input type="submit" value="Submit" id="q-form-submit" />
         </form>

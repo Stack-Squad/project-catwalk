@@ -238,7 +238,7 @@ Modal Stuff
 Add Question Form
 *************************************/
 
-.question-form-wrapper {
+.form-wrapper {
   display: grid;
   grid-template-rows: auto auto auto auto;
 }
@@ -254,7 +254,7 @@ Add Question Form
   padding-bottom: 15px;
 }
 
-.question-form {
+.q-form {
   grid-row: 3 / 4;
   display: grid;
   grid-template-rows: auto auto auto auto auto auto;
@@ -274,7 +274,7 @@ Add Question Form
   grid-area: 1/1/2/2;
   justify-self: end;
 }
-#question-body {
+#form-body {
   grid-area: 1/2/2/3;
   resize: none;
   width: 400px;
@@ -308,5 +308,29 @@ Add Question Form
 }
 #q-form-submit {
   grid-area: 6/1/7/3;
+  margin: auto;
+}
+
+/*************************************
+Add Answer Form
+*************************************/
+
+.q-form {
+  grid-row: 3 / 4;
+  display: grid;
+  grid-template-rows: auto auto auto auto auto auto auto auto;
+  grid-template-columns: auto auto;
+  gap: 15px 10px;
+}
+#img-input-placeholder {
+  grid-area: 6/1/7/3;
+  margin: auto;
+}
+#img-preview-placeholder {
+  grid-area: 7/1/8/3;
+  margin: auto;
+}
+#a-form-submit {
+  grid-area: 8/1/9/3;
   margin: auto;
 }
