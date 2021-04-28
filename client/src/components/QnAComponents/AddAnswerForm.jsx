@@ -43,7 +43,6 @@ class AddAnswerForm extends React.Component {
     const { questionId } = this.props;
     const emailValidation = /.{1,}@[^.]{1,}/;
     if (!answerBody || !nickname || !emailValidation.test(email)) {
-      console.log('submission error');
       this.setState({ warning: true });
       return;
     }
