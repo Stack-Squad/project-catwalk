@@ -2,10 +2,15 @@
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr;
-  gap: 0px 0px;
+  gap: 0px 5%;
   grid-template-areas:
     "description features";
   grid-area: 2 / 1 / 3 / 3;
+  margin: 3%;
 }
 .features { grid-area: features; }
-.description { grid-area: description; }
+.description {
+  grid-area: description;
+  border-right: black solid;
+  padding-right: 5%;
+}

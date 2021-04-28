@@ -68,7 +68,7 @@ const OverviewCart = (props) => {
       <br />
       <div id="oopsSize" hidden={true} className={styles.oopsSize}>Please select size</div>
       <input type="submit" id="addToCart" hidden={false} className={styles.submit} onClick={(e) => { addToCart(e); }} value="ADD TO BAG" />
-      <input type="submit" className={styles.whatIsThis} value="Wut?" />
+      <input type="submit" disabled={true} className={styles.whatIsThis} value="Wut?" />
     </form>
   );
 };

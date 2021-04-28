@@ -1,7 +1,7 @@
 .overviewLayout {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  grid-template-rows: 1.3fr 0.2fr;
+  grid-template-rows: 1.3fr 0.3fr;
 }
 .imageGalleryComp { grid-area: 1 / 1 / 2 / 2; }
 .infoStyleCart {
@@ -23,6 +23,6 @@
 .overviewLayoutIfFull {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.4fr 0.2fr;
+  grid-template-rows: 0.4fr 0.3fr;
 }
 .imageGalleryCompIfFull { grid-area: 1 / 1 / 2 / 3; }

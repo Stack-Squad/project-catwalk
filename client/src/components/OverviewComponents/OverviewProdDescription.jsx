@@ -6,8 +6,14 @@ const OverviewProdDescription = (props) => {
 
   return (
     <div className={styles.prodDescriptionLayout}>
-      <div className={styles.description}>Description</div>
-      <ul className={styles.features}>Features</ul>
+      <div className={styles.description}>
+        <div style={{ fontWeight: 'bolder', fontSize: 'large' }}>{infoData.slogan}</div>
+        <br />
+        <div>{infoData.description}</div>
+      </div>
+      <ul className={styles.features}>
+        {infoData.features.map((featureObj, index) => <li key={index}>{`${featureObj.feature}: ${featureObj.value}`}</li>)}
+      </ul>
     </div>
   );
 };

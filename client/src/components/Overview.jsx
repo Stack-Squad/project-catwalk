@@ -280,7 +280,7 @@ class Overview extends React.Component {
           viewSwitchClick={this.viewSwitchClick}
           currentView={this.state.currentView}
         />
-        <OverviewProdDescription className={layoutStyles.productDescriptionCompIfFull} />
+        <OverviewProdDescription className={layoutStyles.productDescriptionCompIfFull} infoData={this.state.infoData} />
       </div>
     );
   }
