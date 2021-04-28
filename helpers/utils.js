@@ -187,3 +187,18 @@ module.exports.addQuestion = (form) => {
       console.log(err.message);
     });
 };
+
+module.exports.getProductStylesById = (id) => {
+  const options = {
+    url: `/products/${id}/styles`,
+    method: 'get',
+    baseURL,
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return axios(options)
+    .then((response) => response.data)
+    .catch((err) => err);
+};
