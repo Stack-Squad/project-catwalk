@@ -147,13 +147,13 @@ const WriteReview = (props) => {
   const showRecommendError = (!error.isValid && error.recommend) ? styles.error: '';
 
   return (
-    <div className={styles.container}>
+    <div>
 
       <form onSubmit={submit} className={styles.formContainer}>
-        <section>
+        <section className={styles.title}>
           <h2>{`Write Your Review about the ${productName}`}</h2>
         </section>
-        <section>
+        <section className={styles.inputContainer}>
           <label htmlFor="nickname">Enter Name (Nickname)</label>
           <input
             type="text"
@@ -162,10 +162,11 @@ const WriteReview = (props) => {
             maxLength="60"
             placeholder="Example: jackson11!"
             onChange={handleChange}
+            className={styles.textInput}
           />
           <span>For privacy reasons, do not use your full name or email address</span>
         </section>
-        <section>
+        <section className={styles.inputContainer}>
           <label htmlFor="email">Enter your email:</label>
           <input
             type="email"
@@ -176,10 +177,11 @@ const WriteReview = (props) => {
             pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             placeholder="Example: jackson11@email.com"
             onChange={handleChange}
+            className={styles.textInput}
           />
           <span>For authentication reasons, you will not be emailed</span>
         </section>
-        <section>
+        <section className={styles.inputContainer}>
           <label htmlFor="summary">Write Summary:</label>
           <input
             type="text"
@@ -188,9 +190,10 @@ const WriteReview = (props) => {
             maxLength="60"
             placeholder="Example: Best purchase ever!"
             onChange={handleChange}
+            className={styles.textInput}
           />
         </section>
-        <section>
+        <section className={styles.inputContainer}>
           <div className={showBodyError}>Write body</div>
           <textarea
             rows="3"
@@ -203,6 +206,7 @@ const WriteReview = (props) => {
             value={body}
             placeholder="Example: Why did you like the product or not"
             onChange={ChangeBody}
+            className={styles.textArea}
           />
           {count > 0 ? (
             <p>
@@ -214,9 +218,9 @@ const WriteReview = (props) => {
             <p>Minium reached</p>
           )}
         </section>
-        <section>
+        <section className={styles.inputContainer}>
           <span className={showStarRatingsError}>Overall Rating</span>
-          <div>
+          <div className={styles.star}>
             {getStarRatings(starCount).map((star, _) => (
               <span key={_} onClick={(() => changeStars(_))}>
                 {star}
@@ -225,16 +229,16 @@ const WriteReview = (props) => {
             <p>{ratingsText}</p>
           </div>
         </section>
-        <section>
+        <section className={styles.inputContainer}>
           <p className={showRecommendError}>Do you recommend this product?</p>
-          <div>
+          <div className={styles.star}>
             <input type="radio" id="yes" name="recommend" value={true} onChange={handleChange} />
-            <label htmlFor="yes">Yes</label>
+            <label htmlFor="yes" className={styles.recommend}>Yes</label>
             <input type="radio" id="no" name="recommend" value={false} onChange={handleChange} />
             <label htmlFor="no">No</label>
           </div>
         </section>
-        <section>
+        <section className={styles.inputContainer}>
           <p>Characteristics</p>
           {Object.keys(characteristics).map((key) => (
             <div key={characteristics[key].id}>
@@ -246,8 +250,8 @@ const WriteReview = (props) => {
             </div>
           ))}
         </section>
-        <section>
-          <input type="file" multiple onChange={addImage} accept="image/*" />
+        <section className={styles.inputContainer}>
+          <input className={styles.file} type="file" multiple onChange={addImage} accept="image/*" />
           <div className={styles.container}>
             {images.map((image, _) => (
               <div
@@ -258,8 +262,8 @@ const WriteReview = (props) => {
             ))}
           </div>
         </section>
-        <section>
-          <input type="submit" value="Submit" />
+        <section className={styles.submitContainer}>
+          <input type="submit" value="Submit" className={styles.submit} />
         </section>
       </form>
     </div>

@@ -191,6 +191,27 @@ Search Bar
 Modal Stuff
 *************************************/
 
+.review-modal-content {
+  background-color: #fefefe;
+  margin: auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 80%; /* Could be more or less, depending on screen size */
+  height: 60%;
+  max-width: 800px;
+  overflow-y: auto; /* Enable scroll if needed */
+}
+
+.review-close {
+  color: rgb(102, 101, 101);
+  float: right;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: white;
+  border-radius: 5px;
+}
+
 /* The Modal (background) */
 .modal {
   display: flex; /* Hidden by default */
