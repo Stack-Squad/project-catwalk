@@ -260,7 +260,7 @@ class Overview extends React.Component {
               addToCart={this.addToCart}
             />
           </div>
-          <OverviewProdDescription />
+          <OverviewProdDescription infoData={this.state.infoData}/>
         </div>
       );
     }
