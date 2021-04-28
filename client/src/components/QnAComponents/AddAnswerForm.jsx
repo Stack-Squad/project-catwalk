@@ -21,15 +21,15 @@ class AddAnswerForm extends React.Component {
   }
 
   handleAnswerChange(e) {
-    this.setState({ answerBody: e.target.value });
+    this.setState({ answerBody: e.target.value, success: false });
   }
 
   handleNicknameChange(e) {
-    this.setState({ nickname: e.target.value });
+    this.setState({ nickname: e.target.value, success: false });
   }
 
   handleEmailChange(e) {
-    this.setState({ email: e.target.value });
+    this.setState({ email: e.target.value, success: false });
   }
 
   handleSubmit(e) {
@@ -74,7 +74,7 @@ class AddAnswerForm extends React.Component {
     const selectedImage = e.target.files[0];
     if (selectedImage) {
       images.push(URL.createObjectURL(selectedImage));
-      this.setState({ images });
+      this.setState({ images, success: false });
     }
   }
 
@@ -89,8 +89,8 @@ class AddAnswerForm extends React.Component {
 
     let warningMessage = 'You must enter the following: ';
     const emailValidation = /.{1,}@[^.]{1,}/;
-    if (!questionBody) {
-      warningMessage += 'your question, ';
+    if (!answerBody) {
+      warningMessage += 'your answer, ';
     }
     if (!nickname) {
       warningMessage += 'your nickname, ';

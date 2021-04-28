@@ -18,15 +18,15 @@ class AddQuestionForm extends React.Component {
   }
 
   handleQuestionChange(e) {
-    this.setState({ questionBody: e.target.value });
+    this.setState({ questionBody: e.target.value, success: false });
   }
 
   handleNicknameChange(e) {
-    this.setState({ nickname: e.target.value });
+    this.setState({ nickname: e.target.value, success: false });
   }
 
   handleEmailChange(e) {
-    this.setState({ email: e.target.value });
+    this.setState({ email: e.target.value, success: false });
   }
 
   handleSubmit(e) {
