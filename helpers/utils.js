@@ -202,3 +202,27 @@ module.exports.getProductStylesById = (id) => {
     .then((response) => response.data)
     .catch((err) => err);
 };
+
+module.exports.addAnswer = (id, form) => {
+  const {
+    body, name, email, photos,
+  } = form;
+
+  const options = {
+    baseURL,
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return axios.post(`/qa/questions/${id}/answers`, {
+    body,
+    name,
+    email,
+    photos,
+  }, options)
+    .then((response) => response.data)
+    .catch((err) => {
+      console.log(err.message);
+    });
+};

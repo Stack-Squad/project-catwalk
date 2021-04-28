@@ -63,7 +63,7 @@ class Question extends React.Component {
   }
 
   render() {
-    const { question, productName } = this.props;
+    const { question, productName, productId } = this.props;
     const {
       answerList, fullAnswerList, isExpanded, markedHelpful, showModal,
     } = this.state;
@@ -87,7 +87,11 @@ class Question extends React.Component {
           <button className="tag" onClick={this.handleToggleModal}>Add Answer</button>
           {showModal && (
             <QAModal onCloseRequest={this.handleToggleModal}>
-              <AddAnswerForm productName={productName} questionBody={question.question_body} />
+              <AddAnswerForm
+                productName={productName}
+                questionBody={question.question_body}
+                questionId={question.question_id}
+              />
             </QAModal>
           )}
         </span>

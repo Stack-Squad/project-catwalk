@@ -175,7 +175,20 @@ app.post('/qa/questions', (req, res) => {
       res.send(data);
     })
     .catch((err) => {
-      console.log('err in index');
+      console.log(err.message);
+      res.end();
+    });
+});
+
+app.post('/qa/questions/:question_id/answers', (req, res) => {
+  const id = req.params.question_id;
+  console.log(`serving POST request to /qa/questions/${id}/answers`);
+  utils.addAnswer(id, req.body)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err.message);
       res.end();
     });
 });
