@@ -3,3 +3,4 @@ bundle.*
 .env
 coverage
 .DS_Store
+*.pem
