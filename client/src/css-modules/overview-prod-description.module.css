@@ -1,0 +1,11 @@
+.prodDescriptionLayout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "description features";
+  grid-area: 2 / 1 / 3 / 3;
+}
+.features { grid-area: features; }
+.description { grid-area: description; }
