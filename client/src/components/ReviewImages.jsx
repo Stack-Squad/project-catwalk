@@ -16,6 +16,8 @@ const ReviewImages = (props) => {
     }
   }
 
+  // images = images.filter((image) => image.url.includes('http'));
+
   return (
     <>
       <div
@@ -29,14 +31,15 @@ const ReviewImages = (props) => {
         />
       </div>
       <div className={styles.container}>
-        {images.map((image) => (
-          <div
-            onClick={() => toggle(image.url)}
-            key={image.id}
-            className={styles.imageWrapper}
-            style={{ backgroundImage: `url(${image.url})` }}
-          />
-        ))}
+        {images.filter((image) => image.url.includes('http'))
+          .map((image) => (
+            <div
+              onClick={() => toggle(image.url)}
+              key={image.id}
+              className={styles.imageWrapper}
+              style={{ backgroundImage: `url(${image.url})` }}
+            />
+          ))}
       </div>
     </>
   );
