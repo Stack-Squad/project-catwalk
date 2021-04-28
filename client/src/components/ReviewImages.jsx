@@ -16,8 +16,6 @@ const ReviewImages = (props) => {
     }
   }
 
-  // images = images.filter((image) => image.url.includes('http'));
-
   return (
     <>
       <div
