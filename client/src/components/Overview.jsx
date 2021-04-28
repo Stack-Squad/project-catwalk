@@ -8,6 +8,7 @@ import OverviewImgGal from './OverviewComponents/OverviewImgGal';
 import OverviewStyleSelect from './OverviewComponents/OverviewStyleSelect';
 import OverviewProductInfo from './OverviewComponents/OverviewProductInfo';
 import OverviewCart from './OverviewComponents/OverviewCart';
+import OverviewProdDescription from './OverviewComponents/OverviewProdDescription';
 
 import layoutStyles from '../css-modules/overview-layout.module.css';
 
@@ -259,9 +260,7 @@ class Overview extends React.Component {
               addToCart={this.addToCart}
             />
           </div>
-          <div className={layoutStyles.productDescriptionComp}>
-            CSS Placement: Product Description
-          </div>
+          <OverviewProdDescription infoData={this.state.infoData}/>
         </div>
       );
     }
@@ -281,9 +280,7 @@ class Overview extends React.Component {
           viewSwitchClick={this.viewSwitchClick}
           currentView={this.state.currentView}
         />
-        <div className={layoutStyles.productDescriptionCompIfFull}>
-          CSS Placement: Product Description
-        </div>
+        <OverviewProdDescription className={layoutStyles.productDescriptionCompIfFull} infoData={this.state.infoData} />
       </div>
     );
   }
