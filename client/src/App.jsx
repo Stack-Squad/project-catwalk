@@ -46,7 +46,7 @@ class App extends React.Component {
   render() {
     const { productId, questionList, currentProduct } = this.state;
     return (
-      <div>
+      <div id="app">
         <Banner />
         <Overview productId={productId} />
         <RelatedItems productId={productId} />
