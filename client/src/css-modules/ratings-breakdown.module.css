@@ -5,10 +5,28 @@
 
 .barContainer {
   margin-left: 1em;
-  width: 60%;
+  width: 75%;
   height: 10px;
   background-color: #f1f1f1;
   text-align: center;
+  color: white;
+}
+
+.starFilters {
+  width: 25%;
+  border: none;
+  border-bottom: 2px solid rgb(94, 93, 93);
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.starFilters:hover {
+  background-color: gray;
   color: white;
 }
 
@@ -20,6 +38,7 @@
 .ratings {
   margin-right: 0.5rem;
 }
+
 .filters {
   display: flex;
   flex-direction: row;

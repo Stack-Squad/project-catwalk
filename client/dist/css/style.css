@@ -55,6 +55,20 @@ header {
   font-weight: bolder;
   background: no-repeat green;
 }
+
+
+select:focus {
+  outline: none;
+}
+
+/*************************************
+Ratings and Reviews
+*************************************/
+#App {
+  font-family: sans-serif, Verdana, Geneva, Tahoma;
+  text-align: center;
+}
+
 #sort-by {
   margin-left: 10px;
   border-top-style: hidden;
@@ -63,9 +77,16 @@ header {
   background-color: white;
   border-bottom: 2px solid grey;
 }
+#ratings-reviews {
+  margin: 0 auto;
+  padding: 40px;
+  width: 70vw;
+}
 
-select:focus {
-  outline: none;
+.ratings-reviews-header {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  font-size: 24px;
 }
 
 /*************************************
