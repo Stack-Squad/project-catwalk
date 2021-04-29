@@ -5,8 +5,8 @@ const Modal = (props) => {
 
   return (
     <div className="modal">
-      <div className="modal-content">
-        <button className="qa-close" onClick={onCloseRequest}>&times;</button>
+      <div className="review-modal-content">
+        <button className="review-close" onClick={onCloseRequest}>&times;</button>
         {children}
       </div>
     </div>
