@@ -55,6 +55,20 @@ header {
   font-weight: bolder;
   background: no-repeat green;
 }
+
+
+select:focus {
+  outline: none;
+}
+
+/*************************************
+Ratings and Reviews
+*************************************/
+#App {
+  font-family: sans-serif, Verdana, Geneva, Tahoma;
+  text-align: center;
+}
+
 #sort-by {
   margin-left: 10px;
   border-top-style: hidden;
@@ -63,9 +77,16 @@ header {
   background-color: white;
   border-bottom: 2px solid grey;
 }
+#ratings-reviews {
+  margin: 0 auto;
+  padding: 40px;
+  width: 70vw;
+}
 
-select:focus {
-  outline: none;
+.ratings-reviews-header {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  font-size: 24px;
 }
 
 /*************************************
@@ -190,6 +211,27 @@ Search Bar
 /*************************************
 Modal Stuff
 *************************************/
+
+.review-modal-content {
+  background-color: #fefefe;
+  margin: auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 80%; /* Could be more or less, depending on screen size */
+  height: 60%;
+  max-width: 800px;
+  overflow-y: auto; /* Enable scroll if needed */
+}
+
+.review-close {
+  color: rgb(102, 101, 101);
+  float: right;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: white;
+  border-radius: 5px;
+}
 
 /* The Modal (background) */
 .modal {

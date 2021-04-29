@@ -20,6 +20,22 @@
   justify-content: space-between;
 }
 
+.button {
+  border: none;
+  border-bottom: 2px solid rgb(94, 93, 93);
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: gray;
+  color: white;
+}
+
 .recommend {
   width: 188px;
   display: flex;
