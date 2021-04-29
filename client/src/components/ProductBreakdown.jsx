@@ -7,7 +7,6 @@ const ProductBreakdown = (props) => {
 
   return (
     <div className={styles.container}>
-      <p>product breakdown</p>
       { Object.keys(characteristics).map((key, _) => {
         const options = getCharacteristicOptions(key);
         const value = Math.round(parseFloat(characteristics[key].value) * 10) / 10;

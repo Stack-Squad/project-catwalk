@@ -75,7 +75,7 @@ const RatingsAndReviews = (props) => {
 
   return (
     <div id="ratings-reviews">
-      <h1>Ratings & Reviews</h1>
+      <h1 className="ratings-reviews-header">Ratings & Reviews</h1>
       <div className={styles.container}>
         <Ratings
           reviewData={reviewData}

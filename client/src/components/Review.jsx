@@ -43,14 +43,14 @@ const Review = (props) => {
           {body}
           {(review.body.length > 250 && !show)
           && (
-          <button onClick={onToggle}>
+          <button onClick={onToggle} className={styles.button}>
             show More
           </button>
           )}
 
           {(show)
             && (
-            <button onClick={onToggle}>
+            <button onClick={onToggle} className={styles.button}>
               show Less
             </button>
             )}
@@ -79,6 +79,7 @@ const Review = (props) => {
             <button
               value={review.review_id}
               onClick={(event) => markHelpFul(event.target.value)}
+              className={styles.button}
             >
               Yes
               {' '}
@@ -94,6 +95,7 @@ const Review = (props) => {
             <button
               value={review.review_id}
               onClick={(event) => report(event.target.value)}
+              className={styles.button}
             >
               Report
             </button>

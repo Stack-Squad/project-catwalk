@@ -58,7 +58,6 @@ const RatingsBreakdown = (props) => {
 
   return (
     <div className={styles.container}>
-      <h4>Ratings Breakdown</h4>
       <div className={styles.filters}>
         {filters.length > 0 && (
           <>
@@ -75,7 +74,7 @@ const RatingsBreakdown = (props) => {
       </div>
       {[5, 4, 3, 2, 1].map((star) => (
         <div key={star} className={styles.layout}>
-          <button onClick={showStarReviews} value={star}>
+          <button onClick={showStarReviews} value={star} className={styles.starFilters}>
             {star}
             {' '}
             stars
