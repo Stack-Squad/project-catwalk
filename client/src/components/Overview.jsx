@@ -25,6 +25,7 @@ class Overview extends React.Component {
       currentImg: sampleData.productStylesById.results[0].photos[0].url,
       // the currently selected photo from currentSelectedStyleImages reference
       currentSelectedStyleImages: sampleData.productStylesById.results[0].photos,
+      currentPreloadedGallery: [],
       // reference from the current style's photos
       currentPointInGallery: 0,
       currentPointInGalleryStart: 0,
@@ -129,16 +130,17 @@ class Overview extends React.Component {
   // style selector functionality
 
   styleSelectSwitchClick(e, index) {
-    this.state.currentImg = sampleData.productStylesById.results[index].photos[0].url;
-    this.state.currentSelectedStyleImages = sampleData.productStylesById.results[index].photos;
+    // debugger;
+    this.state.currentImg = this.state.data[index].photos[0].url;
+    this.state.currentSelectedStyleImages = this.state.data[index].photos;
     this.state.currentGalleryLength = this.state.currentSelectedStyleImages.length;
-    this.state.dataCurrentStyleName = sampleData.productStylesById.results[index].name;
+    this.state.dataCurrentStyleName = this.state.data[index].name;
     this.state.dataSelected = index;
-    this.state.currentStyle = sampleData.productStylesById.results[index];
+    this.state.currentStyle = this.state.data[index];
     this.state.currentSize = '';
     document.getElementById('cart').reset();
     // change for price
-    this.state.actualPrice = sampleData.productStylesById.results[index].sale_price ? sampleData.productStylesById.results[index].sale_price : sampleData.productStylesById.results[index].original_price;
+    this.state.actualPrice = this.state.data[index].sale_price ? this.state.data[index].sale_price : this.state.data[index].original_price;
     this.setState({
       currentImg: this.state.currentImg,
       currentSelectedStyleImages: this.state.currentSelectedStyleImages,
@@ -203,53 +205,57 @@ class Overview extends React.Component {
       .catch((error) => alert('An error in adding your item(s) to cart, there was. Error, here is: ', error));
   }
 
-  componentDidMount() {
-    console.log(this.props.productId);
-    axios.get(`/products/${this.props.productId}`)
-      .then((response) => {
-        console.log('ProductID response: ', response);
-        this.setState({
-          infoData: response.data
-        });
-        return;
-      })
-      .then(() => {
-        return axios.get(`/products/${this.props.productId}/styles`);
-      })
-      .then((responseStyles) => {
-        console.log('ProductID Styles response: ', responseStyles);
-        this.setState({
-          currentImg: responseStyles.data.results[0].photos[0].url,
-          currentSelectedStyleImages: responseStyles.data.results[0].photos,
-          currentPointInGallery: 0,
-          currentPointInGalleryStart: 0,
-          currentPointInGalleryEndNonInclusive: 5,
-          currentGalleryLength: responseStyles.data.results[0].photos.length,
-          currentView: 'regular',
-          data: responseStyles.data.results,
-          dataCurrentStyleName: responseStyles.data.results[0].name,
-          dataSelected: 0,
-          actualPrice: responseStyles.data.results[0].sale_price ? responseStyles.data.results[0].sale_price : responseStyles.data.results[0].original_price,
-          currentStyle: responseStyles.data.results[0],
-          currentSize: '',
-          currentQuantity: 0,
-        });
-        return;
-      })
-      .then((reviewListResponse) => {
-        return
-      })
-      .catch((error) => console.error(error));
+  changeProduct() {
+    const id = this.props.productId;
+      console.log(id);
+      axios.get(`/products/${id}`)
+        .then((response) => {
+          console.log('ProductID response: ', response);
+          this.setState({
+            infoData: response.data
+          });
+          return;
+        })
+        .then(() => {
+          return axios.get(`/products/${id}/styles`);
+        })
+        .then((responseStyles) => {
+          console.log('ProductID Styles response: ', responseStyles);
+          // mapping function urls
+          var imagesUrls = responseStyles.data.results[0].photos.map((photo) => photo.url);
+          var imagesPreloader = (urls) => {
+            var result = imagesUrls.forEach((url) => {
+              axios.get(url);
+            });
+          }
+          imagesPreloader(imagesUrls);
+          this.setState({
+            currentImg: responseStyles.data.results[0].photos[0].url,
+            currentSelectedStyleImages: responseStyles.data.results[0].photos,
+            currentPointInGallery: 0,
+            currentPointInGalleryStart: 0,
+            currentPointInGalleryEndNonInclusive: 5,
+            currentGalleryLength: responseStyles.data.results[0].photos.length,
+            currentView: 'regular',
+            data: responseStyles.data.results,
+            dataCurrentStyleName: responseStyles.data.results[0].name,
+            dataSelected: 0,
+            actualPrice: responseStyles.data.results[0].sale_price ? responseStyles.data.results[0].sale_price : responseStyles.data.results[0].original_price,
+            currentStyle: responseStyles.data.results[0],
+            currentSize: '',
+            currentQuantity: 0,
+          });
+          return;
+        })
+        .then((reviewListResponse) => {
+          return
+        })
+        .catch((error) => console.error(error));
   }
 
-  // <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.productId !== this.state.currentProductId) {
-      this.setState({
-        currentProductId: this.props.productId
-      });
-    }
+  tempTwitterAndMaybePinterestFix() {
+    // <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     const scriptTwitter = document.createElement("script");
     scriptTwitter.src = "https://platform.twitter.com/widgets.js";
     scriptTwitter.async = true;
@@ -260,6 +266,21 @@ class Overview extends React.Component {
     // scriptPinterest.defer = true;
     // scriptPinterest.src = "//assets.pinterest.com/js/pinit.js";
     // document.head.appendChild(scriptPinterest);
+  }
+
+  // componentDidMount() {
+  //   this.changeProduct();
+  // }
+
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.productId !== this.state.currentProductId) {
+      this.setState({
+        currentProductId: this.props.productId
+      });
+      this.changeProduct();
+      this.tempTwitterAndMaybePinterestFix();
+    }
   }
 
   render() {
