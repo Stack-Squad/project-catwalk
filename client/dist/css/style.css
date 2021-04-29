@@ -64,9 +64,8 @@ select:focus {
 /*************************************
 Ratings and Reviews
 *************************************/
-#App {
+#app {
   font-family: sans-serif, Verdana, Geneva, Tahoma;
-  text-align: center;
 }
 
 #sort-by {
@@ -97,24 +96,24 @@ Questions and Answers
   margin: auto;
   padding: 40px;
   width: 70%;
-  max-width: 800px;
-  background-color: rgb(167, 253, 181);
+  max-width: 1000px;
+  /* background-color: rgb(167, 253, 181); */
 }
 #qaheading {
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   font-size: large;
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 10px grey, 0 0 5px green;
 }
 .question_wrapper {
-  padding: 5px;
+  padding: 10px;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 30px;
+  border-radius: 10px;
   display: grid;
-  grid-template-columns: 5% auto 25%;
+  grid-template-columns: 5% auto auto;
   grid-template-rows: 25px auto;
-  background-color: rgb(197, 255, 207);
-  border-style: solid;
-  border-color: green;
-  border-width: 2px;
+  box-shadow: 1px 1px 2px black, 0 0 10px green;
 }
 .qa_label {
   grid-column-start: 1;
@@ -133,8 +132,8 @@ Questions and Answers
   font-size: medium;
 }
 .question_tags {
-  grid-row-start: 0;
-  grid-column: 0 4;
+  grid-row: 0 / 1;
+  grid-column: 0 / 4;
   justify-self: end;
   font-size: small;
 }
@@ -157,7 +156,7 @@ Questions and Answers
   width: auto;
   vertical-align: middle;
   margin: 0px 3px 5px 0px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 .answer_wrapper {
   display: flex;
@@ -180,6 +179,15 @@ Questions and Answers
 .report {
   margin: 5px;
 }
+.qa_button {
+  background-color: green;
+  color: white;
+  border-style: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
 /*************************************
 Search Bar
@@ -189,6 +197,7 @@ Search Bar
   position: relative;
   display: flex;
   padding: 5px 0px 10px 0px;
+  margin-bottom: 10px;
 }
 .search-icon {
   position: relative;
