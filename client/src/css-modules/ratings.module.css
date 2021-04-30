@@ -1,5 +1,14 @@
 .container {
   display: grid;
-  grid-template-rows: 100px 250px 250px;
+  grid-template-rows: auto auto auto;
+  max-height: 250px;
   row-gap: 5px;
+}
+
+@media screen and (max-width: 955px) {
+  .container {
+    width: 60%;
+    margin: 0 auto;
+    max-height: fit-content;
+  }
 }
