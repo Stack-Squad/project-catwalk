@@ -84,7 +84,7 @@ class Question extends React.Component {
           <span>
             {markedHelpful ? `(${question.question_helpfulness + 1})` : `(${question.question_helpfulness})`}
           </span>
-          <button className="tag" onClick={this.handleToggleModal}>Add Answer</button>
+          <button className="tag qa_button" onClick={this.handleToggleModal}>Add Answer</button>
           {showModal && (
             <QAModal onCloseRequest={this.handleToggleModal}>
               <AddAnswerForm

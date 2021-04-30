@@ -22,7 +22,8 @@
 
 .button {
   border: none;
-  border-bottom: 2px solid rgb(94, 93, 93);
+  border-style: none;
+  border-bottom: 2px solid rgb(173, 236, 173);
   outline: none;
   cursor: pointer;
   background-color: white;
@@ -37,11 +38,10 @@
 }
 
 .recommend {
-  width: 188px;
+  width: 35%;
   display: flex;
   justify-content: space-between;
   margin: 0.5rem 0;
-  /* justify-content: flex-start; */
 }
 
 .response {

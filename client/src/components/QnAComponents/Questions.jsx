@@ -36,7 +36,7 @@ class Questions extends React.Component {
     ));
 
     const moreQuestionsButton = (
-      <button className="q_button" onClick={onClick}>
+      <button className="qa_button" onClick={onClick}>
         More Answered Questions
       </button>
     );
