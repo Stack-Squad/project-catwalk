@@ -68,7 +68,7 @@ const RatingsBreakdown = (props) => {
                 stars
               </span>
             ))}
-            <button onClick={clearFilters}>clear</button>
+            <button onClick={clearFilters} className={styles.button}>clear</button>
           </>
         )}
       </div>

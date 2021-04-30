@@ -69,13 +69,15 @@ Ratings and Reviews
 }
 
 #sort-by {
+  -webkit-appearance: none;
   margin-left: 10px;
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
   background-color: white;
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid rgb(173, 236, 173);
 }
+
 #ratings-reviews {
   margin: 0 auto;
   padding: 40px;
