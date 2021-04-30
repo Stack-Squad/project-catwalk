@@ -69,7 +69,7 @@ class Question extends React.Component {
     } = this.state;
     const buttonText = isExpanded ? 'Collapse Answers' : 'See More Answers';
     const answersButton = (
-      <button onClick={this.onClick}>
+      <button className="tag-button" onClick={this.onClick}>
         {buttonText}
       </button>
     );
@@ -80,7 +80,7 @@ class Question extends React.Component {
         <span className="question_body">{question.question_body}</span>
         <span className="question_tags">
           <span>Helpful?</span>
-          <button className="tag" onClick={this.markHelpful}>Yes</button>
+          <button className="tag tag-button" onClick={this.markHelpful}>Yes</button>
           <span>
             {markedHelpful ? `(${question.question_helpfulness + 1})` : `(${question.question_helpfulness})`}
           </span>
