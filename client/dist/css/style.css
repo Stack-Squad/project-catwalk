@@ -80,7 +80,6 @@ Ratings and Reviews
 
 #ratings-reviews {
   margin: 0 auto;
-  padding: 40px;
   width: 70vw;
 }
 
@@ -88,6 +87,13 @@ Ratings and Reviews
   margin: 0.5rem;
   padding: 0.5rem;
   font-size: 24px;
+  color: green;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  text-shadow: 2px 2px 4px lightgrey;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 /*************************************
@@ -97,15 +103,18 @@ Questions and Answers
 #qacontainer {
   margin: auto;
   padding: 40px;
-  width: 70%;
-  max-width: 1000px;
+  width: 70vw;
   /* background-color: rgb(167, 253, 181); */
 }
 #qaheading {
   padding-bottom: 10px;
-  font-size: large;
-  color: white;
-  text-shadow: 1px 1px 2px black, 0 0 10px grey, 0 0 5px green;
+  font-size: 24px;
+  color: green;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  text-shadow: 2px 2px 4px lightgrey;
+  font-weight: bold;
 }
 .question_wrapper {
   padding: 10px;
@@ -115,7 +124,7 @@ Questions and Answers
   display: grid;
   grid-template-columns: 5% auto auto;
   grid-template-rows: 25px auto;
-  box-shadow: 1px 1px 2px black, 0 0 10px green;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .qa_label {
   grid-column-start: 1;
@@ -189,6 +198,21 @@ Questions and Answers
   padding: 5px;
   margin-right: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.tag-button {
+  border: none;
+  border-style: none;
+  border-bottom: 2px solid rgb(173, 236, 173);
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.tag-button:hover {
+  background-color: gray;
+  color: white;
 }
 
 /*************************************
