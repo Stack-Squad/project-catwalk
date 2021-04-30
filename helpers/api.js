@@ -19,3 +19,11 @@ export const reportReview = (reviewId) => axios.put(`/reviews/${reviewId}/report
 export const postReview = (body) => axios.post('/reviews', { ...body })
   .then((response) => response.data)
   .catch((err) => console.log(err.message));
+
+export const getProducts = () => axios.get('/products')
+  .then((response) => response.data)
+  .catch((err) => console.log(err.message));
+
+export const getQuestionList = (productId) => axios.get(`qa/questions/${productId}`)
+  .then((response) => response.data)
+  .catch((err) => console.log(err.message));

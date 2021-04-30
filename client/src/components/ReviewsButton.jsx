@@ -21,7 +21,7 @@ const ReviewsButton = (props) => {
       {(total > 2 && soFar < total) && (
         <div>
           <input
-            className={styles.reviewButton}
+            className={styles.button}
             onClick={moreReviews}
             type="button"
             value="MORE REVIEWS"
@@ -30,7 +30,7 @@ const ReviewsButton = (props) => {
       )}
       <div>
         <input
-          className={styles.reviewButton}
+          className={styles.button}
           type="button"
           value="ADD A REVIEW   +"
           onClick={toggleModal}
