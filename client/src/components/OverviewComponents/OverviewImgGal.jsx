@@ -5,10 +5,8 @@ const OverviewImgGal = (props) => {
   const renderMoreButton = (length) => {
     if (length > 4) {
       return (
-        <button onClick={(e) => props.galleryScrollClick(e)}>
-          Click for
-          <br />
-          more!
+        <button className={styles.nextPrev} onClick={(e) => props.galleryScrollClick(e)}>
+          v
         </button>
       );
     }
@@ -42,10 +40,10 @@ const OverviewImgGal = (props) => {
       </div>
       <img className={currentView === 'regular' ? styles.image : styles.imageIfFull} src={currentImg} alt="" />
       <div className={styles.switchImage}>
-        <button onClick={(e) => props.nextAndPrevious(e, 'previous')}>Prev?</button>
-        <button onClick={(e) => props.nextAndPrevious(e, 'next')}>Next?</button>
+        <button className={styles.nextPrev} onClick={(e) => props.nextAndPrevious(e, 'previous')}>{'<'}</button>
+        <button className={styles.nextPrev} onClick={(e) => props.nextAndPrevious(e, 'next')}>{'>'}</button>
       </div>
-      <button className={styles.view} onClick={(e) => props.viewSwitchClick(e)}>Full?</button>
+      <input type="image" className={styles.view} onClick={(e) => props.viewSwitchClick(e)} src="https://www.freeiconspng.com/uploads/full-screen-icon-png-29.png" alt="Expand Contract View" />
     </div>
   );
 };

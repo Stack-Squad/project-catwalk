@@ -17,13 +17,15 @@ import sampleData from '../../../helpers/sampleData';
 import { getAverageRatings, getStarRatings } from '../../../helpers/ratingsHelper';
 
 class Overview extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      currentProductId: props.productId,
       ////// state related to image gallery mostly //////
       currentImg: sampleData.productStylesById.results[0].photos[0].url,
       // the currently selected photo from currentSelectedStyleImages reference
       currentSelectedStyleImages: sampleData.productStylesById.results[0].photos,
+      currentPreloadedGallery: [],
       // reference from the current style's photos
       currentPointInGallery: 0,
       currentPointInGalleryStart: 0,
@@ -112,13 +114,10 @@ class Overview extends React.Component {
   }
 
   viewSwitchClick(e) {
-    if (e.target.innerHTML === 'Full?') {
-      e.target.innerHTML = 'Regular?';
+    if (this.state.currentView === 'regular') {
       this.state.currentView = 'full';
     } else {
-      e.target.innerHTML = 'Full?';
       this.state.currentView = 'regular';
-
     }
     this.setState({
       currentView: this.state.currentView
@@ -128,16 +127,16 @@ class Overview extends React.Component {
   // style selector functionality
 
   styleSelectSwitchClick(e, index) {
-    this.state.currentImg = sampleData.productStylesById.results[index].photos[0].url;
-    this.state.currentSelectedStyleImages = sampleData.productStylesById.results[index].photos;
+    this.state.currentImg = this.state.data[index].photos[0].url;
+    this.state.currentSelectedStyleImages = this.state.data[index].photos;
     this.state.currentGalleryLength = this.state.currentSelectedStyleImages.length;
-    this.state.dataCurrentStyleName = sampleData.productStylesById.results[index].name;
+    this.state.dataCurrentStyleName = this.state.data[index].name;
     this.state.dataSelected = index;
-    this.state.currentStyle = sampleData.productStylesById.results[index];
+    this.state.currentStyle = this.state.data[index];
     this.state.currentSize = '';
     document.getElementById('cart').reset();
     // change for price
-    this.state.actualPrice = sampleData.productStylesById.results[index].sale_price ? sampleData.productStylesById.results[index].sale_price : sampleData.productStylesById.results[index].original_price;
+    this.state.actualPrice = this.state.data[index].sale_price ? this.state.data[index].sale_price : this.state.data[index].original_price;
     this.setState({
       currentImg: this.state.currentImg,
       currentSelectedStyleImages: this.state.currentSelectedStyleImages,
@@ -185,11 +184,7 @@ class Overview extends React.Component {
     sizeSelect.size = 0;
     let skuId = '';
     for (const sku in this.state.currentStyle.skus) {
-      // console.log(sku);
-      // console.log(this.state.currentStyle.skus[sku]);
-      // console.log(this.state.currentStyle.skus[sku].size);
       if (this.state.currentSize === this.state.currentStyle.skus[sku].size) {
-        // console.log('THIS ONE -->', sku);
         skuId = sku;
       }
     }
@@ -202,9 +197,59 @@ class Overview extends React.Component {
       .catch((error) => alert('An error in adding your item(s) to cart, there was. Error, here is: ', error));
   }
 
-  // <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
-  componentDidUpdate (prevProps, prevState) {
+  changeProduct() {
+    const { productId, reviewsList, reviewsMetaData } = this.props;
+      axios.get(`/products/${productId}`)
+        .then((response) => {
+          this.state.infoData = response.data;
+          this.state.stars = getStarRatings(getAverageRatings(reviewsMetaData.ratings));
+          this.state.amountOfReviews = reviewsList.length;
+          return;
+        })
+        .then(() => {
+          return axios.get(`/products/${productId}/styles`);
+        })
+        .then((responseStyles) => {
+          this.state.currentImg = responseStyles.data.results[0].photos[0].url;
+          this.state.currentSelectedStyleImages = responseStyles.data.results[0].photos;
+          this.state.currentPointInGallery = 0;
+          this.state.currentPointInGalleryStart = 0;
+          this.state.currentPointInGalleryEndNonInclusive = 5;
+          this.state.currentGalleryLength = responseStyles.data.results[0].photos.length;
+          this.state.currentView = 'regular';
+          this.state.data = responseStyles.data.results
+          this.state.dataCurrentStyleName = responseStyles.data.results[0].name;
+          this.state.dataSelected = 0;
+          this.state.actualPrice = responseStyles.data.results[0].sale_price ? responseStyles.data.results[0].sale_price : responseStyles.data.results[0].original_price;
+          this.state.currentStyle = responseStyles.data.results[0];
+          this.state.currentSize = '';
+          this.state.currentQuantity = 0;
+          this.setState({
+            infoData: this.state.infoData,
+            stars: this.state.stars,
+            amountOfReviews: this.state.amountOfReviews,
+            currentImg: this.state.currentImg,
+            currentSelectedStyleImages: this.state.currentSelectedStyleImages,
+            currentPointInGallery: this.state.currentPointInGallery,
+            currentPointInGalleryStart: this.state.currentPointInGalleryStart,
+            currentPointInGalleryEndNonInclusive: this.state.currentPointInGalleryEndNonInclusive,
+            currentView: this.state.currentView,
+            data: this.state.data,
+            dataSelected: this.state.dataSelected,
+            actualPrice: this.state.actualPrice,
+            currentStyle: this.state.currentStyle,
+            currentSize: this.state.currentSize,
+            currentQuantity: this.state.currentQuantity,
+          });
+          return;
+        })
+        .catch((error) => console.error(error));
+  }
+
+  tempTwitterAndMaybePinterestFix() {
+    // <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    // <a data-pin-do="buttonBookmark" data-pin-lang="en" href="https://www.pinterest.com/pin/create/button/">Save</a>
     const scriptTwitter = document.createElement("script");
     scriptTwitter.src = "https://platform.twitter.com/widgets.js";
     scriptTwitter.async = true;
@@ -215,6 +260,25 @@ class Overview extends React.Component {
     // scriptPinterest.defer = true;
     // scriptPinterest.src = "//assets.pinterest.com/js/pinit.js";
     // document.head.appendChild(scriptPinterest);
+    // if (document.getElementById('shareButtons')) {
+    //   var shareButtons = document.getElementById('shareButtons');
+    //   var pinterestButton = document.createElement('a')
+    //   pinterestButton['data-pin-do'] = "buttonBookmark";
+    //   pinterestButton['data-pin-lang'] = "en";
+    //   pinterestButton.href = "https://www.pinterest.com/pin/create/button/";
+    //   console.log(pinterestButton);
+    //   shareButtons.appendChild(pinterestButton);
+    // }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.productId !== this.state.currentProductId) {
+      this.setState({
+        currentProductId: this.props.productId
+      });
+      this.changeProduct();
+    }
+    this.tempTwitterAndMaybePinterestFix();
   }
 
   render() {
@@ -265,7 +329,9 @@ class Overview extends React.Component {
       );
     }
     return (
+
       <div className={layoutStyles.overviewLayoutIfFull}>
+        {this.tempTwitterAndMaybePinterestFix()}
         <OverviewImgGal
           className={layoutStyles.imageGalleryCompIfFull}
           currentImg={this.state.currentImg}

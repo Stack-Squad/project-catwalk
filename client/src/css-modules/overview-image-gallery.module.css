@@ -3,25 +3,22 @@
   grid-template-columns: 0.6fr 0.6fr 2.4fr 0.6fr;
   grid-template-rows: 0.5fr 1.5fr 0.5fr 1.5fr;
   gap: 0px 0px;
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 100%;
-  max-height: 100%;
   background-color: lightgray;
 }
 .imageGalleryIfFull {
   display: grid;
+  width: 85vw;
   grid-template-columns: 0.3fr 0.3fr 3.1fr 0.3fr;
   grid-template-rows: 0.5fr 1.5fr 0.5fr 1.5fr;
   gap: 0px 0px;
-  min-width: 200%;
-  max-width: 200%;
-  min-height: 100%;
-  max-height: 100%;
   background-color: lightgray;
 }
 .gallery {
+  display: flex;
   grid-area: 1 / 1 / 5 / 2;
+  align-self: center;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .image {
   display: block;
@@ -45,22 +42,42 @@
   justify-content: space-between;
   padding: 1.5%;
 }
+.nextPrev {
+  border-style: none;
+  background-color: lightgray;
+  font-size: xx-large;
+  font-weight: bolder;
+  color: green;
+  text-shadow: 2px 2px 4px black;
+}
+.nextPrev:hover {
+  color: lime;
+}
 .view {
   grid-area: 1 / 4 / 2 / 5;
+  width: 50px;
+  height: 50px;
   margin: auto;
-  margin-right: 10%;
 }
 .thumbnail {
-  display: block;
-  width: 30%;
-  max-height: 50%;
+  align-self: center;
+  width: auto;
+  height: auto;
+  max-height: 15%;
+  max-width: 10vh;
+  margin: 10px 0 10px 0;
+  grid-row: 0 / 5;
   margin-bottom: 3%;
   padding-bottom: 1.5%;
 }
 .thumbnailIfFull {
-  display: block;
-  width: 30%;
-  max-height: 50%;
+  align-self: center;
+  width: auto;
+  height: auto;
+  max-height: 15%;
+  max-width: 10vh;
+  margin: 10px 0 10px 0;
+  grid-row: 0 / 5;
   margin-bottom: 3%;
   padding-bottom: 1.5%;
 }
