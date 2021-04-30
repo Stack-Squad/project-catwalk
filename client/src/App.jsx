@@ -7,7 +7,6 @@ import Overview from './components/Overview';
 import RatingsAndReviews from './components/RatingsAndReviews';
 import QnA from './components/QnA';
 import RelatedItems from './components/RelatedItems';
-import Test from './components/Test';
 import {
   getReviews, getReviewMetadata, getProducts, getQuestionList,
 } from '../../helpers/api';
