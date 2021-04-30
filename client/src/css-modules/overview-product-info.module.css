@@ -18,7 +18,10 @@
 .share {
   grid-area: share;
   display: inline-flex;
+  margin: 10px 0;
   padding-bottom: 1%;
+  width: 200px;
+  justify-content: space-between;
 }
 .name {
   grid-area: name;

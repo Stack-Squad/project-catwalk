@@ -11,9 +11,9 @@ const OverviewProdDescription = (props) => {
         <br />
         <div>{infoData.description}</div>
       </div>
-      <ul className={styles.features}>
-        {infoData.features.map((featureObj, index) => <li key={index}>{`${featureObj.feature}: ${featureObj.value}`}</li>)}
-      </ul>
+      <div className={styles.features}>
+        {infoData.features.map((featureObj, index) => <div key={index}>{`${featureObj.feature}: ${featureObj.value}`}</div>)}
+      </div>
     </div>
   );
 };

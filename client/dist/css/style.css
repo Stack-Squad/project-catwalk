@@ -54,6 +54,10 @@ header {
   font-size: x-large;
   font-weight: bolder;
   background: no-repeat green;
+  padding: 20px;
+  color: white;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 

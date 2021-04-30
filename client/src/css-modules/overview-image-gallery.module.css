@@ -7,9 +7,9 @@
 }
 .imageGalleryIfFull {
   display: grid;
+  width: 85vw;
   grid-template-columns: 0.3fr 0.3fr 3.1fr 0.3fr;
   grid-template-rows: 0.5fr 1.5fr 0.5fr 1.5fr;
-  width: 100vw;
   gap: 0px 0px;
   background-color: lightgray;
 }
@@ -42,10 +42,22 @@
   justify-content: space-between;
   padding: 1.5%;
 }
+.nextPrev {
+  border-style: none;
+  background-color: lightgray;
+  font-size: xx-large;
+  font-weight: bolder;
+  color: green;
+  text-shadow: 2px 2px 4px black;
+}
+.nextPrev:hover {
+  color: lime;
+}
 .view {
   grid-area: 1 / 4 / 2 / 5;
+  width: 50px;
+  height: 50px;
   margin: auto;
-  margin-right: 10%;
 }
 .thumbnail {
   align-self: center;
@@ -59,9 +71,13 @@
   padding-bottom: 1.5%;
 }
 .thumbnailIfFull {
-  display: block;
-  width: 30%;
-  max-height: 50%;
+  align-self: center;
+  width: auto;
+  height: auto;
+  max-height: 15%;
+  max-width: 10vh;
+  margin: 10px 0 10px 0;
+  grid-row: 0 / 5;
   margin-bottom: 3%;
   padding-bottom: 1.5%;
 }

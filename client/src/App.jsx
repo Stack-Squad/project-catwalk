@@ -60,7 +60,11 @@ class App extends React.Component {
     return (
       <div id="app">
         <Banner />
-        <Overview productId={productId} />
+        <Overview
+          productId={productId}
+          reviewsList={reviewsList}
+          reviewsMetaData={reviewsMetaData}
+        />
         <RelatedItems productId={productId} />
         <QnA questionList={questionList} productName={currentProduct.name} />
         <RatingsAndReviews

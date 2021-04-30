@@ -114,13 +114,10 @@ class Overview extends React.Component {
   }
 
   viewSwitchClick(e) {
-    if (e.target.innerHTML === 'Full?') {
-      e.target.innerHTML = 'Regular?';
+    if (this.state.currentView === 'regular') {
       this.state.currentView = 'full';
     } else {
-      e.target.innerHTML = 'Full?';
       this.state.currentView = 'regular';
-
     }
     this.setState({
       currentView: this.state.currentView
@@ -130,7 +127,6 @@ class Overview extends React.Component {
   // style selector functionality
 
   styleSelectSwitchClick(e, index) {
-    // debugger;
     this.state.currentImg = this.state.data[index].photos[0].url;
     this.state.currentSelectedStyleImages = this.state.data[index].photos;
     this.state.currentGalleryLength = this.state.currentSelectedStyleImages.length;
@@ -188,11 +184,7 @@ class Overview extends React.Component {
     sizeSelect.size = 0;
     let skuId = '';
     for (const sku in this.state.currentStyle.skus) {
-      // console.log(sku);
-      // console.log(this.state.currentStyle.skus[sku]);
-      // console.log(this.state.currentStyle.skus[sku].size);
       if (this.state.currentSize === this.state.currentStyle.skus[sku].size) {
-        // console.log('THIS ONE -->', sku);
         skuId = sku;
       }
     }
@@ -206,49 +198,50 @@ class Overview extends React.Component {
   }
 
   changeProduct() {
-    const id = this.props.productId;
-      console.log(id);
-      axios.get(`/products/${id}`)
+    const { productId, reviewsList, reviewsMetaData } = this.props;
+      axios.get(`/products/${productId}`)
         .then((response) => {
-          console.log('ProductID response: ', response);
-          this.setState({
-            infoData: response.data
-          });
+          this.state.infoData = response.data;
+          this.state.stars = getStarRatings(getAverageRatings(reviewsMetaData.ratings));
+          this.state.amountOfReviews = reviewsList.length;
           return;
         })
         .then(() => {
-          return axios.get(`/products/${id}/styles`);
+          return axios.get(`/products/${productId}/styles`);
         })
         .then((responseStyles) => {
-          console.log('ProductID Styles response: ', responseStyles);
-          // mapping function urls
-          var imagesUrls = responseStyles.data.results[0].photos.map((photo) => photo.url);
-          var imagesPreloader = (urls) => {
-            var result = imagesUrls.forEach((url) => {
-              axios.get(url);
-            });
-          }
-          imagesPreloader(imagesUrls);
+          this.state.currentImg = responseStyles.data.results[0].photos[0].url;
+          this.state.currentSelectedStyleImages = responseStyles.data.results[0].photos;
+          this.state.currentPointInGallery = 0;
+          this.state.currentPointInGalleryStart = 0;
+          this.state.currentPointInGalleryEndNonInclusive = 5;
+          this.state.currentGalleryLength = responseStyles.data.results[0].photos.length;
+          this.state.currentView = 'regular';
+          this.state.data = responseStyles.data.results
+          this.state.dataCurrentStyleName = responseStyles.data.results[0].name;
+          this.state.dataSelected = 0;
+          this.state.actualPrice = responseStyles.data.results[0].sale_price ? responseStyles.data.results[0].sale_price : responseStyles.data.results[0].original_price;
+          this.state.currentStyle = responseStyles.data.results[0];
+          this.state.currentSize = '';
+          this.state.currentQuantity = 0;
           this.setState({
-            currentImg: responseStyles.data.results[0].photos[0].url,
-            currentSelectedStyleImages: responseStyles.data.results[0].photos,
-            currentPointInGallery: 0,
-            currentPointInGalleryStart: 0,
-            currentPointInGalleryEndNonInclusive: 5,
-            currentGalleryLength: responseStyles.data.results[0].photos.length,
-            currentView: 'regular',
-            data: responseStyles.data.results,
-            dataCurrentStyleName: responseStyles.data.results[0].name,
-            dataSelected: 0,
-            actualPrice: responseStyles.data.results[0].sale_price ? responseStyles.data.results[0].sale_price : responseStyles.data.results[0].original_price,
-            currentStyle: responseStyles.data.results[0],
-            currentSize: '',
-            currentQuantity: 0,
+            infoData: this.state.infoData,
+            stars: this.state.stars,
+            amountOfReviews: this.state.amountOfReviews,
+            currentImg: this.state.currentImg,
+            currentSelectedStyleImages: this.state.currentSelectedStyleImages,
+            currentPointInGallery: this.state.currentPointInGallery,
+            currentPointInGalleryStart: this.state.currentPointInGalleryStart,
+            currentPointInGalleryEndNonInclusive: this.state.currentPointInGalleryEndNonInclusive,
+            currentView: this.state.currentView,
+            data: this.state.data,
+            dataSelected: this.state.dataSelected,
+            actualPrice: this.state.actualPrice,
+            currentStyle: this.state.currentStyle,
+            currentSize: this.state.currentSize,
+            currentQuantity: this.state.currentQuantity,
           });
           return;
-        })
-        .then((reviewListResponse) => {
-          return
         })
         .catch((error) => console.error(error));
   }
@@ -256,6 +249,7 @@ class Overview extends React.Component {
   tempTwitterAndMaybePinterestFix() {
     // <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     // <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    // <a data-pin-do="buttonBookmark" data-pin-lang="en" href="https://www.pinterest.com/pin/create/button/">Save</a>
     const scriptTwitter = document.createElement("script");
     scriptTwitter.src = "https://platform.twitter.com/widgets.js";
     scriptTwitter.async = true;
@@ -266,12 +260,16 @@ class Overview extends React.Component {
     // scriptPinterest.defer = true;
     // scriptPinterest.src = "//assets.pinterest.com/js/pinit.js";
     // document.head.appendChild(scriptPinterest);
+    // if (document.getElementById('shareButtons')) {
+    //   var shareButtons = document.getElementById('shareButtons');
+    //   var pinterestButton = document.createElement('a')
+    //   pinterestButton['data-pin-do'] = "buttonBookmark";
+    //   pinterestButton['data-pin-lang'] = "en";
+    //   pinterestButton.href = "https://www.pinterest.com/pin/create/button/";
+    //   console.log(pinterestButton);
+    //   shareButtons.appendChild(pinterestButton);
+    // }
   }
-
-  // componentDidMount() {
-  //   this.changeProduct();
-  // }
-
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.productId !== this.state.currentProductId) {
@@ -279,8 +277,8 @@ class Overview extends React.Component {
         currentProductId: this.props.productId
       });
       this.changeProduct();
-      this.tempTwitterAndMaybePinterestFix();
     }
+    this.tempTwitterAndMaybePinterestFix();
   }
 
   render() {
@@ -331,7 +329,9 @@ class Overview extends React.Component {
       );
     }
     return (
+
       <div className={layoutStyles.overviewLayoutIfFull}>
+        {this.tempTwitterAndMaybePinterestFix()}
         <OverviewImgGal
           className={layoutStyles.imageGalleryCompIfFull}
           currentImg={this.state.currentImg}

@@ -12,6 +12,10 @@
   width: 100px;
   height: 100px;
   display: inline-block;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: black;
+  border-width: 5px;
 }
 
 :root {
