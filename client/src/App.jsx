@@ -7,6 +7,10 @@ import Overview from './components/Overview';
 import RatingsAndReviews from './components/RatingsAndReviews';
 import QnA from './components/QnA';
 import RelatedItems from './components/RelatedItems';
+import Test from './components/Test';
+import {
+  getReviews, getReviewMetadata, getProducts, getQuestionList,
+} from '../../helpers/api';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +19,8 @@ class App extends React.Component {
       productId: sampleData.productList[0].id,
       questionList: sampleData.questionList,
       currentProduct: sampleData.productList[0],
+      reviewsList: [...sampleData.reviewList.results],
+      reviewsMetaData: { ...sampleData.reviewMetaData },
     };
   }
 
@@ -24,27 +30,34 @@ class App extends React.Component {
     axios.get('/products')
       .then((response) => response.data)
       .then((productList) => {
-        this.setState({ currentProduct: productList[index] });
-        return productList[index].id;
-      })
-      .then((productId) => {
-        this.setState({ productId });
-        return productId;
-      })
-      .then((productId) => {
-        axios.get(`qa/questions/${productId}`)
-          .then((response) => response.data)
-          .then((questionList) => {
-            this.setState({ questionList });
+        const productId = productList[index].id;
+        const currentProduct= productList[index];
+        const metaData = getReviewMetadata(productId);
+        const allReviews = getReviews(productId);
+        const questionList = getQuestionList(productId);
+        Promise.all([metaData, allReviews, questionList])
+          .then((values) => {
+            this.setState({
+              // eslint-disable-next-line react/no-access-state-in-setstate
+              ...this.state,
+              productId,
+              currentProduct,
+              questionList: { ...values[2] },
+              reviewsList: [...values[1]],
+              reviewsMetaData: { ...values[0] },
+            });
           });
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
       });
   }
 
   render() {
-    const { productId, questionList, currentProduct } = this.state;
+    const {
+      productId, questionList, currentProduct, reviewsList, reviewsMetaData,
+    } = this.state;
+
     return (
       <div>
         <Banner />
@@ -54,6 +67,8 @@ class App extends React.Component {
         <RatingsAndReviews
           productId={productId}
           productName={currentProduct.name}
+          metaData={reviewsMetaData}
+          allReviews={reviewsList}
         />
       </div>
     );
