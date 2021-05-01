@@ -2,6 +2,8 @@ import {
   emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
 } from './starRatings';
 
+import { postInteractions } from './api';
+
 export const getStarRatings = (ratings) => {
   const stars = [];
   for (let i = 0; i < Math.floor(ratings); i++) {
@@ -87,4 +89,29 @@ export const getCharacteristicOptions = (option) => {
   };
 
   return characteristics[option];
+};
+
+const getElementById = (element) => {
+  let node = element;
+
+  while (node) {
+    if (node.id === 'ratings-reviews' || node.id === 'qacontainer' || node.id === 'overview' || node.id === 'banner' || node.id === 'widgets' || node.id === 'app') {
+      return node.id;
+    }
+    node = node.parentNode;
+  }
+};
+
+export const parseDOM = (event) => {
+  // find which widget this event happened in.
+  const widget = getElementById(event.target);
+
+  // create data object with element, widget and timestamp
+  const data = {
+    element: event.target.outerHTML,
+    widget,
+    time: `${event.timeStamp}`,
+  };
+
+  postInteractions(data);
 };

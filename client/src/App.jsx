@@ -58,15 +58,18 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <div id="app">
+      <div id="widgets">
         <Banner />
         <Overview
           productId={productId}
           reviewsList={reviewsList}
           reviewsMetaData={reviewsMetaData}
         />
-        <RelatedItems productId={productId} />
-        <QnA questionList={questionList} productName={currentProduct.name} />
+        <RelatedItems productId={productId} className="relatedItems" />
+        <QnA
+          questionList={questionList}
+          productName={currentProduct.name}
+        />
         <RatingsAndReviews
           productId={productId}
           productName={currentProduct.name}
