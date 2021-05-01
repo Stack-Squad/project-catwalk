@@ -284,7 +284,7 @@ class Overview extends React.Component {
   render() {
     if (this.state.currentView === 'regular') {
       return (
-        <div className={layoutStyles.overviewLayout}>
+        <div id="overview" className={layoutStyles.overviewLayout}>
           <OverviewImgGal
             className={layoutStyles.imageGalleryComp}
             currentImg={this.state.currentImg}

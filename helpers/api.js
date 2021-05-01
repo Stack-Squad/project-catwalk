@@ -27,3 +27,7 @@ export const getProducts = () => axios.get('/products')
 export const getQuestionList = (productId) => axios.get(`qa/questions/${productId}`)
   .then((response) => response.data)
   .catch((err) => console.log(err.message));
+
+export const postInteractions = (interactions) => axios.post('/interactions', { interactions })
+  .then((response) => response.data)
+  .catch((err) => console.log(err.message));

@@ -210,6 +210,17 @@ app.get('/products/:product_id/styles', (req, res) => {
     });
 });
 
+app.post('/interactions', (req, res) => {
+  const { interactions } = req.body;
+  utils.postReview('/interactions', interactions)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`);
 });
