@@ -16,10 +16,13 @@ The application is served from a server.
 ## Features
 
 - Overview Widget
+![App Screenshot](./READMEscreenshots/Overview.png)
 
 - Questions and Answer Widget
+![App Screenshot](./READMEscreenshots/QnA.png)
 
 - Ratings and Review Widget
+![App Screenshot](./READMEscreenshots/RateNRev.png)
 
 ## Authors
 
@@ -131,4 +134,3 @@ To get test coverage, run the following command:
 ## Contributing
 
 Contributions are always welcome!
-
