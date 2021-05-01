@@ -36,7 +36,7 @@ class Questions extends React.Component {
     ));
 
     const moreQuestionsButton = (
-      <button className="q_button" onClick={onClick}>
+      <button className="qa_button" onClick={onClick}>
         More Answered Questions
       </button>
     );
@@ -57,17 +57,3 @@ class Questions extends React.Component {
 }
 
 export default Questions;
-
-/*
-
-let images = this.state.images;
-    images.push(event.target.files[0])
-    let imgurFormData = new FormData();
-
-    imgurFormData.append('image', event.target.files[0]);
-    axios.post('https://api.imgur.com/3/image', imgurFormData, {
-      headers: {
-        'Authorization': 'API TOKEN HERE'
-      }
-
-*/

@@ -73,11 +73,11 @@ class Answer extends React.Component {
         </div>
         <span className="answer_tags">
           <span>{answerTag}</span>
-          <button className="tag" onClick={this.markHelpful}>Yes</button>
+          <button className="tag tag-button" onClick={this.markHelpful}>Yes</button>
           <span>
             {markedHelpful ? `(${answer.helpfulness + 1})` : `(${answer.helpfulness})`}
           </span>
-          {reported ? <span className="report">Reported</span> : <button className="tag" onClick={this.report}>Report</button>}
+          {reported ? <span className="report">Reported</span> : <button className="tag tag-button" onClick={this.report}>Report</button>}
         </span>
       </div>
     );

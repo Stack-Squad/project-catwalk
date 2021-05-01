@@ -7,6 +7,7 @@
     "oopsSize oopsSize"
     "size quantity"
     "submit whatIsThis";
+  max-height: 80%;
 }
 .size {
   grid-area: size;

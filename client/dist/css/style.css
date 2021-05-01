@@ -54,6 +54,10 @@ header {
   font-size: x-large;
   font-weight: bolder;
   background: no-repeat green;
+  padding: 20px;
+  color: white;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
@@ -64,22 +68,22 @@ select:focus {
 /*************************************
 Ratings and Reviews
 *************************************/
-#App {
+#app {
   font-family: sans-serif, Verdana, Geneva, Tahoma;
-  text-align: center;
 }
 
 #sort-by {
+  -webkit-appearance: none;
   margin-left: 10px;
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
   background-color: white;
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid rgb(173, 236, 173);
 }
+
 #ratings-reviews {
   margin: 0 auto;
-  padding: 40px;
   width: 70vw;
 }
 
@@ -87,6 +91,13 @@ Ratings and Reviews
   margin: 0.5rem;
   padding: 0.5rem;
   font-size: 24px;
+  color: green;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  text-shadow: 2px 2px 4px lightgrey;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 /*************************************
@@ -96,25 +107,28 @@ Questions and Answers
 #qacontainer {
   margin: auto;
   padding: 40px;
-  width: 70%;
-  max-width: 800px;
-  background-color: rgb(167, 253, 181);
+  width: 70vw;
+  /* background-color: rgb(167, 253, 181); */
 }
 #qaheading {
-  padding-bottom: 5px;
-  font-size: large;
+  padding-bottom: 10px;
+  font-size: 24px;
+  color: green;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  text-shadow: 2px 2px 4px lightgrey;
+  font-weight: bold;
 }
 .question_wrapper {
-  padding: 5px;
+  padding: 10px;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 30px;
+  border-radius: 10px;
   display: grid;
-  grid-template-columns: 5% auto 25%;
+  grid-template-columns: 5% auto auto;
   grid-template-rows: 25px auto;
-  background-color: rgb(197, 255, 207);
-  border-style: solid;
-  border-color: green;
-  border-width: 2px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .qa_label {
   grid-column-start: 1;
@@ -133,8 +147,8 @@ Questions and Answers
   font-size: medium;
 }
 .question_tags {
-  grid-row-start: 0;
-  grid-column: 0 4;
+  grid-row: 0 / 1;
+  grid-column: 0 / 4;
   justify-self: end;
   font-size: small;
 }
@@ -157,7 +171,7 @@ Questions and Answers
   width: auto;
   vertical-align: middle;
   margin: 0px 3px 5px 0px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 .answer_wrapper {
   display: flex;
@@ -180,6 +194,30 @@ Questions and Answers
 .report {
   margin: 5px;
 }
+.qa_button {
+  background-color: green;
+  color: white;
+  border-style: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.tag-button {
+  border: none;
+  border-style: none;
+  border-bottom: 2px solid rgb(173, 236, 173);
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.tag-button:hover {
+  background-color: gray;
+  color: white;
+}
 
 /*************************************
 Search Bar
@@ -189,6 +227,7 @@ Search Bar
   position: relative;
   display: flex;
   padding: 5px 0px 10px 0px;
+  margin-bottom: 10px;
 }
 .search-icon {
   position: relative;

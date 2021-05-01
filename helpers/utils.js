@@ -188,6 +188,21 @@ module.exports.addQuestion = (form) => {
     });
 };
 
+module.exports.getProductStylesById = (id) => {
+  const options = {
+    url: `/products/${id}/styles`,
+    method: 'get',
+    baseURL,
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return axios(options)
+    .then((response) => response.data)
+    .catch((err) => err);
+};
+
 module.exports.addAnswer = (id, form) => {
   const {
     body, name, email, photos,

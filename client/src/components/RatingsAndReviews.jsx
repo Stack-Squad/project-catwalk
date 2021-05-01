@@ -9,37 +9,51 @@ import {
 } from '../../../helpers/api';
 
 const RatingsAndReviews = (props) => {
-  const { productId, productName } = props;
-  const [reviewList, setReviewList] = useState([...sampleData.reviewList.results]);
-  const [reviews, setReviews] = useState([...sampleData.reviewList.results]);
-  const [reviewData, setReviewData] = useState({ ...sampleData.reviewMetaData });
-  const [sortBy, setSortBy] = useState('relevance');
+  const {
+    productId, productName, metaData, allReviews,
+  } = props;
+
+  const [reviewData, setReviewData] = useState({
+    reviewList: [...allReviews],
+    metaData: { ...metaData },
+    reviews: [...allReviews],
+    sortBy: 'relevance',
+    feedback: new Set(),
+  });
   /*
    * a set of review_ids that tracks all reviews that user
    * has provided feedback on.
   */
-  const [feedback, setFeedback] = useState(new Set());
+  // const [feedback, setFeedback] = useState(new Set());
 
   useEffect(() => {
-    getReviewMetadata(productId)
-      .then((reviewsMeta) => setReviewData({ ...reviewsMeta }))
-      .then(() => getReviews(productId, sortBy))
-      .then((reviewsData) => {
-        setReviewList([...reviewsData]);
-        setReviews([...reviewsData]);
-        setFeedback(new Set());
+    const meta = getReviewMetadata(productId);
+    const reviews = getReviews(productId, reviewData.sortBy);
+    Promise.all([meta, reviews])
+      .then((values) => {
+        setReviewData({
+          ...reviewData,
+          metaData: { ...values[0] },
+          reviewList: [...values[1]],
+          reviews: [...values[1]],
+          feedback: new Set(),
+        });
       });
-  }, [productId]);
+  }, [reviewData.metaData.product_id]);
 
-  useEffect(() => {
-    getReviewMetadata(productId)
-      .then((reviewsMeta) => setReviewData({ ...reviewsMeta }))
-      .then(() => getReviews(productId, sortBy))
-      .then((reviewsData) => {
-        setReviewList([...reviewsData]);
-        setReviews([...reviewsData]);
+  function getSortBy(keyWord) {
+    const meta = getReviewMetadata(productId);
+    const reviews = getReviews(productId, reviewData.sortBy);
+    Promise.all([meta, reviews])
+      .then((values) => {
+        setReviewData({
+          ...reviewData,
+          metaData: { ...values[0] },
+          reviewList: [...values[1]],
+          reviews: [...values[1]],
+        });
       });
-  }, [sortBy]);
+  }
 
   function markHelpFul(reviewId) {
     /*
@@ -47,30 +61,51 @@ const RatingsAndReviews = (props) => {
      * send req to review endpoint to mark review as helpful.
      * Return a new list of reviews and set state.
     */
-    if (!(feedback.has(reviewId))) {
-      const newFeedback = new Set(feedback);
-      newFeedback.add(reviewId);
+    if (!(reviewData.feedback.has(reviewId))) {
+      const newFeedback = new Set(reviewData.feedback);
+
       markReviewHelpful(reviewId)
-        .then(() => getReviews(productId, sortBy))
-        .then((reviewsData) => {
-          setReviewList([...reviewsData]);
-          setReviews([...reviewsData]);
-          setFeedback(newFeedback);
+        .then(() => {
+          const reviews = getReviews(productId, reviewData.sortBy);
+          const meta = getReviewMetadata(productId);
+          Promise.all([meta, reviews])
+            .then((values) => {
+              setReviewData({
+                ...reviewData,
+                metaData: { ...values[0] },
+                reviewList: [...values[1]],
+                reviews: [...values[1]],
+                feedback: newFeedback,
+              });
+            });
         });
     }
   }
 
   function report(reviewId) {
-    const newFeedback = new Set(feedback);
+    const newFeedback = new Set(reviewData.feedback);
     reportReview(reviewId)
-      .then(() => getReviews(productId, sortBy))
-      .then((reviewsData) => {
-        setReviewList([...reviewsData]);
-        setReviews([...reviewsData]);
-        setFeedback(newFeedback);
-      })
-      .then(() => getReviewMetadata(productId))
-      .then((reviewsMeta) => setReviewData({ ...reviewsMeta }));
+      .then(() => {
+        const reviews = getReviews(productId, reviewData.sortBy);
+        const meta = getReviewMetadata(productId);
+        Promise.all([meta, reviews])
+          .then((values) => {
+            setReviewData({
+              ...reviewData,
+              metaData: { ...values[0] },
+              reviewList: [...values[1]],
+              reviews: [...values[1]],
+              feedback: newFeedback,
+            });
+          });
+      });
+  }
+
+  function setReviews(newReviews) {
+    setReviewData({
+      ...reviewData,
+      reviews: newReviews,
+    });
   }
 
   return (
@@ -78,18 +113,18 @@ const RatingsAndReviews = (props) => {
       <h1 className="ratings-reviews-header">Ratings & Reviews</h1>
       <div className={styles.container}>
         <Ratings
-          reviewData={reviewData}
-          reviewList={reviewList}
-          setReviewList={setReviews}
+          reviewData={reviewData.metaData}
+          reviewList={reviewData.reviewList}
+          setReviewList={setReviews} // refactor this setReviews doesn't exist anymore
         />
         <Reviews
-          reviewsList={reviews}
-          setSortBy={setSortBy}
+          reviewsList={reviewData.reviews}
+          setSortBy={getSortBy}
           markHelpFul={markHelpFul}
           report={report}
           productName={productName}
           productId={productId}
-          characteristics={reviewData.characteristics}
+          characteristics={reviewData.metaData.characteristics}
         />
       </div>
     </div>

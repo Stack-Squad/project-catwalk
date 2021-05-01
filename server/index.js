@@ -22,7 +22,7 @@ app.get('/products', (req, res) => {
 app.get('/products/:product_id', (req, res) => {
   const id = req.params.product_id;
   console.log(`serving GET request to /products/${id}`);
-  utils.getProductById()
+  utils.getProductById(id)
     .then((productInfo) => {
       res.json(productInfo);
     })
@@ -189,6 +189,23 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
     })
     .catch((err) => {
       console.log(err.message);
+      res.end();
+    });
+});
+
+app.get('/products/:product_id/styles', (req, res) => {
+  const id = req.params.product_id;
+  console.log(`serving GET request to /products/${id}/styles`);
+  utils.getProductStylesById(id)
+    .then((data) => {
+      res.statusCode = 200;
+      res.send(data);
+      res.end();
+    })
+    .catch((err) => {
+      console.log(`Error with product styles API req: ${err}`);
+      res.statusCode = 404;
+      res.statusMessage = `Error getting product's styles: ${err}`;
       res.end();
     });
 });

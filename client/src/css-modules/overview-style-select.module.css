@@ -12,12 +12,16 @@
   width: 100px;
   height: 100px;
   display: inline-block;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: black;
+  border-width: 5px;
 }
 
 :root {
   --borderWidth: 7px;
-  --height: 24px;
-  --width: 12px;
+  --height: 18px;
+  --width: 9px;
   --borderColor: #78b13f;
 }
 
