@@ -12,11 +12,22 @@ Everything is dynamically rendered and the application
 interacts with an external API to get product information.
 
 The application is served from a server.
+
+## Features
+
+- Overview Widget
+
+- Questions and Answer Widget
+
+- Ratings and Review Widget
+
 ## Authors
 
 - Prince Boateng
 - Cody Mumford
 - Ian Ferrier
+
+
 
 ## Run Locally
 
@@ -120,22 +131,4 @@ To get test coverage, run the following command:
 ## Contributing
 
 Contributions are always welcome!
-## Features
 
-- Overview Widget
-
-- Questions and Answer Widget
-
-- Ratings and Review Widget
-
-# Project Catwalk
-
-This is a single page web application for
-a single product page. It includes current product overview,
-questions and answers, and ratings and reviews widgets.
-
-All widgets are receptive to the currently selected product.
-Everything is dynamically rendered and the application
-interacts with an external API to get product information.
-
-The application is served from a server.
