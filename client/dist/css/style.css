@@ -46,6 +46,10 @@ table {
 	border-spacing: 0;
 }
 
+body {
+  margin: 0 auto;
+}
+
 /*************************************
 Banner
 *************************************/
@@ -83,8 +87,9 @@ Ratings and Reviews
 }
 
 #ratings-reviews {
-  margin: 0 auto;
+  margin: auto;
   width: 70vw;
+  height: 70vw;
 }
 
 .ratings-reviews-header {
