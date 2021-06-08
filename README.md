@@ -130,7 +130,3 @@ To get test coverage, run the following command:
 ```bash
     npm run text-cov
 ```
-
-## Contributing
-
-Contributions are always welcome!
